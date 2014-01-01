@@ -1,75 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/me.jeremyhe.getdone"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     xmlns:app="http://schemas.android.com/apk/res/me.jeremyhe.getdone"
-     android:orientation="vertical">
+    android:background="@android:color/white"
+    android:orientation="vertical" >
 
     <com.viewpagerindicator.TitlePageIndicator
         android:id="@+id/titleIndicator"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:footerIndicatorStyle="underline"
-        app:footerIndicatorHeight="0dp"
-        app:selectedColor="@color/default_line_indicator_selected_color"
-        android:textSize="21sp"
-        android:textColor="@android:color/darker_gray"
-         />
-    
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
+        android:layout_height="48dp"
+        android:background="@color/blue_getdone"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:footerColor="@android:color/white"
+        app:footerIndicatorHeight="7dp"
+        app:footerIndicatorStyle="triangle"
+        app:footerLineHeight="0dp"
+        app:topPadding="10dp" />
+
+    <RelativeLayout
+        android:id="@+id/content_rl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="1dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginTop="5dp"
-        android:layout_weight="1" />
+        android:layout_weight="1" >
 
-    <View
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/white" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/main_extra_content_ly"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+        
+        <View style="@style/horizontal_line" />
+
+        <LinearLayout
+            android:id="@+id/main_time_container_ly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.dateSlider.SliderContainer
+                android:id="@+id/main_sliderContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <com.dateSlider.ScrollLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    app:childHeight="24dp"
+                    app:childWidth="72dp"
+                    app:labelerClass="com.dateSlider.labeler.HourLabeler"
+                    app:labelerFormat="%tH" >
+                </com.dateSlider.ScrollLayout>
+
+                <View style="@style/horizontal_line" />
+
+                <com.dateSlider.ScrollLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    app:childHeight="24dp"
+                    app:childWidth="45dp"
+                    app:labelerClass="com.dateSlider.labeler.MinuteLabeler"
+                    app:labelerFormat="%tM" >
+                </com.dateSlider.ScrollLayout>
+                
+                <View style="@style/horizontal_line" />
+            </com.dateSlider.SliderContainer>
+
+            <View style="@style/vertical_line" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="24dp"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="时"
+                    android:textColor="@color/text_gray"
+                    android:textSize="14dp" />
+
+                <View style="@style/horizontal_line" />
+
+                <TextView
+                    android:layout_width="24dp"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="分"
+                    android:textColor="@color/text_gray"
+                    android:textSize="14dp" />
+                
+				<View style="@style/horizontal_line" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/main_priority_rg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/main_priority_important_urgent_rb"
+                style="@style/radiobutton_priority_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/check_important_urgent"
+                android:checked="true"
+                android:text="重要且紧急" />
+
+            <View style="@style/vertical_line" />
+
+            <RadioButton
+                android:id="@+id/main_priority_important_rb"
+                style="@style/radiobutton_priority_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/check_important"
+                android:text="重要" />
+
+            <View style="@style/vertical_line" />
+
+            <RadioButton
+                android:id="@+id/main_priority_urgent_rb"
+                style="@style/radiobutton_priority_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/check_urgent"
+                android:text="紧急" />
+
+            <View style="@style/vertical_line" />
+
+            <RadioButton
+                android:id="@+id/main_priority_normal_rb"
+                style="@style/radiobutton_priority_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/check_not_important_urgent"
+                android:text="一般" />
+        </RadioGroup>
+
+        <View style="@style/horizontal_line" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:gravity="center_vertical" >
-
-        <TextView
-            android:id="@+id/left_menu_tv"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:text="="
-            android:textSize="36sp"
-            android:gravity="center"
-            android:textColor="@android:color/darker_gray" />
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
 
         <EditText
             android:id="@+id/add_task_et"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/radius_shape_normal"
+            android:background="@android:color/transparent"
             android:ems="10"
             android:hint="添加任务..."
             android:padding="7dp"
-            android:textColorHint="#AAAAAA"
+            android:singleLine="true"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/text_gray"
             android:textSize="15dp" >
 
             <requestFocus />
         </EditText>
 
-        <TextView
-            android:id="@+id/add_task_tv"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="添加"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="21sp" 
-            android:gravity="center"/>
+        <View style="@style/vertical_line" />
 
+        <Button
+            android:id="@+id/add_task_btn"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_flat_gray"
+            android:text="添加"
+            android:textColor="@android:color/white"
+            android:textSize="14dp" />
+
+        <View style="@style/vertical_line" />
+
+        <Button
+            android:id="@+id/main_arrange_task_btn"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_flat_blue"
+            android:text="提醒 "
+            android:textColor="@android:color/white"
+            android:textSize="14dp" />
     </LinearLayout>
 
 </LinearLayout>

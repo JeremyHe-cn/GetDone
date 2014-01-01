@@ -1,46 +1,57 @@
-package me.jeremyhe.getdone.main;
+锘縫ackage me.jeremyhe.getdone.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import me.jeremyhe.getdone.fragment.TaskListFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class MainViewPagerFragmentAdapter extends FragmentPagerAdapter {
 	
-	private String[] mTitles;
-	private Fragment[] mFragments;
+	private List<TaskListFragment> mFragments;
  
 	public MainViewPagerFragmentAdapter(FragmentManager fm) {
 		super(fm);
-		mTitles = new String[]{"任务收集","今天","明天","后天"};
-		mFragments = new Fragment[]{
-				new TaskListFragment(),
-				new TaskListFragment(),
-				new TaskListFragment(),
-				new TaskListFragment()
-		};
+		mFragments = new ArrayList<TaskListFragment>();
 	}
 	
 	@Override
-	public Fragment getItem(int position) {
-		if (position >= mFragments.length) {
+	public TaskListFragment getItem(int position) {
+		if (position >= mFragments.size()) {
 			return null;
 		}
 		
-		return mFragments[position];
+		return mFragments.get(position);
 	}
 
 	@Override
 	public int getCount() {
-		return mFragments.length;
+		return mFragments.size();
 	}
+	
+	public boolean addItem(TaskListFragment fragment){
+		return mFragments.add(fragment);
+	}
+	
+	public void addItems(TaskListFragment[] fragments){
+		for (TaskListFragment taskListFragment : fragments) {
+			mFragments.add(taskListFragment);
+		}
+	}
+	
+	public void setFragmentList(List<TaskListFragment> list){
+		mFragments = list;
+	}
+	
 	
 	@Override
 	public CharSequence getPageTitle(int position) {
-		if (position >= mTitles.length) {
+		if (position >= mFragments.size()) {
 			return "";
 		}
 		
-		return mTitles[position];
+		return mFragments.get(position).getTitle();
 	}
-
 }
