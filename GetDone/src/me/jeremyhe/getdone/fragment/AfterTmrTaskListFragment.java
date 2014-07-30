@@ -5,7 +5,7 @@ import java.util.List;
 import me.jeremyhe.getdone.common.Const;
 import me.jeremyhe.getdone.common.notify.NotificationCenter;
 import me.jeremyhe.getdone.dao.Task;
-import me.jeremyhe.getdone.main.TaskListAdapter;
+import me.jeremyhe.getdone.main.adapter.TaskListAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -25,7 +25,10 @@ public class AfterTmrTaskListFragment extends TaskListFragment {
 	
 	@Override
 	public void onNotify(int event) {
-		reloadTaskList();
+		if (event == Const.EVENT.TASK_STATUS_CHANGE) {
+			reloadTaskList();	
+		}
+		
 	}
 	
 	@Override

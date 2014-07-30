@@ -5,19 +5,19 @@ import java.util.List;
 import me.jeremyhe.getdone.common.Const;
 import me.jeremyhe.getdone.common.notify.NotificationCenter;
 import me.jeremyhe.getdone.dao.Task;
-import me.jeremyhe.getdone.main.TaskListAdapter;
+import me.jeremyhe.getdone.main.adapter.TodoTaskListAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 public class TodoTaskListFragment extends TaskListFragment {
 	
-	private TaskListAdapter mTaskListAdapter;
+	private TodoTaskListAdapter mTaskListAdapter;
 	private LoadTodoTaskListTask mLoadTodoTaskListTask;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mTaskListAdapter = new TaskListAdapter(mContext);
+		mTaskListAdapter = new TodoTaskListAdapter(mContext);
 		setListAdapter(mTaskListAdapter);
 		reloadTaskList();
 	}
@@ -25,7 +25,9 @@ public class TodoTaskListFragment extends TaskListFragment {
 	
 	@Override
 	public void onNotify(int event) {
-		reloadTaskList();
+		if (event == Const.EVENT.TASK_STATUS_CHANGE) {
+			reloadTaskList();	
+		}
 	}
 	
 	@Override
@@ -60,7 +62,7 @@ public class TodoTaskListFragment extends TaskListFragment {
 		@Override
 		protected Void doInBackground(Void... params) {
 			List<Task> todoTaskList = mTaskService.listTodoTasks();
-			mTaskListAdapter.setTaskList(todoTaskList);
+			mTaskListAdapter.setTaskList(todoTaskList); 
 			return null;
 		}
 		

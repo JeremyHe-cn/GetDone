@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:gravity="bottom">
+    
+    <TextView
+        android:id="@+id/arrange_username_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Jeremy"
+        android:textColor="@color/green_info"
+        android:textSize="32sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="花点时间"
+        android:textColor="@color/text_gray"
+        android:textSize="30sp" />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="安排你的事情吧"
+        android:textSize="30sp" 
+        android:textColor="@color/text_gray"/>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+        
+        <me.jeremyhe.getdone.widget.TaskScreenView
+	        android:id="@+id/arrange_task_screenview"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1" >
+    	</me.jeremyhe.getdone.widget.TaskScreenView>
+    	
+        <TextView 
+            android:id="@+id/arrange_finished_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Good Job!"
+            android:textColor="@color/blue_getdone"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            />
+        
+        
+    </RelativeLayout>
+    
+    
+    
+    <View style="@style/horizontal_line"/>
+
+    <include layout="@layout/widget_select_time_ly"/>
+    
+    <View style="@style/horizontal_line"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        >
+        
+        <Button 
+			android:id="@+id/arrange_todo_btn"
+            style="@style/flat_blue_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="待办"
+            />
+        
+        <Button 
+			android:id="@+id/arrange_after_tmr_btn"
+            style="@style/flat_blue_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="后天"
+            />
+        
+        <Button 
+			android:id="@+id/arrange_tmr_btn"
+            style="@style/flat_blue_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="明天"
+            />
+        
+        <Button 
+			android:id="@+id/arrange_ok_btn"
+            style="@style/flat_blue_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="确定"
+            />
+        
+    </LinearLayout>
+
+</LinearLayout>

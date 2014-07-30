@@ -33,19 +33,25 @@
 	
 	<!-- 重要且紧急 -->
 	<color name="priority_important_urgent" >#FFDA4631</color>
+	<color name="priority_important_urgent_trans" >#E5DA4631</color>
 	<color name="priority_important_urgent_light" >#FFE99083</color>
 	 <!-- 重要 -->
 	 <color name="priority_important">#FF176CEE</color>
+	 <color name="priority_important_trans">#E5176CEE</color>
 	 <color name="priority_important_light">#FF74A7F5</color>
 	 <!-- 紧急 -->
 	 <color name="priority_urgent">#FF009957</color>
+	 <color name="priority_urgent_trans">#E5009957</color>
 	 <color name="priority_urgent_light">#FF66C29A</color>
 	 <!-- 一般 -->
 	 <color name="priority_not_important_urgent">#FFFFBA02</color>
+	 <color name="priority_not_important_urgent_trans">#E5FFBA02</color>
 	 <color name="priority_not_important_urgent_light">#FFFFD667</color>
 	 
 	 <color name="text_gray">@color/gray_79</color>
 	 <color name="text_black">@color/black_light</color>
 	 <color name="text_hint">@color/gray_light</color>
+	 
+	 <color name="tomato_rest">#FFCC66FF</color>
 	
 </resources>

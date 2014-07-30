@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical" 
+    android:background="@android:color/white">
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        
+        <EditText
+	        android:id="@+id/modify_task_title_et"
+	        android:layout_width="match_parent"
+	        android:layout_height="48dp"
+	        android:layout_weight="1"
+	        android:background="@android:color/transparent"
+	        android:gravity="center"
+	        android:ems="10" >
+	
+	        <requestFocus />
+	    </EditText>
+	    
+        <Button 
+            android:id="@+id/modify_push_btn"
+            style="@style/flat_gray_btn"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:text="发送"
+            />
+        
+    </LinearLayout>
+
+    <View style="@style/horizontal_line"/>
+    
+    <include layout="@layout/widget_select_time_ly"/>
+    
+    <View style="@style/horizontal_line"/>
+    
+    <RadioGroup
+        android:id="@+id/modify_date_rg"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal" >
+        
+        <RadioButton
+            android:id="@+id/modify_todo_rb"
+            style="@style/radiobutton_priority_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/check_blue"
+            android:text="待办" />
+
+        <View style="@style/vertical_line" />
+
+        <RadioButton
+            android:id="@+id/modify_today_rb"
+            style="@style/radiobutton_priority_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/check_blue"
+            android:text="今天" />
+
+        <View style="@style/vertical_line" />
+
+        <RadioButton
+            android:id="@+id/modify_tmr_rb"
+            style="@style/radiobutton_priority_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/check_blue"
+            android:text="明天" />
+
+        <View style="@style/vertical_line" />
+
+        <RadioButton
+            android:id="@+id/modify_other_rb"
+            style="@style/radiobutton_priority_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/check_blue"
+            android:text="更多" />
+    </RadioGroup>
+    
+    <View style="@style/horizontal_line"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        
+        <Button 
+            android:id="@+id/modify_cancel_btn"
+            style="@style/flat_gray_btn"
+            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="取消"
+            />
+        
+        <Button 
+            android:id="@+id/modify_ok_btn"
+            style="@style/flat_blue_btn"
+            android:layout_height="48dp"
+             android:layout_width="match_parent"
+             android:layout_weight="1"
+             android:text="确定"/>
+        
+    </LinearLayout>
+
+</LinearLayout>

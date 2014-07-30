@@ -4,24 +4,17 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal" 
-    android:background="@android:color/white">
-    
-    <View 
-        android:id="@+id/task_priority_view"
-        android:layout_width="4dp"
-        android:layout_height="32dp"
-        android:background="@color/priority_important"
-        />
+    android:background="@android:color/transparent">
     
     <RelativeLayout 
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="32dp"
         android:layout_weight="1"
-        android:layout_marginTop="-5dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="8dp"
+        android:background="@android:color/transparent"
         >
         
-        <View 
+        <ImageView 
             android:id="@+id/task_finished_line"
             style="@style/horizontal_line"
             android:layout_centerInParent="true"
@@ -35,20 +28,8 @@
             android:gravity="center_vertical"
             android:singleLine="true"
             android:text="TextView"
-            android:textColor="@color/text_black"
+            android:textColor="@android:color/white"
             android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/task_excutetime_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/task_title_tv"
-            android:layout_marginTop="-2dp"
-            android:gravity="center_vertical"
-            android:singleLine="true"
-            android:text="2013-12-01 09:15"
-            android:textColor="@color/text_gray"
-            android:textSize="12sp" />
         
     </RelativeLayout>
     
@@ -59,12 +40,5 @@
         android:button="@drawable/checkbox_white"
         android:layout_marginLeft="8dp"
         />
-
-    <Button
-        android:id="@+id/task_modify_btn"
-        android:layout_width="24dp"
-        android:layout_height="48dp"
-        android:background="#ff383838"
-        android:visibility="gone" />
     
 </LinearLayout>

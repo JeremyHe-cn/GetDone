@@ -14,6 +14,7 @@ public class Task {
     /** Not-null value. */
     private java.util.Date createTime;
     private java.util.Date excuteTime;
+    private Long friendId;
 
     public Task() {
     }
@@ -22,13 +23,14 @@ public class Task {
         this.id = id;
     }
 
-    public Task(Long id, String title, int priority, int status, java.util.Date createTime, java.util.Date excuteTime) {
+    public Task(Long id, String title, int priority, int status, java.util.Date createTime, java.util.Date excuteTime, Long friendId) {
         this.id = id;
         this.title = title;
         this.priority = priority;
         this.status = status;
         this.createTime = createTime;
         this.excuteTime = excuteTime;
+        this.friendId = friendId;
     }
 
     public Long getId() {
@@ -81,6 +83,14 @@ public class Task {
 
     public void setExcuteTime(java.util.Date excuteTime) {
         this.excuteTime = excuteTime;
+    }
+
+    public Long getFriendId() {
+        return friendId;
+    }
+
+    public void setFriendId(Long friendId) {
+        this.friendId = friendId;
     }
 
 }

@@ -29,6 +29,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
         public final static Property Status = new Property(3, int.class, "status", false, "STATUS");
         public final static Property CreateTime = new Property(4, java.util.Date.class, "createTime", false, "CREATE_TIME");
         public final static Property ExcuteTime = new Property(5, java.util.Date.class, "excuteTime", false, "EXCUTE_TIME");
+        public final static Property FriendId = new Property(6, Long.class, "friendId", false, "FRIEND_ID");
     };
 
 
@@ -44,12 +45,13 @@ public class TaskDao extends AbstractDao<Task, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'TASK' (" + //
-                "'_id' INTEGER PRIMARY KEY ," + // 0: id
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "'TITLE' TEXT NOT NULL ," + // 1: title
                 "'PRIORITY' INTEGER NOT NULL ," + // 2: priority
                 "'STATUS' INTEGER NOT NULL ," + // 3: status
                 "'CREATE_TIME' INTEGER NOT NULL ," + // 4: createTime
-                "'EXCUTE_TIME' INTEGER);"); // 5: excuteTime
+                "'EXCUTE_TIME' INTEGER," + // 5: excuteTime
+                "'FRIEND_ID' INTEGER);"); // 6: friendId
     }
 
     /** Drops the underlying database table. */
@@ -76,6 +78,11 @@ public class TaskDao extends AbstractDao<Task, Long> {
         if (excuteTime != null) {
             stmt.bindLong(6, excuteTime.getTime());
         }
+ 
+        Long friendId = entity.getFriendId();
+        if (friendId != null) {
+            stmt.bindLong(7, friendId);
+        }
     }
 
     /** @inheritdoc */
@@ -93,7 +100,8 @@ public class TaskDao extends AbstractDao<Task, Long> {
             cursor.getInt(offset + 2), // priority
             cursor.getInt(offset + 3), // status
             new java.util.Date(cursor.getLong(offset + 4)), // createTime
-            cursor.isNull(offset + 5) ? null : new java.util.Date(cursor.getLong(offset + 5)) // excuteTime
+            cursor.isNull(offset + 5) ? null : new java.util.Date(cursor.getLong(offset + 5)), // excuteTime
+            cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6) // friendId
         );
         return entity;
     }
@@ -107,6 +115,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
         entity.setStatus(cursor.getInt(offset + 3));
         entity.setCreateTime(new java.util.Date(cursor.getLong(offset + 4)));
         entity.setExcuteTime(cursor.isNull(offset + 5) ? null : new java.util.Date(cursor.getLong(offset + 5)));
+        entity.setFriendId(cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6));
      }
     
     /** @inheritdoc */

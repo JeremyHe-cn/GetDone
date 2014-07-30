@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/black_light">
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <me.jeremyhe.lib.widget.RoundedImageView
+                    android:id="@+id/menu_left_head_riv"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/head" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#7f1E90FF"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp" >
+
+                <TextView
+                    android:id="@+id/menu_left_username_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Al_Ways"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="累计完成"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/menu_left_finished_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center"
+                        android:text="7"
+                        android:textColor="@color/priority_important_urgent_light"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/menu_left_todo_view_btn"
+                    style="@style/flat_blue_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="TODO视图" />
+
+                <View style="@style/horizontal_line" />
+                
+                <Button
+                    android:id="@+id/menu_left_gtd_view_btn"
+                    style="@style/flat_blue_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="GTD视图" />
+
+                <View style="@style/horizontal_line" />
+                
+                <Button
+                    android:id="@+id/menu_left_user_settings_btn"
+                    style="@style/flat_blue_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="个人设置" />
+
+                <View style="@style/horizontal_line" />
+
+                <Button
+                    android:id="@+id/menu_left_arrange_btn"
+                    style="@style/flat_blue_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="安排今天的事情" />
+
+                <View style="@style/horizontal_line" />
+
+                <Button
+                    android:id="@+id/menu_left_friend_btn"
+                    style="@style/flat_blue_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="好友列表" />
+
+                <View style="@style/horizontal_line" />
+
+                <Button
+                    style="@style/flat_blue_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="关于" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center_vertical"
+        >
+            
+        <Button
+            android:id="@+id/menu_left_clear_btn"
+            style="@style/flat_gray_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_trashcan"
+            android:layout_alignParentLeft="true" />
+        
+        <Button
+            android:id="@+id/menu_left_settings_btn"
+            style="@style/flat_gray_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+        
+    </RelativeLayout>
+    
+
+
+</LinearLayout>

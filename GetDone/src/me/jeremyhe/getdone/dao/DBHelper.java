@@ -1,6 +1,5 @@
 package me.jeremyhe.getdone.dao;
 
-import android.app.Application;
 import android.content.Context;
 import me.jeremyhe.getdone.dao.DaoMaster.DevOpenHelper;
 

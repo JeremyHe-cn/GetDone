@@ -1,4 +1,4 @@
-﻿package me.jeremyhe.getdone.main;
+package me.jeremyhe.getdone.main.adapter;
 
 import me.jeremyhe.getdone.R;
 
@@ -6,29 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.jeremyhe.getdone.common.Const;
-import me.jeremyhe.getdone.common.TaskUtils;
+import me.jeremyhe.getdone.common.SettingUtils;
 import me.jeremyhe.getdone.dao.Task;
+import me.jeremyhe.getdone.main.ModifyTaskActivity;
 import me.jeremyhe.getdone.services.TaskService;
-import me.jeremyhe.lib.common.DateUtils;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
-public class TaskListAdapter extends BaseAdapter {
+public class GTDTaskListAdapter extends BaseAdapter {
 	
 	protected Context mContext;
 	protected LayoutInflater mInflater;
 	
 	protected List<Task> mTaskList;
 	
-	public TaskListAdapter(Context context){
+	public GTDTaskListAdapter(Context context){
 		mContext = context;
 		mInflater = LayoutInflater.from(mContext);
 		mTaskList = new ArrayList<Task>();
@@ -38,53 +37,59 @@ public class TaskListAdapter extends BaseAdapter {
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		ViewHolder holder = null;
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.task_item, null);
+			convertView = mInflater.inflate(R.layout.item_gtd_task, null);
 			holder = new ViewHolder();
-			holder.taskPriorityView = (View)convertView.findViewById(R.id.task_priority_view);
 			holder.taskTitleTv = (TextView)convertView.findViewById(R.id.task_title_tv);
 			holder.taskFinishedLine = (View)convertView.findViewById(R.id.task_finished_line);
-			holder.taskExcuteTimeTv = (TextView)convertView.findViewById(R.id.task_excutetime_tv);
 			holder.taskFinishedCb = (CheckBox)convertView.findViewById(R.id.task_finished_cb);
-			
-			holder.taskFinishedCb.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-				@Override
-				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-					Task task = mTaskList.get(position);
-					if (isChecked) {
-						task.setStatus(Const.TASK.STATUS_FINISHED);
-					} else {
-						task.setStatus(Const.TASK.STATUS_ADD);
-					}
-					TaskService.getInstance().updateTask(task);
-				}
-			});
 			
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder)convertView.getTag();
+			convertView.setOnLongClickListener(null);
+			holder.taskFinishedCb.setOnCheckedChangeListener(null);
 		}
 		
 		final Task task = mTaskList.get(position);
+		final int taskStatus = task.getStatus();
 		
 		holder.taskTitleTv.setText(task.getTitle());
-		String formatExcuteTime = DateUtils.format(task.getExcuteTime(), DateUtils.format_yyyy_MM_dd__hh_mm);
-		holder.taskExcuteTimeTv.setText(formatExcuteTime);
 		
 		// 完成状态 
-		final int taskStatus = task.getStatus();
 		if (taskStatus == Const.TASK.STATUS_FINISHED) {
-			holder.taskTitleTv.setTextColor(mContext.getResources().getColor(R.color.text_gray));
 			holder.taskFinishedLine.setVisibility(View.VISIBLE);
 			holder.taskFinishedCb.setChecked(true);
+			
 		} else {
-			holder.taskTitleTv.setTextColor(mContext.getResources().getColor(R.color.text_black));
 			holder.taskFinishedLine.setVisibility(View.GONE);
 			holder.taskFinishedCb.setChecked(false);
 		}
 		
-		// 重要性
-		final int priority = task.getPriority();
-		holder.taskPriorityView.setBackgroundResource(TaskUtils.priorityToColorResId(priority));
+		// 设置监听器必须每次都重新设置，因为其位置会改变
+		convertView.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				ModifyTaskActivity.navigateTo(mContext, task.getId());
+				return true;
+			}
+		});
+		
+		holder.taskFinishedCb.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				// 更新累积完成
+				int sumOfFinished = SettingUtils.getSumOfFinishedTask();
+				if (isChecked) {
+					task.setStatus(Const.TASK.STATUS_FINISHED);
+					sumOfFinished++;
+				} else {
+					task.setStatus(Const.TASK.STATUS_ARRANGED);
+					sumOfFinished--;
+				}
+				SettingUtils.setSumOfFinishedTask(sumOfFinished);
+				TaskService.getInstance().updateTask(task);
+			}
+		});
 		
 		return convertView;
 	}
@@ -101,14 +106,12 @@ public class TaskListAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int position) {
-		return position;
+		return mTaskList.get(position).getId();
 	}
 	
-	private class ViewHolder{
-		public View taskPriorityView;
+	protected class ViewHolder{
 		public TextView taskTitleTv;
 		public View taskFinishedLine;
-		public TextView taskExcuteTimeTv;
 		public CheckBox taskFinishedCb;
 	}
 	

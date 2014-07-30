@@ -17,23 +17,20 @@
         app:footerIndicatorHeight="7dp"
         app:footerIndicatorStyle="triangle"
         app:footerLineHeight="0dp"
-        app:topPadding="10dp" />
+        app:topPadding="10dp" 
+        app:clipPadding="12dp"
+        app:titlePadding="12dp"
+        />
 
-    <RelativeLayout
-        android:id="@+id/content_rl"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" >
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginTop="5dp"
-            android:background="@android:color/white" />
-    </RelativeLayout>
+     <android.support.v4.view.ViewPager
+         android:id="@+id/viewPager"
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:layout_marginLeft="1dp"
+         android:layout_marginRight="2dp"
+         android:layout_marginTop="5dp"
+         android:layout_weight="1"
+         android:background="@android:color/white" />
 
     <LinearLayout
         android:id="@+id/main_extra_content_ly"
@@ -48,66 +45,12 @@
             android:id="@+id/main_time_container_ly"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
+            
+            <include layout="@layout/widget_select_time_ly"/>
+            
+            <View style="@style/horizontal_line"/>
 
-            <com.dateSlider.SliderContainer
-                android:id="@+id/main_sliderContainer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" >
-
-                <com.dateSlider.ScrollLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    app:childHeight="24dp"
-                    app:childWidth="72dp"
-                    app:labelerClass="com.dateSlider.labeler.HourLabeler"
-                    app:labelerFormat="%tH" >
-                </com.dateSlider.ScrollLayout>
-
-                <View style="@style/horizontal_line" />
-
-                <com.dateSlider.ScrollLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    app:childHeight="24dp"
-                    app:childWidth="45dp"
-                    app:labelerClass="com.dateSlider.labeler.MinuteLabeler"
-                    app:labelerFormat="%tM" >
-                </com.dateSlider.ScrollLayout>
-                
-                <View style="@style/horizontal_line" />
-            </com.dateSlider.SliderContainer>
-
-            <View style="@style/vertical_line" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="24dp"
-                    android:layout_height="48dp"
-                    android:gravity="center"
-                    android:text="时"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14dp" />
-
-                <View style="@style/horizontal_line" />
-
-                <TextView
-                    android:layout_width="24dp"
-                    android:layout_height="48dp"
-                    android:gravity="center"
-                    android:text="分"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14dp" />
-                
-				<View style="@style/horizontal_line" />
-            </LinearLayout>
         </LinearLayout>
 
         <RadioGroup
@@ -179,17 +122,16 @@
             android:hint="添加任务..."
             android:padding="7dp"
             android:singleLine="true"
+            android:imeOptions="actionSend"
             android:textColor="@color/text_black"
             android:textColorHint="@color/text_gray"
             android:textSize="15dp" >
-
-            <requestFocus />
         </EditText>
 
         <View style="@style/vertical_line" />
 
         <Button
-            android:id="@+id/add_task_btn"
+            android:id="@+id/main_add_task_btn"
             android:layout_width="56dp"
             android:layout_height="match_parent"
             android:background="@drawable/btn_flat_gray"

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/gray_light">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_light"
+        android:layout_marginBottom="16dp"
+        android:gravity="center" >
+
+        <me.jeremyhe.lib.widget.RoundedImageView
+            android:id="@+id/menu_left_head_riv"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/head" />
+    </RelativeLayout>
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/gray_light"  >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/gray_light" >
+
+            <View style="@style/horizontal_line" />
+
+            <EditText
+                android:id="@+id/user_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@android:color/white"
+                android:hint="你的名字~"
+                android:paddingLeft="16dp" />
+
+            <View
+                style="@style/horizontal_line"
+                android:layout_marginBottom="16dp" />
+
+            <View style="@style/horizontal_line" />
+
+            <Button
+                android:id="@+id/user_qr_btn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/btn_selecter"
+                android:drawableLeft="@drawable/icon_qr"
+                android:drawablePadding="4dp"
+                android:drawableRight="@drawable/arrow_down_gray"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="个人专属二维码" />
+            
+            <LinearLayout 
+                android:id="@+id/user_qr_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:background="@android:color/white"
+                android:visibility="gone"
+                >
+                
+                <ImageView 
+                    android:id="@+id/user_qr_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                
+            </LinearLayout>
+            <View style="@style/horizontal_line" 
+                android:layout_marginBottom="16dp"/>
+            
+            <View style="@style/horizontal_line"
+                android:layout_gravity="bottom" />
+            <Button
+                android:id="@+id/user_save_btn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/btn_selecter"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="保存" />
+
+        </LinearLayout>
+    </ScrollView>
+    
+</LinearLayout>

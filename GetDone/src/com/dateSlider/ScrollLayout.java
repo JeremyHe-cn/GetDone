@@ -193,7 +193,6 @@ public class ScrollLayout extends LinearLayout {
         
         //Log.v(TAG, "mCenter: " + mCenterView.getTimeText() + " minInterval " + minuteInterval);
 
-        // TODO: Do I need to use endTime, or can I just use the point time?
         for (int i = centerIndex + 1; i < childCount; i++) {
             TimeView lastView = (TimeView)getChildAt(i - 1);
             TimeView thisView = (TimeView)getChildAt(i);
@@ -400,11 +399,12 @@ public class ScrollLayout extends LinearLayout {
             }
         }
         super.scrollTo(scrollX,y);
+        
+        double center = getWidth()/2.0;
+        int left = (getChildCount()/2)*objWidth-scrollX;
+        double f = (center-left)/objWidth;
+        currentTime = (long)(mCenterView.getStartTime()+(mCenterView.getEndTime()-mCenterView.getStartTime())*f);
         if (listener!=null && notify) {
-            double center = getWidth()/2.0;
-            int left = (getChildCount()/2)*objWidth-scrollX;
-            double f = (center-left)/objWidth;
-            currentTime = (long)(mCenterView.getStartTime()+(mCenterView.getEndTime()-mCenterView.getStartTime())*f);
             //if (notify) Log.d(TAG,String.format("real time " + currentTime));
             //if (notify) Log.d(TAG,String.format(""));
             listener.onScroll(currentTime);
@@ -512,6 +512,10 @@ public class ScrollLayout extends LinearLayout {
         mLastX = x;
 
         return true;
+    }
+    
+    public long getTime(){
+    	return currentTime;
     }
 
     /**

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+        
+        <TextView 
+            android:id="@+id/friend_master_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="1dp"
+            android:text="Jeremy's"
+            android:textColor="@color/blue_getdone"
+            android:textSize="32dp"
+            />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Friend"
+            android:textColor="@color/text_gray"
+            android:layout_toRightOf="@id/friend_master_tv"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="12dp"
+            android:textSize="24dp"
+            android:gravity="center"
+            />
+        
+    </RelativeLayout>
+    
+    <View style="@style/horizontal_line"/>
+    
+    <ListView 
+        android:id="@+id/friend_list_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="4dp"
+        />
+    
+    <View style="@style/horizontal_line"/>
+    
+    <Button 
+        android:id="@+id/friend_add_btn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:background="@drawable/btn_selecter"
+        android:drawableLeft="@drawable/icon_qr"
+        android:drawableRight="@drawable/arrow_right_gray"
+        android:drawablePadding="4dp"
+        android:text="扫一扫添加好友"
+        android:gravity="left|center_vertical"
+        />
+    
+
+</LinearLayout>
