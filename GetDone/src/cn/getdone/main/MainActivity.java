@@ -13,6 +13,7 @@ import cn.getdone.common.ui.BaseFragmentActivity;
 import cn.getdone.fragment.FourGridFragment;
 import cn.getdone.fragment.MainFragment;
 import cn.getdone.fragment.MenuLeftFragment;
+import cn.getdone.settings.UserSettingFragment;
 import me.jeremyhe.lib.androidutils.SystemUtils;
 import android.annotation.SuppressLint;
 import android.os.Bundle;

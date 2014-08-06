@@ -127,6 +127,15 @@
                     android:text="好友列表" />
 
                 <View style="@style/horizontal_line" />
+                
+                <Button
+                    android:id="@+id/menu_left_backup_btn"
+                    style="@style/flat_blue_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="备份数据" />
+
+                <View style="@style/horizontal_line" />
 
                 <Button
                     style="@style/flat_blue_btn"

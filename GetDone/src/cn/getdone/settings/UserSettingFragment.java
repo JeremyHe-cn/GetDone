@@ -1,4 +1,4 @@
-package cn.getdone.main;
+package cn.getdone.settings;
 
 import com.google.zxing.WriterException;
 import com.zxing.encoding.EncodingHandler;

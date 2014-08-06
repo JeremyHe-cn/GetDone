@@ -17,6 +17,7 @@ import cn.getdone.main.ArrangeTaskActivity;
 import cn.getdone.main.ListFriendActivity;
 import cn.getdone.main.MainActivity;
 import cn.getdone.services.TaskService;
+import cn.getdone.settings.BackupDatabaseTask;
 import me.jeremyhe.lib.androidutils.ToastUtils;
 
 public class MenuLeftFragment extends Fragment implements OnClickListener, Observer {
@@ -29,6 +30,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 	private Button mUserSettingsBtn;
 	private Button mArrangeBtn;
 	private Button mFriendBtn;
+	private Button mBackupBtn;
 	private Button mClearFinishedTaskBtn;
 	private Button mSettingsBtn;
 	
@@ -57,6 +59,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		mUserSettingsBtn = (Button)v.findViewById(R.id.menu_left_user_settings_btn);
 		mArrangeBtn = (Button)v.findViewById(R.id.menu_left_arrange_btn);
 		mFriendBtn = (Button)v.findViewById(R.id.menu_left_friend_btn);
+		mBackupBtn = (Button)v.findViewById(R.id.menu_left_backup_btn);
 		mClearFinishedTaskBtn = (Button)v.findViewById(R.id.menu_left_clear_btn);
 		mSettingsBtn = (Button)v.findViewById(R.id.menu_left_settings_btn);
 		
@@ -74,6 +77,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		mUserSettingsBtn.setOnClickListener(this);
 		mArrangeBtn.setOnClickListener(this);
 		mFriendBtn.setOnClickListener(this);
+		mBackupBtn.setOnClickListener(this);
 		mClearFinishedTaskBtn.setOnClickListener(this);
 		mSettingsBtn.setOnClickListener(this);
 	}
@@ -107,6 +111,11 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		case R.id.menu_left_friend_btn:
 			ListFriendActivity.navigateTo(getActivity());
 			showContent();
+			break;
+			
+		case R.id.menu_left_backup_btn:
+			new BackupDatabaseTask(getActivity()).execute(BackupDatabaseTask.COMMAND_BACKUP);
+			ToastUtils.showLongToast(getActivity(), "正在备份数据...");
 			break;
 			
 		case R.id.menu_left_settings_btn:
