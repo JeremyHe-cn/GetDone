@@ -1,6 +1,6 @@
 package com.jeremyfeinstein.slidingmenu.lib;
 
-import me.jeremyhe.getdone.R;
+import cn.getdone.R;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

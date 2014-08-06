@@ -29,12 +29,12 @@
         android:layout_weight="1"
         >
         
-        <me.jeremyhe.getdone.widget.TaskScreenView
+        <cn.getdone.widget.TaskScreenView
 	        android:id="@+id/sharetask_task_screenview"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
 	        android:layout_weight="1" >
-    	</me.jeremyhe.getdone.widget.TaskScreenView>
+    	</cn.getdone.widget.TaskScreenView>
     	
         <TextView 
             android:id="@+id/sharetask_finished_tv"

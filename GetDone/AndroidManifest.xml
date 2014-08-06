@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.jeremyhe.getdone"
+    package="cn.getdone"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -9,7 +9,7 @@
         android:targetSdkVersion="17" />
 
     <permission
-        android:name="me.jeremyhe.getdone.permission.JPUSH_MESSAGE"
+        android:name="cn.getdone.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -23,7 +23,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="me.jeremyhe.getdone.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="cn.getdone.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
@@ -39,7 +39,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Light.NoTitleBar" >
         <activity
-            android:name="me.jeremyhe.getdone.main.MainActivity"
+            android:name="cn.getdone.main.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,25 +47,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="me.jeremyhe.getdone.main.SetRemindActivity" >
+        <activity android:name="cn.getdone.main.SetRemindActivity" >
         </activity>
         <activity
-            android:name="me.jeremyhe.getdone.main.ModifyTaskActivity"
+            android:name="cn.getdone.main.ModifyTaskActivity"
             android:theme="@style/NoTitileDialog" >
         </activity>
         <activity
-            android:name="me.jeremyhe.getdone.main.RemindActivity"
+            android:name="cn.getdone.main.RemindActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
-        <activity android:name="me.jeremyhe.getdone.main.ArrangeTaskActivity" >
+        <activity android:name="cn.getdone.main.ArrangeTaskActivity" >
         </activity>
         <activity
-            android:name="me.jeremyhe.getdone.main.CheckShareTaskActivity"
+            android:name="cn.getdone.main.CheckShareTaskActivity"
             android:theme="@style/NoTitileDialog" >
         </activity>
-        <activity android:name="me.jeremyhe.getdone.main.ArrangeShareTaskActivity" >
+        <activity android:name="cn.getdone.main.ArrangeShareTaskActivity" >
         </activity>
-        <activity android:name="me.jeremyhe.getdone.main.ListFriendActivity" >
+        <activity android:name="cn.getdone.main.ListFriendActivity" >
         </activity>
         
         <!-- 二维码扫描 -->
@@ -76,12 +76,12 @@
             android:name="com.zxing.activity.QRCaptureActivity"></activity>
         
 		<!-- 番茄时间 -->
-		<activity android:name="me.jeremyhe.getdone.main.TomatoActivity"></activity>
+		<activity android:name="cn.getdone.main.TomatoActivity"></activity>
 
-        <service android:name="me.jeremyhe.getdone.main.SetAlarmService" >
+        <service android:name="cn.getdone.main.SetAlarmService" >
         </service>
 
-        <receiver android:name="me.jeremyhe.getdone.receiver.RebootReceiver" >
+        <receiver android:name="cn.getdone.receiver.RebootReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -91,8 +91,8 @@
         <receiver android:name=".appwidget.TodayWidget" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="me.jeremyhe.getdone.UPDATE_TASK" />
-                <action android:name="me.jeremyhe.getdone.CLICK_ITEM" />
+                <action android:name="cn.getdone.UPDATE_TASK" />
+                <action android:name="cn.getdone.CLICK_ITEM" />
             </intent-filter>
 
             <meta-data
@@ -101,7 +101,7 @@
         </receiver>
 
         <service
-            android:name="me.jeremyhe.getdone.appwidget.TodayWidgetService"
+            android:name="cn.getdone.appwidget.TodayWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" >
         </service>
 
@@ -124,7 +124,7 @@
             android:enabled="true" >
             <intent-filter android:priority="1000" >
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
-                <category android:name="me.jeremyhe.getdone" />
+                <category android:name="cn.getdone" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -144,7 +144,7 @@
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="me.jeremyhe.getdone" />
+                <category android:name="cn.getdone" />
             </intent-filter>
         </activity>
         <!-- Required SDK核心功能 -->
@@ -157,14 +157,14 @@
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
         <!-- 接收消息的Receiver -->
         <receiver
-            android:name="me.jeremyhe.getdone.receiver.JPushReceiver"
+            android:name="cn.getdone.receiver.JPushReceiver"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" />
                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
-                <category android:name="me.jeremyhe.getdone" />
+                <category android:name="cn.getdone" />
             </intent-filter>
         </receiver>
 

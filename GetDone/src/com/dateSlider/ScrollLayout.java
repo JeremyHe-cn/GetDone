@@ -20,7 +20,7 @@ package com.dateSlider;
 
 import java.lang.reflect.Constructor;
 
-import me.jeremyhe.getdone.R;
+import cn.getdone.R;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;

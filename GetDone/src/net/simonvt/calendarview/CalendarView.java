@@ -54,7 +54,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
-import me.jeremyhe.getdone.R;
+import cn.getdone.R;
 
 /**
  * This class is a calendar widget for displaying and selecting dates. The range

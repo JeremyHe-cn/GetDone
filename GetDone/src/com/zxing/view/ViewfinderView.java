@@ -19,7 +19,7 @@ package com.zxing.view;
 import java.util.Collection;
 import java.util.HashSet;
 
-import me.jeremyhe.getdone.R;
+import cn.getdone.R;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;

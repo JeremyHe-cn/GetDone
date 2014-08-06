@@ -18,7 +18,7 @@ package com.zxing.decoding;
 
 import java.util.Vector;
 
-import me.jeremyhe.getdone.R;
+import cn.getdone.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;

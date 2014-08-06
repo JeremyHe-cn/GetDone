@@ -2,7 +2,7 @@ package com.jeremyfeinstein.slidingmenu.lib;
 
 import java.lang.reflect.Method;
 
-import me.jeremyhe.getdone.R;
+import cn.getdone.R;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;

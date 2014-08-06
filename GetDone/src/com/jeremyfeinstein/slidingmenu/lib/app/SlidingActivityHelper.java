@@ -1,6 +1,6 @@
 package com.jeremyfeinstein.slidingmenu.lib.app;
 
-import me.jeremyhe.getdone.R;
+import cn.getdone.R;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 

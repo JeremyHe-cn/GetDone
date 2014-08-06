@@ -17,7 +17,7 @@
 package com.zxing.decoding;
 import java.util.Hashtable;
 
-import me.jeremyhe.getdone.R;
+import cn.getdone.R;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
