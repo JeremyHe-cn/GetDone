@@ -69,7 +69,7 @@ class TodayRemoteViewsFactory implements RemoteViewsFactory {
 		if (taskStatus == Const.TASK.STATUS_FINISHED) {
 			fillInIntent.putExtra(TodayWidgetService.EXTRA_TASK_STATUS, Const.TASK.STATUS_ARRANGED);
 			
-			rv.setTextColor(R.id.task_title_tv, mContext.getResources().getColor(R.color.text_gray));
+			rv.setTextColor(R.id.task_title_tv, mContext.getResources().getColor(R.color.text_sub));
 			rv.setViewVisibility(R.id.task_finished_line, View.VISIBLE);
 			
 			// 重要性重置为灰色
@@ -77,7 +77,7 @@ class TodayRemoteViewsFactory implements RemoteViewsFactory {
 		} else {
 			fillInIntent.putExtra(TodayWidgetService.EXTRA_TASK_STATUS, Const.TASK.STATUS_FINISHED);
 			
-			rv.setTextColor(R.id.task_title_tv, mContext.getResources().getColor(R.color.text_black));
+			rv.setTextColor(R.id.task_title_tv, mContext.getResources().getColor(R.color.text_main));
 			rv.setViewVisibility(R.id.task_finished_line, View.GONE);
 		}
 		

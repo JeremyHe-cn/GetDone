@@ -1,4 +1,4 @@
-package cn.getdone.main;
+package cn.getdone.ui.main;
 
 
 import cn.jpush.android.api.JPushInterface;
@@ -13,7 +13,6 @@ import cn.getdone.common.ui.BaseFragmentActivity;
 import cn.getdone.fragment.FourGridFragment;
 import cn.getdone.fragment.MainFragment;
 import cn.getdone.fragment.MenuLeftFragment;
-import cn.getdone.settings.UserSettingFragment;
 import me.jeremyhe.lib.androidutils.SystemUtils;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -26,7 +25,6 @@ public class MainActivity extends BaseFragmentActivity implements Observer {
 	
 	public static final int KEY_FRAGMENT_MAIN = 0;
 	public static final int KEY_FRAGMENT_FOUR_GRID = 1;
-	public static final int KEY_FRAGMENT_USER_SETTING = 2;
 	
 	private SlidingMenu mSlidingMenu;
 	
@@ -73,8 +71,6 @@ public class MainActivity extends BaseFragmentActivity implements Observer {
 			case KEY_FRAGMENT_FOUR_GRID:
 				fragment = new FourGridFragment();
 				break;
-			case KEY_FRAGMENT_USER_SETTING:
-				fragment = new UserSettingFragment();
 			}
 			
 			fragmentSparseArray.append(key, fragment);

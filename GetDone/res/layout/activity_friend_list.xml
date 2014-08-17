@@ -4,40 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <RelativeLayout 
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        >
-        
-        <TextView 
-            android:id="@+id/friend_master_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="1dp"
-            android:text="Jeremy's"
-            android:textColor="@color/blue_getdone"
-            android:textSize="32dp"
-            />
-        
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Friend"
-            android:textColor="@color/text_gray"
-            android:layout_toRightOf="@id/friend_master_tv"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:textSize="24dp"
-            android:gravity="center"
-            />
-        
-    </RelativeLayout>
-    
-    <View style="@style/horizontal_line"/>
+    <include layout="@layout/nav_bar"/>
     
     <ListView 
         android:id="@+id/friend_list_lv"

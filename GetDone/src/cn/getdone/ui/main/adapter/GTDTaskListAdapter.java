@@ -1,4 +1,4 @@
-package cn.getdone.main.adapter;
+package cn.getdone.ui.main.adapter;
 
 import cn.getdone.R;
 
@@ -8,8 +8,8 @@ import java.util.List;
 import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
 import cn.getdone.dao.Task;
-import cn.getdone.main.ModifyTaskActivity;
 import cn.getdone.services.TaskService;
+import cn.getdone.ui.main.ModifyTaskActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

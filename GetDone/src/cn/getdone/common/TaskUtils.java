@@ -27,7 +27,7 @@ public class TaskUtils {
 			return R.color.priority_not_important_urgent;
 		}
 		
-		return R.color.blue_heizi;
+		return android.R.color.transparent;
 	}
 	
 	public static int priorityToTransColorResId(int priority){
@@ -47,7 +47,7 @@ public class TaskUtils {
 			return R.color.priority_not_important_urgent_trans;
 		}
 		
-		return R.color.blue_heizi;
+		return android.R.color.transparent;
 	}
 	
 	public static int priorityToDrawableResId(int priority){

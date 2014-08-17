@@ -1,4 +1,4 @@
-package cn.getdone.main.adapter;
+package cn.getdone.ui.main.adapter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -87,7 +87,7 @@ public class TaskScreenView extends LinearLayout {
 		
 		TextView titleTv = new TextView(mContext);
 		titleTv.setText(task.getTitle());
-		titleTv.setTextColor(getResources().getColor(R.color.text_black));
+		titleTv.setTextColor(getResources().getColor(R.color.text_main));
 		titleTv.setGravity(Gravity.CENTER_VERTICAL);
 		titleTv.setTextSize(dpToPx(8));
 		

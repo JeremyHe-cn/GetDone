@@ -1,4 +1,4 @@
-package cn.getdone.main;
+package cn.getdone.ui.main;
 
 import java.util.List;
 
@@ -15,26 +15,31 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import cn.getdone.R;
 import cn.getdone.common.JPushUtils;
-import cn.getdone.common.SettingUtils;
 import cn.getdone.common.TaskUtils;
-import cn.getdone.common.ui.BaseActivity;
+import cn.getdone.common.ui.NavBaseActivty;
 import cn.getdone.dao.Friend;
 import cn.getdone.dao.Task;
-import cn.getdone.main.adapter.FriendListAdapter;
 import cn.getdone.services.FriendService;
 import cn.getdone.services.TaskService;
+import cn.getdone.ui.main.adapter.FriendListAdapter;
 import me.jeremyhe.lib.androidutils.NetworkUtils;
 import me.jeremyhe.lib.androidutils.ToastUtils;
 import me.jeremyhe.lib.widget.SimpleCircleProgressDialog;
 
-public class ListFriendActivity extends BaseActivity implements OnItemClickListener, OnClickListener {
+public class ListFriendActivity extends NavBaseActivty implements OnItemClickListener, OnClickListener {
 	
 	public static final String EXTRA_TASK_ID = "taskId";
 	
 	public static final int REQUEST_CODE_QR = 1;
+	
+	private ListView mFriendLv;
+	private FriendListAdapter mFriendListAdapter;
+	
+	private Task mTask = null;
+	
+	private Button mAddFriendBtn;
 
 	public static void navigateTo(Context c){
 		Intent intent = new Intent(c,ListFriendActivity.class);
@@ -47,18 +52,8 @@ public class ListFriendActivity extends BaseActivity implements OnItemClickListe
 		c.startActivity(intent);
 	}
 	
-	private TextView mMasterTv;
-	
-	private ListView mFriendLv;
-	private FriendListAdapter mFriendListAdapter;
-	
-	private Task mTask = null;
-	
-	private Button mAddFriendBtn;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_friend_list);
 		
 		final long taskId = getIntent().getLongExtra(EXTRA_TASK_ID, -1);
@@ -66,28 +61,30 @@ public class ListFriendActivity extends BaseActivity implements OnItemClickListe
 			mTask = TaskService.getInstance().queryTaskById(taskId);
 		}
 
-		findWidget();
-		initWidget();
-		setListener();
-		
+		super.onCreate(savedInstanceState);
 	}
 	
-	private void findWidget(){
-		mMasterTv = (TextView)findViewById(R.id.friend_master_tv);
+	@Override
+	protected void findWidget(){
+		super.findWidget();
 		mFriendLv = (ListView)findViewById(R.id.friend_list_lv);
-		
 		mAddFriendBtn = (Button)findViewById(R.id.friend_add_btn);
 	}
 	
-	private void initWidget(){
-		mMasterTv.setText(SettingUtils.getUserName()+"'s");
-		
+	@Override
+	protected void initWidget(){
+		mNavTitleTv.setText("好友列表");
+		mNavRightBtn.setVisibility(View.INVISIBLE);
+		// TODO：放置到task中执行
 		List<Friend> friendList = FriendService.getInstance().listAllFriends();
 		mFriendListAdapter = new FriendListAdapter(mContext, friendList);
 		mFriendLv.setAdapter(mFriendListAdapter);
 	}
 	
-	private void setListener(){
+	@Override
+	protected void setListener(){
+		mNavLeftBtn.setOnClickListener(this);
+		
 		mFriendLv.setOnItemClickListener(this);
 		mAddFriendBtn.setOnClickListener(this);
 	}
@@ -154,6 +151,9 @@ public class ListFriendActivity extends BaseActivity implements OnItemClickListe
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.nav_left_btn:
+			finish();
+			break;
 		case R.id.friend_add_btn:
 			QRCaptureActivity.navigateToForResult(this, REQUEST_CODE_QR);
 			break;

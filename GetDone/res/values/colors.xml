@@ -1,35 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 天依蓝 -->
-    <color name="blue_tianyi">#ff66ccff</color>
+    <!-- 基础颜色 -->
+	<color name="blue_light">#56acff</color>
+	<color name="blue_main">#1e90ff</color>
+	<color name="blue_dark">#1e58ff</color>
     
-    <!-- 黑子蓝 -->
-    <color name="blue_heizi">#FF99ccff</color>
-    <!-- 二黄 -->
-    <color name="yellow_er">#FFFFCC00</color>
-    <!-- 绿 -->
-    <color name="green">#FF99CC33</color>
-    <!-- 赤司红 -->
-    <color name="red_chisi">#FFCC0000</color>
-    
-    <!-- error红 -->
-    <color name="red_error">#FF0000</color>
-    <!-- debug蓝 -->
-    <color name="blue_debug">#00007F</color>
-    <!-- warning黄 -->
-    <color name="yellow_warning">#FF7F00</color>
-    <!-- info绿 -->
-    <color name="green_info">#007F00</color>
-    
-	<!-- getdone蓝 -->
-	<color name="blue_getdone">#FF1E90FF</color>
-	
 	<color name="gray_light">#ffbfbfbf</color>
 	<color name="gray_79">#ff797979</color>
 	
 	<color name="black_light">#FF333333</color>
 	
 	<color name="white_transparent">#7fffffff</color>
+	
+	<!-- 业务颜色 -->
+	<color name="getdone_main">@color/blue_main</color>
+	<color name="getdone_light">@color/blue_light</color>
+	<color name="getdone_dark">@color/blue_dark</color>
+	
+	 <color name="text_main">@color/black_light</color>
+	 <color name="text_sub">@color/gray_79</color>
+	 <color name="text_hint">@color/gray_light</color>
 	
 	<!-- 重要且紧急 -->
 	<color name="priority_important_urgent" >#FFDA4631</color>
@@ -47,10 +37,6 @@
 	 <color name="priority_not_important_urgent">#FFFFBA02</color>
 	 <color name="priority_not_important_urgent_trans">#E5FFBA02</color>
 	 <color name="priority_not_important_urgent_light">#FFFFD667</color>
-	 
-	 <color name="text_gray">@color/gray_79</color>
-	 <color name="text_black">@color/black_light</color>
-	 <color name="text_hint">@color/gray_light</color>
 	 
 	 <color name="tomato_rest">#FFCC66FF</color>
 	

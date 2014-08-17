@@ -5,7 +5,7 @@ import java.util.List;
 import cn.getdone.common.Const;
 import cn.getdone.common.notify.NotificationCenter;
 import cn.getdone.dao.Task;
-import cn.getdone.main.adapter.TodoTaskListAdapter;
+import cn.getdone.ui.main.adapter.TodoTaskListAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 

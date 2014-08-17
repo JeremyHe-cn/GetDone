@@ -1,4 +1,4 @@
-package cn.getdone.settings;
+package cn.getdone.ui.settings;
 
 import java.io.File;
 import java.io.FileInputStream;

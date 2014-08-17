@@ -1,4 +1,4 @@
-package cn.getdone.main;
+package cn.getdone.ui.main;
 
 import java.io.IOException;
 

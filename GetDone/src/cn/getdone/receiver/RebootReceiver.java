@@ -1,6 +1,6 @@
 package cn.getdone.receiver;
 
-import cn.getdone.main.SetAlarmService;
+import cn.getdone.ui.main.SetAlarmService;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;

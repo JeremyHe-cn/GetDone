@@ -1,4 +1,4 @@
-package cn.getdone.main;
+package cn.getdone.ui.main;
 
 import java.util.Calendar;
 import java.util.Date;

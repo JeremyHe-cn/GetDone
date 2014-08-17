@@ -4,8 +4,8 @@ import java.util.List;
 
 import cn.getdone.R;
 import cn.getdone.dao.Task;
-import cn.getdone.main.adapter.GTDTaskListAdapter;
 import cn.getdone.services.TaskService;
+import cn.getdone.ui.main.adapter.GTDTaskListAdapter;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;

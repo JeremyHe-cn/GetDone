@@ -13,11 +13,12 @@ import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
 import cn.getdone.common.notify.NotificationCenter;
 import cn.getdone.common.notify.Observer;
-import cn.getdone.main.ArrangeTaskActivity;
-import cn.getdone.main.ListFriendActivity;
-import cn.getdone.main.MainActivity;
 import cn.getdone.services.TaskService;
-import cn.getdone.settings.BackupDatabaseTask;
+import cn.getdone.ui.main.ArrangeTaskActivity;
+import cn.getdone.ui.main.ListFriendActivity;
+import cn.getdone.ui.main.MainActivity;
+import cn.getdone.ui.settings.BackupDatabaseTask;
+import cn.getdone.ui.settings.UserSettingActivity;
 import me.jeremyhe.lib.androidutils.ToastUtils;
 
 public class MenuLeftFragment extends Fragment implements OnClickListener, Observer {
@@ -94,7 +95,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 			showContent();
 			break;
 		case R.id.menu_left_user_settings_btn:
-			switchContent(MainActivity.KEY_FRAGMENT_USER_SETTING);
+			UserSettingActivity.navigateTo(getActivity());
 			showContent();
 			break;
 		case R.id.menu_left_clear_btn:

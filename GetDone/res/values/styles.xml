@@ -118,7 +118,7 @@
     <style name="Widget.Holo.Light.GetDone.CalendarView" parent="Widget.Holo.Light.CalendarView">
         <item name="cv_showWeekNumber">false</item>
         <item name="cv_selectedWeekBackgroundColor">@android:color/transparent</item>
-        <item name="cv_selectedDateBackgroundColor">@color/blue_getdone</item>
+        <item name="cv_selectedDateBackgroundColor">@color/getdone_main</item>
 		<item name="cv_selectedDateColor">@android:color/white</item>
 		<item name="cv_selectedDateVerticalBar">@android:color/transparent</item>
 		<item name="cv_shownWeekCount">5</item>

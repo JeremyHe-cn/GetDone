@@ -3,9 +3,8 @@ package cn.getdone;
 import java.util.Calendar;
 
 import cn.jpush.android.api.JPushInterface;
-
-import cn.getdone.main.ArrangeTaskActivity;
-import cn.getdone.main.SetAlarmService;
+import cn.getdone.ui.main.ArrangeTaskActivity;
+import cn.getdone.ui.main.SetAlarmService;
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.PendingIntent;

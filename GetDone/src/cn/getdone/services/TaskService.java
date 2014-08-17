@@ -16,7 +16,7 @@ import cn.getdone.dao.DaoSession;
 import cn.getdone.dao.Task;
 import cn.getdone.dao.TaskDao;
 import cn.getdone.dao.TaskDao.Properties;
-import cn.getdone.main.SetAlarmService;
+import cn.getdone.ui.main.SetAlarmService;
 import me.jeremyhe.lib.common.DateUtils;
 
 public class TaskService {

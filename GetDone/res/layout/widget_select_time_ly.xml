@@ -46,7 +46,7 @@
             android:layout_height="48dp"
             android:gravity="center"
             android:text="时"
-            android:textColor="@color/text_gray"
+            android:textColor="@color/text_sub"
             android:textSize="14dp" />
 
         <View style="@style/horizontal_line" />
@@ -56,7 +56,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="分"
-            android:textColor="@color/text_gray"
+            android:textColor="@color/text_sub"
             android:textSize="14dp" />
     </LinearLayout>
 </LinearLayout>

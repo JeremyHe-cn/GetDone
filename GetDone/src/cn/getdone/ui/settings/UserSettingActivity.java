@@ -1,23 +1,24 @@
-package cn.getdone.settings;
+package cn.getdone.ui.settings;
+
+import me.jeremyhe.lib.androidutils.SystemUtils;
+import me.jeremyhe.lib.androidutils.ToastUtils;
+import me.jeremyhe.lib.common.StringUtils;
 
 import com.google.zxing.WriterException;
 import com.zxing.encoding.EncodingHandler;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,14 +27,12 @@ import cn.getdone.R;
 import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
 import cn.getdone.common.notify.NotificationCenter;
+import cn.getdone.common.ui.NavBaseActivty;
 import cn.getdone.dao.Friend;
 import cn.getdone.services.FriendService;
-import me.jeremyhe.lib.androidutils.SystemUtils;
-import me.jeremyhe.lib.androidutils.ToastUtils;
-import me.jeremyhe.lib.common.StringUtils;
 
-public class UserSettingFragment extends Fragment implements OnClickListener {
-
+public class UserSettingActivity extends NavBaseActivty implements OnClickListener {
+	
 	private EditText mUserNameEt;
 	
 	/*
@@ -51,22 +50,19 @@ public class UserSettingFragment extends Fragment implements OnClickListener {
 	
 	private Button mSaveBtn;
 	
-	private Context mContext;
+	public static Intent buildIntent(Context ctx) {
+		Intent intent = new Intent(ctx, UserSettingActivity.class);
+		return intent;
+	}
 	
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.activity_user_settings, null);
+	public static void navigateTo(Context ctx) {
+		Intent intent = buildIntent(ctx);
+		ctx.startActivity(intent);
 	}
 	
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		mContext = getActivity();
-		
-		findWidget();
-		initWidget();
-		setListener();
+	protected void onCreate(Bundle savedInstanceState) {
+		setContentView(R.layout.activity_user_settings);
 		
 		mShowAnim = new ScaleAnimation(1f, 1f, 0, 1f);
 		mShowAnim.setDuration(500);
@@ -78,32 +74,44 @@ public class UserSettingFragment extends Fragment implements OnClickListener {
 		mIconQr = mContext.getResources().getDrawable(R.drawable.icon_qr);
 		mArrowUp = mContext.getResources().getDrawable(R.drawable.arrow_up_gray);
 		mArrowDown = mContext.getResources().getDrawable(R.drawable.arrow_down_gray);
+		
+		super.onCreate(savedInstanceState);
+	}
+
+	@Override
+	protected void findWidget() {
+		super.findWidget();
+		
+		mUserNameEt = (EditText) findViewById(R.id.user_name_et);
+		
+		mQrBtn = (Button) findViewById(R.id.user_qr_btn);
+		mQrLy = (LinearLayout) findViewById(R.id.user_qr_ly);
+		mQrIv = (ImageView) findViewById(R.id.user_qr_iv);
+		
+		mSaveBtn = (Button) findViewById(R.id.user_save_btn);
 	}
 	
-	private void findWidget(){
-		final View v = getView();
-		mUserNameEt = (EditText)v.findViewById(R.id.user_name_et);
-		
-		mQrBtn = (Button)v.findViewById(R.id.user_qr_btn);
-		mQrLy = (LinearLayout)v.findViewById(R.id.user_qr_ly);
-		mQrIv = (ImageView)v.findViewById(R.id.user_qr_iv);
-		
-		mSaveBtn = (Button)v.findViewById(R.id.user_save_btn);
-	}
-	
-	private void initWidget(){
+	@Override
+	protected void initWidget() {
+		mNavTitleTv.setText("个人设置");
+		mNavRightBtn.setVisibility(View.INVISIBLE);
 		mUserNameEt.setText(SettingUtils.getUserName());
 	}
-	
-	private void setListener(){
+
+	@Override
+	protected void setListener() {
+		mNavLeftBtn.setOnClickListener(this);
+		
 		mQrBtn.setOnClickListener(this);
 		mSaveBtn.setOnClickListener(this);
 	}
-
-	@SuppressLint("NewApi")
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.nav_left_btn:
+			finish();
+			break;
 		case R.id.user_qr_btn:
 			// 显示和隐藏可以加入Scale动画
 			if (mIsShowingQr) {
@@ -146,9 +154,8 @@ public class UserSettingFragment extends Fragment implements OnClickListener {
 		default:
 			break;
 		}
-		
 	}
-	
+
 	private Bitmap createQRBitmap(){
 		final String name = mUserNameEt.getEditableText().toString();
 		if (StringUtils.isEmpty(name)) {
@@ -190,4 +197,5 @@ public class UserSettingFragment extends Fragment implements OnClickListener {
 			NotificationCenter.notifyObservers(Const.EVENT.USER_SETTINGS_NAME_CHANGE);
 		}
 	}
+	
 }

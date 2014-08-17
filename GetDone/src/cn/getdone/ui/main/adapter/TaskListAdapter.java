@@ -1,4 +1,4 @@
-﻿package cn.getdone.main.adapter;
+﻿package cn.getdone.ui.main.adapter;
 
 import cn.getdone.R;
 
@@ -9,8 +9,8 @@ import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
 import cn.getdone.common.TaskUtils;
 import cn.getdone.dao.Task;
-import cn.getdone.main.ModifyTaskActivity;
 import cn.getdone.services.TaskService;
+import cn.getdone.ui.main.ModifyTaskActivity;
 import me.jeremyhe.lib.common.DateUtils;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -72,14 +72,14 @@ public class TaskListAdapter extends BaseAdapter {
 		
 		// 完成状态 
 		if (taskStatus == Const.TASK.STATUS_FINISHED) {
-			holder.taskTitleTv.setTextColor(mContext.getResources().getColor(R.color.text_gray));
+			holder.taskTitleTv.setTextColor(mContext.getResources().getColor(R.color.text_sub));
 			holder.taskFinishedLine.setVisibility(View.VISIBLE);
 			holder.taskFinishedCb.setChecked(true);
 			
 			// 重要性重置为灰色
 			holder.taskPriorityView.setBackgroundResource(R.color.gray_light);
 		} else {
-			holder.taskTitleTv.setTextColor(mContext.getResources().getColor(R.color.text_black));
+			holder.taskTitleTv.setTextColor(mContext.getResources().getColor(R.color.text_main));
 			holder.taskFinishedLine.setVisibility(View.GONE);
 			holder.taskFinishedCb.setChecked(false);
 		}

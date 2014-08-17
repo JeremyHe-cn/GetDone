@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="Jeremy He"
-        android:textColor="@color/text_gray"
+        android:textColor="@color/text_sub"
         android:textSize="24sp"
         android:gravity="center" />
     
