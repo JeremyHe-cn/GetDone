@@ -96,7 +96,6 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 			break;
 		case R.id.menu_left_user_settings_btn:
 			UserSettingActivity.navigateTo(getActivity());
-			showContent();
 			break;
 		case R.id.menu_left_clear_btn:
 			TaskService.getInstance().deleteAllFinishedTask();
@@ -111,7 +110,6 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 			
 		case R.id.menu_left_friend_btn:
 			ListFriendActivity.navigateTo(getActivity());
-			showContent();
 			break;
 			
 		case R.id.menu_left_backup_btn:

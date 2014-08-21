@@ -22,7 +22,6 @@ public class TodayWidgetService extends RemoteViewsService {
 	public static final String ACTION_CLICK_ITEM = "cn.getdone.CLICK_ITEM";
 	public static final String EXTRA_TASK_ID = "taskId"; 
 	public static final String EXTRA_TASK_STATUS = "taskStatus"; 
-	
 
 	@Override
 	public RemoteViewsFactory onGetViewFactory(Intent intent) {
@@ -98,14 +97,24 @@ class TodayRemoteViewsFactory implements RemoteViewsFactory {
 
 	@Override
 	public void onCreate() {
+		initTaskList();
+	}
+	
+	private void initTaskList(){
 		TaskService taskService = TaskService.getInstance();
 		mTaskList = taskService.listTodayTasks();
+		if (mTaskList.isEmpty()) {
+			mTaskList = taskService.listTodoTasks();
+		}
+		
+		if (mTaskList.isEmpty()) {
+			mTaskList = taskService.listTmrTasks();
+		}
 	}
 
 	@Override
 	public void onDataSetChanged() {
-		TaskService taskService = TaskService.getInstance();
-		mTaskList = taskService.listTodayTasks();
+		initTaskList();
 	}
 
 	@Override

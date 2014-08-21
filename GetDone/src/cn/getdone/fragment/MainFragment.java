@@ -41,6 +41,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 public class MainFragment extends Fragment implements OnClickListener {
 	

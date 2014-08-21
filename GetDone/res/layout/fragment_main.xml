@@ -5,19 +5,20 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical" >
-
+    
     <com.viewpagerindicator.TitlePageIndicator
         android:id="@+id/titleIndicator"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/height_nav_bar"
         android:background="@color/getdone_main"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
+        app:selectedColor="@android:color/white"
+        app:selectedBold="true"
+        android:textColor="@color/white_sub"
+        android:textSize="@dimen/font_title"
         app:footerColor="@android:color/white"
         app:footerIndicatorHeight="7dp"
         app:footerIndicatorStyle="triangle"
         app:footerLineHeight="0dp"
-        app:topPadding="10dp" 
         app:clipPadding="12dp"
         app:titlePadding="12dp"
         />
