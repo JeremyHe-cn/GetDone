@@ -59,7 +59,7 @@ public class ModifyTaskActivity extends BaseActivity implements OnClickListener 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.modify_task_activity);
+		setContentView(R.layout.activity_modify_task);
 		
 		Intent intent = getIntent();
 		mTaskId = intent.getLongExtra(EXTRA_TASK_ID, 0);

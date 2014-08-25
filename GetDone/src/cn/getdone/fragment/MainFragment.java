@@ -30,6 +30,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -118,6 +119,7 @@ public class MainFragment extends Fragment implements OnClickListener {
 		mViewPager.setAdapter(mPageAdapter);
 		mCurrentPageIndex = 1; 
 		mViewPager.setCurrentItem(mCurrentPageIndex);
+		mViewPager.setOffscreenPageLimit(3);
 		
 		mTitleIndicator.setViewPager(mViewPager);
 		
@@ -195,10 +197,13 @@ public class MainFragment extends Fragment implements OnClickListener {
 
 		@Override
 		public void onPageScrolled(int arg0, float arg1, int arg2) {
+			Log.d("", " "+arg0+" "+arg1+" "+arg2);
 		}
 
 		@Override
 		public void onPageSelected(int arg0) {
+//			mTaskListFragments[arg0].scheduleLayoutAnimation(mCurrentPageIndex, arg0);
+			
 			mCurrentPageIndex = arg0;
 			if (mCurrentPageIndex == PAGE_INDEX_TODAY) {
 				mTimeContainerLy.setVisibility(View.VISIBLE);
