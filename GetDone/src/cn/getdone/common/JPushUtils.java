@@ -11,8 +11,8 @@ public class JPushUtils {
 	
 	public static boolean pushMessage(String userId,String msg){
 		boolean result = false;
-		final String masterSecret = "d0b2ca4a66a8cb47a068bddc";
-		final String appKey = "fb1af1462bd717978e185729";
+		final String masterSecret = "d9073a45570bce1b7a0d6308";
+		final String appKey = "df9192d420e4ad66d5f8950c";
 		JPushClient jpushClient = new JPushClient(masterSecret, appKey, 0, DeviceEnum.Android, false);
 		CustomMessageParams params = new CustomMessageParams();
 		params.setReceiverType(ReceiverTypeEnum.REGISTRATION_ID);
