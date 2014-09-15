@@ -132,7 +132,7 @@ public class TaskService {
 	}
 	
 	/**
-	 * 返回今天之后的任务列表
+	 * 返回今天之后的已经安排的任务列表
 	 * @return
 	 */
 	public List<Task> listArrangedTasks(){

@@ -17,6 +17,8 @@
 	<color name="black_sub">#8a000000</color>
 	<!-- 提示文字 26% -->
 	<color name="black_hint">#42000000</color>
+	<!-- 阴影 24% -->
+	<color name="black_shadow">#3D000000</color>
 	
 	<!-- 标准文字 87% -->
 	<color name="white_main">#deffffff</color>
