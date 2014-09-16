@@ -3,8 +3,9 @@ package cn.getdone;
 import java.util.Calendar;
 
 import cn.jpush.android.api.JPushInterface;
+import cn.getdone.common.SettingUtils;
 import cn.getdone.ui.main.ArrangeTaskActivity;
-import cn.getdone.ui.main.SetAlarmService;
+import cn.getdone.ui.main.SetTaskAlarmService;
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.PendingIntent;
@@ -26,7 +27,7 @@ public class GetDoneApplication extends Application {
 		
 		// TODO: 这里应该开一个service来完成以下事情 
 		// 设置定时任务
-		SetAlarmService.startThis(applicationContext);
+		SetTaskAlarmService.startThis(applicationContext);
 		// 设置GetDone时刻
 		SetAlarmForGetDoneTime();
 	}
@@ -39,9 +40,9 @@ public class GetDoneApplication extends Application {
 		getDoneCal.set(Calendar.MINUTE, 0);
 		getDoneCal.set(Calendar.SECOND, 0);
 		
-		// 如果现在时间已经过了GetDone时刻，则设置明天的
+		// 如果今天已经安排过了，或者现在时间已经过了GetDone时刻，则设置明天的
 		Calendar nowCal = Calendar.getInstance();
-		if (nowCal.after(getDoneCal)) {
+		if (SettingUtils.isTodayHasArranged() || nowCal.after(getDoneCal)) {
 			getDoneCal.add(Calendar.DATE, 1);
 		}
 		

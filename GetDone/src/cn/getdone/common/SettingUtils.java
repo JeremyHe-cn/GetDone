@@ -1,5 +1,8 @@
 package cn.getdone.common;
 
+import java.util.Date;
+
+import me.jeremyhe.lib.common.DateUtils;
 import cn.getdone.GetDoneApplication;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,26 +15,50 @@ public class SettingUtils {
 	/*
 	 * 百度推送相关
 	 */
-	private static String JPUSH_FLAG = "JPushFlag";
-	public static boolean JPUSH_BINDED = true;
-	public static boolean JPUSH_UNBINDED = false;
+	private static final String JPUSH_FLAG = "JPushFlag";
+	public static final boolean JPUSH_BINDED = true;
+	public static final boolean JPUSH_UNBINDED = false;
 	
-	private static String JPUSH_USER_ID = "JPushUserId";
+	private static final String JPUSH_USER_ID = "JPushUserId";
 	
 	/*
 	 * 累计完成统计
 	 */
-	private static String SUM_OF_FINISHED_TASK = "sumOfFinishedTask";
+	private static final String SUM_OF_FINISHED_TASK = "sumOfFinishedTask";
 	
 	/*
 	 * 个人的一些设置
 	 */
-	private static String USER_NAME = "userName";
+	private static final String USER_NAME = "userName";
+	
+	/*
+	 * 系统的一些设置
+	 */
+	private static final String LAST_ARRANGE_TIME = "lastArrangeTime";
 	
 	
 	private static SharedPreferences getSettings(){
 		Context c = GetDoneApplication.getContext();
 		return c.getSharedPreferences(SETTING_NAME, Context.MODE_PRIVATE);
+	}
+	
+	public static boolean isTodayHasArranged() {
+		long lastArrangeTime = getLastArrangeTime();
+		return DateUtils.isToday(new Date(lastArrangeTime));
+	}
+	
+	public static void setTodayHasArranged() {
+		setLastArrangeTime(System.currentTimeMillis());
+	}
+	
+	public static void setLastArrangeTime(long time) {
+		getSettings().edit()
+		.putLong(LAST_ARRANGE_TIME, time)
+		.commit();
+	}
+	
+	public static long getLastArrangeTime() {
+		return getSettings().getLong(LAST_ARRANGE_TIME, 0);
 	}
 	
 	public static void setUserName(final String userName){

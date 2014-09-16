@@ -82,7 +82,7 @@
 		<activity android:name="cn.getdone.ui.settings.UserSettingActivity"
 		    android:windowSoftInputMode="stateHidden"></activity>
 
-        <service android:name="cn.getdone.ui.main.SetAlarmService" >
+        <service android:name="cn.getdone.ui.main.SetTaskAlarmService" >
         </service>
 
         <receiver android:name="cn.getdone.receiver.RebootReceiver" >

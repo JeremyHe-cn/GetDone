@@ -13,14 +13,14 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
-public class SetAlarmService extends IntentService {
+public class SetTaskAlarmService extends IntentService {
 	
-	public SetAlarmService() {
-		super("SetAlarmService");
+	public SetTaskAlarmService() {
+		super("SetTaskAlarmService");
 	}
 
 	public static void startThis(Context c){
-		Intent intent = new Intent(c,SetAlarmService.class);
+		Intent intent = new Intent(c,SetTaskAlarmService.class);
 		c.startService(intent);
 	}
 

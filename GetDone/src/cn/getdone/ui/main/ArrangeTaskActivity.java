@@ -26,6 +26,7 @@ import cn.getdone.common.ui.BaseActivity;
 import cn.getdone.dao.Task;
 import cn.getdone.services.TaskService;
 import cn.getdone.widget.TaskScreenView;
+import me.jeremyhe.lib.androidutils.SystemUtils;
 import me.jeremyhe.lib.common.DateUtils;
 
 public class ArrangeTaskActivity extends BaseActivity implements OnClickListener{
@@ -83,7 +84,8 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 			@Override
 			public void onCompletion(MediaPlayer mp) {
 				if (taskList.isEmpty()) {
-					playEndAnimAndMedia();
+					// 启动音乐播放结束后检查到没有任务需要安排，直接结束
+					finishedArrange();
 				} else {
 					mPlayer.release();
 					mPlayer = MediaPlayer.create(mContext, R.raw.ok);
@@ -152,7 +154,7 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 		// 移除最前的一个任务
 		Task task = mTaskScreenView.popTask();
 		if (task == null) {
-			playEndAnimAndMedia();
+			finishedArrange();
 			return;
 		}
 		
@@ -199,12 +201,19 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 		// 检查是否还有任务 
 		task = mTaskScreenView.getFirstTask();
 		if (task == null) {
-			playEndAnimAndMedia();
+			finishedArrange();
 		} else if (task.getStatus() == Const.TASK.STATUS_ARRANGED) {
 			final long time = task.getExcuteTime().getTime();
 			mHourSl.setTime(time);
 			mMinuteSl.setTime(time);
 		}
+	}
+	
+	private void finishedArrange() {
+		// 保存最后一次安排任务的时间
+		SettingUtils.setTodayHasArranged();
+		// 播放结束音乐
+		playEndAnimAndMedia();
 	}
 	
 	private void playEndAnimAndMedia(){

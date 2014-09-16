@@ -50,7 +50,7 @@ public class RemindActivity extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		SetAlarmService.startThis(mContext);
+		SetTaskAlarmService.startThis(mContext);
 
 		setContentView(R.layout.activity_remind);
 

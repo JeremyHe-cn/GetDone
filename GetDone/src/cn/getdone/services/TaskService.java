@@ -16,7 +16,7 @@ import cn.getdone.dao.DaoSession;
 import cn.getdone.dao.Task;
 import cn.getdone.dao.TaskDao;
 import cn.getdone.dao.TaskDao.Properties;
-import cn.getdone.ui.main.SetAlarmService;
+import cn.getdone.ui.main.SetTaskAlarmService;
 import me.jeremyhe.lib.common.DateUtils;
 
 public class TaskService {
@@ -57,7 +57,7 @@ public class TaskService {
 		final Date excuteTime = task.getExcuteTime();
 		if (id != -1) {
 			if (DateUtils.isToday(excuteTime)) {
-				SetAlarmService.startThis(mContext);
+				SetTaskAlarmService.startThis(mContext);
 			} 
 			NotificationCenter.notifyObservers(Const.EVENT.TASK_STATUS_CHANGE);
 		}
@@ -84,7 +84,7 @@ public class TaskService {
 		// 如果时间 是今天，则重新设置闹钟
 		final Date excuteTime = task.getExcuteTime();
 		if (DateUtils.isToday(excuteTime)) {
-			SetAlarmService.startThis(mContext);
+			SetTaskAlarmService.startThis(mContext);
 		}
 		NotificationCenter.notifyObservers(Const.EVENT.TASK_STATUS_CHANGE);
 	}
