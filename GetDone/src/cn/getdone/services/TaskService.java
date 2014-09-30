@@ -9,10 +9,11 @@ import android.content.Context;
 import android.content.Intent;
 import cn.getdone.GetDoneApplication;
 import cn.getdone.common.Const;
-import cn.getdone.common.SettingUtils;
 import cn.getdone.common.notify.NotificationCenter;
 import cn.getdone.dao.DBHelper;
 import cn.getdone.dao.DaoSession;
+import cn.getdone.dao.HistoryTask;
+import cn.getdone.dao.HistoryTaskDao;
 import cn.getdone.dao.Task;
 import cn.getdone.dao.TaskDao;
 import cn.getdone.dao.TaskDao.Properties;
@@ -29,6 +30,7 @@ public class TaskService {
 	private Context mContext;
 	private DaoSession session;
 	private TaskDao taskDao;
+	private HistoryTaskDao historyTaskDao;
 	
 	public static TaskService getInstance(){
 		if (INSTANCE == null) {
@@ -42,6 +44,7 @@ public class TaskService {
 		mContext = GetDoneApplication.getContext();
 		session = DBHelper.getDaoSession(mContext);
 		taskDao = session.getTaskDao();
+		historyTaskDao = session.getHistoryTaskDao();
 	}
 	
 	private void sendUpdateTaskBroadcast(){
@@ -215,6 +218,18 @@ public class TaskService {
 	public void deleteAllFinishedTask(){
 		List<Task> finishedTaskList = listFinishedTasks();
 		taskDao.deleteInTx(finishedTaskList);
+		
+		// 复制一份到历史表当中
+		for(Task task: finishedTaskList) {
+			HistoryTask historyTask = new HistoryTask();
+			historyTask.setCreateTime(task.getCreateTime());
+			historyTask.setExcuteTime(task.getExcuteTime());
+			historyTask.setFriendId(task.getFriendId());
+			historyTask.setPriority(task.getPriority());
+			historyTask.setTitle(task.getTitle());
+			
+			historyTaskDao.insert(historyTask);
+		}
 		
 		NotificationCenter.notifyObservers(Const.EVENT.TASK_STATUS_CHANGE);
 		sendUpdateTaskBroadcast();

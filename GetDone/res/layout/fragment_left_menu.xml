@@ -111,13 +111,13 @@
 	                    android:text="GTD" />
 	                
 	                <Button
-	                    android:id="@+id/menu_left_arrange_btn"
+	                    android:id="@+id/menu_left_history_btn"
 	                    style="@style/flat_blue_btn"
 	                    android:layout_width="64dp"
 	                    android:layout_height="64dp"
 	                    android:layout_marginLeft="8dp"
 	                    android:background="@drawable/btn_circle_white"
-	                    android:text="安排" />
+	                    android:text="历史" />
                     
                 </LinearLayout>
 
@@ -130,10 +130,20 @@
                     >
 	                
                     <Button
+	                    android:id="@+id/menu_left_arrange_btn"
+	                    style="@style/flat_blue_btn"
+	                    android:layout_width="64dp"
+	                    android:layout_height="64dp"
+	                    android:layout_marginRight="8dp"
+	                    android:background="@drawable/btn_circle_white"
+	                    android:text="安排" />
+	                
+                    <Button
 	                    android:id="@+id/menu_left_user_settings_btn"
 	                    style="@style/flat_blue_btn"
 	                    android:layout_width="64dp"
 	                    android:layout_height="64dp"
+	                    android:layout_marginLeft="8dp"
 	                    android:layout_marginRight="8dp"
 	                    android:background="@drawable/btn_circle_white"
 	                    android:text="个性化" />
@@ -144,29 +154,8 @@
 	                    android:layout_width="64dp"
 	                    android:layout_height="64dp"
 	                    android:layout_marginLeft="8dp"
-	                    android:layout_marginRight="8dp"
 	                    android:background="@drawable/btn_circle_white"
 	                    android:text="好友" />
-	                
-	                <Button
-	                    android:id="@+id/menu_left_backup_btn"
-	                    style="@style/flat_blue_btn"
-	                    android:layout_width="64dp"
-	                    android:layout_height="64dp"
-	                    android:layout_marginLeft="8dp"
-	                    android:background="@drawable/btn_circle_white"
-	                    android:text="备份" />
-                    
-                </LinearLayout>
-
-                <LinearLayout 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginBottom="16dp"
-                    >
-	                
 	                
                 </LinearLayout>
                 
@@ -177,12 +166,22 @@
                     android:gravity="center"
                     android:layout_marginBottom="16dp"
                     >
-	                
-	                <Button
+                    
+				    <Button
+	                    android:id="@+id/menu_left_backup_btn"
 	                    style="@style/flat_blue_btn"
 	                    android:layout_width="64dp"
 	                    android:layout_height="64dp"
 	                    android:layout_marginRight="8dp"
+	                    android:background="@drawable/btn_circle_white"
+	                    android:text="备份" />
+	                
+	                <Button
+	                    android:id="@+id/menu_left_about_btn"
+	                    style="@style/flat_blue_btn"
+	                    android:layout_width="64dp"
+	                    android:layout_height="64dp"
+	                    android:layout_marginLeft="8dp"
 	                    android:background="@drawable/btn_circle_white"
 	                    android:text="关于" />
 	            </LinearLayout>

@@ -68,6 +68,9 @@
             android:name="cn.getdone.ui.main.ListFriendActivity" >
         </activity>
         
+        <!-- 历史任务 -->
+        <activity android:name="cn.getdone.ui.history.HistoryTaskActivity"></activity>
+        
         <!-- 二维码扫描 -->
         <activity 
             android:configChanges="orientation|keyboardHidden"

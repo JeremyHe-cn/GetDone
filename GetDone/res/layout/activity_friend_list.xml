@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <include layout="@layout/nav_bar"/>
+    <include layout="@layout/part_nav_bar"/>
     
     <ListView 
         android:id="@+id/friend_list_lv"

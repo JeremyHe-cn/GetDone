@@ -14,6 +14,7 @@ import cn.getdone.common.SettingUtils;
 import cn.getdone.common.notify.NotificationCenter;
 import cn.getdone.common.notify.Observer;
 import cn.getdone.services.TaskService;
+import cn.getdone.ui.history.HistoryTaskActivity;
 import cn.getdone.ui.main.ArrangeTaskActivity;
 import cn.getdone.ui.main.ListFriendActivity;
 import cn.getdone.ui.main.MainActivity;
@@ -28,6 +29,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 	
 	private Button mTodoViewBtn;
 	private Button mGtdViewBtn;
+	private Button mHistoryBtn;
 	private Button mUserSettingsBtn;
 	private Button mArrangeBtn;
 	private Button mFriendBtn;
@@ -57,6 +59,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 
 		mTodoViewBtn = (Button)v.findViewById(R.id.menu_left_todo_view_btn);
 		mGtdViewBtn = (Button)v.findViewById(R.id.menu_left_gtd_view_btn);
+		mHistoryBtn = (Button)v.findViewById(R.id.menu_left_history_btn);
 		mUserSettingsBtn = (Button)v.findViewById(R.id.menu_left_user_settings_btn);
 		mArrangeBtn = (Button)v.findViewById(R.id.menu_left_arrange_btn);
 		mFriendBtn = (Button)v.findViewById(R.id.menu_left_friend_btn);
@@ -75,6 +78,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 	private void setListener(){
 		mTodoViewBtn.setOnClickListener(this);
 		mGtdViewBtn.setOnClickListener(this);
+		mHistoryBtn.setOnClickListener(this);
 		mUserSettingsBtn.setOnClickListener(this);
 		mArrangeBtn.setOnClickListener(this);
 		mFriendBtn.setOnClickListener(this);
@@ -93,6 +97,9 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		case R.id.menu_left_gtd_view_btn:
 			switchContent(MainActivity.KEY_FRAGMENT_FOUR_GRID);
 			showContent();
+			break;
+		case R.id.menu_left_history_btn:
+			HistoryTaskActivity.navigateTo(getActivity());
 			break;
 		case R.id.menu_left_user_settings_btn:
 			UserSettingActivity.navigateTo(getActivity());
