@@ -7,7 +7,7 @@ import de.greenrobot.daogenerator.Schema;
 public class GetDoneDaoGenerator {
 	
 	public static void main(String[] args) throws Exception {
-		Schema schema = new Schema(3, "me.jeremyhe.getdone.dao");
+		Schema schema = new Schema(1, "cn.getdone.dao");
 
 		addTask(schema);
 		addHistoryTask(schema);
