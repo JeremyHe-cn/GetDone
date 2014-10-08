@@ -14,6 +14,7 @@ import cn.getdone.common.TaskUtils;
 import cn.getdone.common.ui.BaseActivity;
 import cn.getdone.dao.Task;
 import cn.getdone.services.TaskService;
+import cn.jpush.android.api.JPushInterface;
 import me.jeremyhe.lib.widget.CircleTimerView;
 
 public class TomatoActivity extends BaseActivity implements OnClickListener {
@@ -61,6 +62,7 @@ public class TomatoActivity extends BaseActivity implements OnClickListener {
 		initWidget();
 		setListener();
 	}
+	
 	
 	private void findWidget(){
 		mLayout = findViewById(R.id.tomato_layout);
@@ -127,11 +129,15 @@ public class TomatoActivity extends BaseActivity implements OnClickListener {
 		if (mTimeCtv != null && mLastStartTime != 0) {
 			mTimeCtv.continueTimer(mLastStartTime);
 		}
+		
+		JPushInterface.onResume(mContext);
 	}
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
 		mLastStartTime = mTimeCtv.getStartTime();
+		
+		JPushInterface.onPause(mContext);
 	}
 }

@@ -10,6 +10,7 @@ import com.dateSlider.ScrollLayout;
 
 import cn.getdone.R;
 import cn.getdone.common.ui.BaseActivity;
+import cn.jpush.android.api.JPushInterface;
 import me.jeremyhe.lib.common.DateUtils;
 import android.app.Activity;
 import android.content.Intent;
@@ -65,6 +66,18 @@ public class SetRemindActivity extends BaseActivity implements OnDateChangeListe
 		findView();
 		initView();
 		setListener();
+	}
+	
+	@Override
+	protected void onResume() {
+		JPushInterface.onResume(mContext);
+		super.onResume();
+	}
+	
+	@Override
+	protected void onPause() {
+		JPushInterface.onPause(mContext);
+		super.onPause();
 	}
 
 	private void findView() {
