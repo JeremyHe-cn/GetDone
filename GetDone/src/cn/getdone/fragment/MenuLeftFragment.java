@@ -132,9 +132,6 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 			// TODO: 设置的页面
 			break;
 		case R.id.menu_left_about_btn:
-			// TODO: 测试入口
-			DelayActivity.navigateTo(getActivity(), 1);
-			getActivity().finish();
 			break;
 
 		default:
