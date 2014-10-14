@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:gravity="bottom"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/delay_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/priority_important"
+        android:orientation="vertical"
+        android:paddingTop="16dp" >
+
+        <TextView
+            android:id="@+id/delay_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="任务标题"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/delay_tmr_btn"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/btn_circle_white"
+                    android:text="明天"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/delay_after_tmr_btn"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/btn_circle_white"
+                    android:text="后天"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/delay_three_day_btn"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/btn_circle_white"
+                    android:text="三天后"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/delay_week_btn"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/btn_circle_white"
+                    android:text="下星期"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/delay_five_minute_btn"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/btn_circle_white"
+                    android:text="5分钟"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/delay_quarter_btn"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/btn_circle_white"
+                    android:text="15分钟"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/delay_half_btn"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/btn_circle_white"
+                    android:text="30分钟"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/delay_hour_btn"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/btn_circle_white"
+                    android:text="1小时"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

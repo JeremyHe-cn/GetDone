@@ -20,6 +20,7 @@ import cn.getdone.common.TaskUtils;
 import cn.getdone.common.ui.BaseActivity;
 import cn.getdone.dao.Task;
 import cn.getdone.services.TaskService;
+import cn.getdone.ui.DelayActivity;
 
 public class RemindActivity extends BaseActivity implements OnClickListener {
 
@@ -35,7 +36,7 @@ public class RemindActivity extends BaseActivity implements OnClickListener {
 	private long mTaskId;
 	private Task mTask;
 
-	public static Intent getStartIntent(Context c, long taskId) {
+	public static Intent buildIntent(Context c, long taskId) {
 		Intent intent = new Intent(c, RemindActivity.class);
 		intent.putExtra(EXTRA_TASK_ID, taskId);
 		intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
@@ -43,7 +44,7 @@ public class RemindActivity extends BaseActivity implements OnClickListener {
 	}
 
 	public static void navigateTo(Context c, long taskId) {
-		Intent intent = getStartIntent(c, taskId);
+		Intent intent = buildIntent(c, taskId);
 		c.startActivity(intent);
 	}
 
@@ -128,27 +129,26 @@ public class RemindActivity extends BaseActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.remind_postpone_btn:
-			// TODO: 列出可延迟的选项
+			DelayActivity.navigateTo(mContext, mTaskId);
 			break;
 		case R.id.remind_finish_btn:
 			mTask.setStatus(Const.TASK.STATUS_FINISHED);
 			int sum = SettingUtils.getSumOfFinishedTask();
 			SettingUtils.setSumOfFinishedTask(sum+1);
 			TaskService.getInstance().updateTask(mTask);
-			finish();
 			break;
 
 		case R.id.remind_begin_btn:
-			this.finish();
 			break;
 			
 		case R.id.remind_tomoto_btn:
 			TomatoActivity.navigateTo(mContext, mTaskId);
-			finish();
 			break;
 
 		default:
 			break;
 		}
+		
+		finish();
 	}
 }

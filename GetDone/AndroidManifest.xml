@@ -84,6 +84,10 @@
 		<!-- 个人设置 -->
 		<activity android:name="cn.getdone.ui.settings.UserSettingActivity"
 		    android:windowSoftInputMode="stateHidden"></activity>
+		
+		<!-- 延迟选项 -->
+		<activity android:name="cn.getdone.ui.DelayActivity" 
+		    android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
 
         <service android:name="cn.getdone.ui.main.SetTaskAlarmService" >
         </service>

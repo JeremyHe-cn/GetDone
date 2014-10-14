@@ -14,6 +14,7 @@ import cn.getdone.common.SettingUtils;
 import cn.getdone.common.notify.NotificationCenter;
 import cn.getdone.common.notify.Observer;
 import cn.getdone.services.TaskService;
+import cn.getdone.ui.DelayActivity;
 import cn.getdone.ui.history.HistoryTaskActivity;
 import cn.getdone.ui.main.ArrangeTaskActivity;
 import cn.getdone.ui.main.ListFriendActivity;
@@ -36,6 +37,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 	private Button mBackupBtn;
 	private Button mClearFinishedTaskBtn;
 	private Button mSettingsBtn;
+	private Button mAboutBtn;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,11 +68,12 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		mBackupBtn = (Button)v.findViewById(R.id.menu_left_backup_btn);
 		mClearFinishedTaskBtn = (Button)v.findViewById(R.id.menu_left_clear_btn);
 		mSettingsBtn = (Button)v.findViewById(R.id.menu_left_settings_btn);
-		
+		mAboutBtn = (Button)v.findViewById(R.id.menu_left_about_btn);
 	}
 	
 	private void initWidget(){
 		mUserNameTv.setText(SettingUtils.getUserName());
+		// TODO: 查数据库
 		mFinishedSumTv.setText(""+SettingUtils.getSumOfFinishedTask());
 		
 	}
@@ -85,6 +88,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		mBackupBtn.setOnClickListener(this);
 		mClearFinishedTaskBtn.setOnClickListener(this);
 		mSettingsBtn.setOnClickListener(this);
+		mAboutBtn.setOnClickListener(this);
 	}
 
 	@Override
@@ -126,6 +130,11 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 			
 		case R.id.menu_left_settings_btn:
 			// TODO: 设置的页面
+			break;
+		case R.id.menu_left_about_btn:
+			// TODO: 测试入口
+			DelayActivity.navigateTo(getActivity(), 1);
+			getActivity().finish();
 			break;
 
 		default:

@@ -45,7 +45,7 @@ public class SetTaskAlarmService extends IntentService {
 		if (firstTask != null) {
 			// 设置闹钟
 			Log.i("SetAlarmService", "set alarm,task = "+firstTask.getTitle());
-			Intent alarmIntent = RemindActivity.getStartIntent(this, firstTask.getId());
+			Intent alarmIntent = RemindActivity.buildIntent(this, firstTask.getId());
 			PendingIntent sender = PendingIntent.getActivity(this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 			
 			AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
