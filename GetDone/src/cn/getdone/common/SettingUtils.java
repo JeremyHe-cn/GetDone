@@ -22,11 +22,6 @@ public class SettingUtils {
 	private static final String JPUSH_USER_ID = "JPushUserId";
 	
 	/*
-	 * 累计完成统计
-	 */
-	private static final String SUM_OF_FINISHED_TASK = "sumOfFinishedTask";
-	
-	/*
 	 * 个人的一些设置
 	 */
 	private static final String USER_NAME = "userName";
@@ -71,23 +66,6 @@ public class SettingUtils {
 	public static String getUserName(){
 		SharedPreferences settings = getSettings();
 		return settings.getString(USER_NAME, Build.MODEL);
-	}
-	
-	
-	public static void setSumOfFinishedTask(int sum){
-		if (sum<0) {
-			sum=0;
-		}
-		
-		SharedPreferences settings = getSettings();
-		settings.edit()
-		.putInt(SUM_OF_FINISHED_TASK, sum)
-		.commit();
-	}
-	
-	public static int getSumOfFinishedTask(){
-		SharedPreferences settings = getSettings();
-		return settings.getInt(SUM_OF_FINISHED_TASK, 0);
 	}
 	
 	

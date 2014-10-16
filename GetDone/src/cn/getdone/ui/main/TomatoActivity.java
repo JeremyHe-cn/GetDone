@@ -93,8 +93,6 @@ public class TomatoActivity extends BaseActivity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.tomato_finished_btn:
 			mTask.setStatus(Const.TASK.STATUS_FINISHED);
-			int sum = SettingUtils.getSumOfFinishedTask();
-			SettingUtils.setSumOfFinishedTask(sum+1);
 			TaskService.getInstance().updateTask(mTask);
 			finish();
 			break;

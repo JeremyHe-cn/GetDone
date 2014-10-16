@@ -133,8 +133,6 @@ public class RemindActivity extends BaseActivity implements OnClickListener {
 			break;
 		case R.id.remind_finish_btn:
 			mTask.setStatus(Const.TASK.STATUS_FINISHED);
-			int sum = SettingUtils.getSumOfFinishedTask();
-			SettingUtils.setSumOfFinishedTask(sum+1);
 			TaskService.getInstance().updateTask(mTask);
 			break;
 

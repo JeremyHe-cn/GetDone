@@ -1,5 +1,6 @@
 package cn.getdone.fragment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
 import cn.getdone.common.notify.NotificationCenter;
 import cn.getdone.common.notify.Observer;
+import cn.getdone.services.HistoryTaskService;
 import cn.getdone.services.TaskService;
 import cn.getdone.ui.DelayActivity;
 import cn.getdone.ui.history.HistoryTaskActivity;
@@ -73,9 +75,8 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 	
 	private void initWidget(){
 		mUserNameTv.setText(SettingUtils.getUserName());
-		// TODO: 查数据库
-		mFinishedSumTv.setText(""+SettingUtils.getSumOfFinishedTask());
-		
+
+		new InitTask().execute();
 	}
 	
 	private void setListener(){
@@ -163,7 +164,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 	@Override
 	public void onNotify(int event) {
 		if (event == Const.EVENT.TASK_STATUS_CHANGE) {
-			mFinishedSumTv.setText(""+SettingUtils.getSumOfFinishedTask());
+			new InitTask().execute();
 		} else if (event == Const.EVENT.USER_SETTINGS_NAME_CHANGE) {
 			mUserNameTv.setText(SettingUtils.getUserName());
 		}
@@ -183,4 +184,21 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		NotificationCenter.unregister(Const.EVENT.USER_SETTINGS_NAME_CHANGE, this);
 	}
 	
+
+	private class InitTask extends AsyncTask<Void, Void, Void> {
+		private int sumOfFinishedTask = 0;
+		
+		@Override
+		protected Void doInBackground(Void... params) {
+			sumOfFinishedTask = TaskService.getInstance().listFinishedTasks().size();
+			sumOfFinishedTask += HistoryTaskService.getInstance().listAllHistoryTask().size();
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			mFinishedSumTv.setText(""+sumOfFinishedTask);
+		}
+	}
 }

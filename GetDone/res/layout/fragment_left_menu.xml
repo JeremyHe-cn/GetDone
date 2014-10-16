@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
                         android:gravity="center"
-                        android:text="7"
+                        android:text="0"
                         android:textColor="@color/priority_important_urgent_light"
                         android:textSize="20sp"
                         android:textStyle="bold" />

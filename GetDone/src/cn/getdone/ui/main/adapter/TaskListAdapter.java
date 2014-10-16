@@ -97,15 +97,11 @@ public class TaskListAdapter extends BaseAdapter {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				// 更新累积完成
-				int sumOfFinished = SettingUtils.getSumOfFinishedTask();
 				if (isChecked) {
 					task.setStatus(Const.TASK.STATUS_FINISHED);
-					sumOfFinished++;
 				} else {
 					task.setStatus(Const.TASK.STATUS_ARRANGED);
-					sumOfFinished--;
 				}
-				SettingUtils.setSumOfFinishedTask(sumOfFinished);
 				TaskService.getInstance().updateTask(task);
 			}
 		});

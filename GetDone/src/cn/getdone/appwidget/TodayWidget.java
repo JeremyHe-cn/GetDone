@@ -72,12 +72,6 @@ public class TodayWidget extends AppWidgetProvider {
 			final int taskStatus = intent.getIntExtra(TodayWidgetService.EXTRA_TASK_STATUS, 0);
 			final Task task = TaskService.getInstance().queryTaskById(taskId);
 			task.setStatus(taskStatus);
-			int sum = SettingUtils.getSumOfFinishedTask();
-			if (taskStatus == Const.TASK.STATUS_FINISHED) {
-				SettingUtils.setSumOfFinishedTask(sum+1);
-			} else {
-				SettingUtils.setSumOfFinishedTask(sum-1);
-			}
 			TaskService.getInstance().updateTask(task);
 		} else if (TaskService.ACTION_CLEAR_TASK.equals(action)) {
 			TaskService.getInstance().deleteAllFinishedTask();
