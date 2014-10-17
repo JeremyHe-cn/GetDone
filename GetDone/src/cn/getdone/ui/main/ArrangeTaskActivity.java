@@ -24,6 +24,7 @@ import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
 import cn.getdone.common.ui.BaseActivity;
 import cn.getdone.dao.Task;
+import cn.getdone.helper.AlarmHelper;
 import cn.getdone.services.TaskService;
 import cn.getdone.widget.TaskScreenView;
 import me.jeremyhe.lib.androidutils.SystemUtils;
@@ -212,6 +213,7 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 	private void finishedArrange() {
 		// 保存最后一次安排任务的时间
 		SettingUtils.setTodayHasArranged();
+		AlarmHelper.SetAlarmForGetDoneTime(mContext);
 		// 播放结束音乐
 		playEndAnimAndMedia();
 	}

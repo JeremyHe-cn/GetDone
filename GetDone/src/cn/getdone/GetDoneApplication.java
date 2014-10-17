@@ -1,16 +1,11 @@
 package cn.getdone;
 
-import java.util.Calendar;
 
 import cn.jpush.android.api.JPushInterface;
-import cn.getdone.common.SettingUtils;
-import cn.getdone.ui.main.ArrangeTaskActivity;
+import cn.getdone.helper.AlarmHelper;
 import cn.getdone.ui.main.SetTaskAlarmService;
-import android.app.AlarmManager;
 import android.app.Application;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 
 public class GetDoneApplication extends Application {
 	
@@ -29,29 +24,8 @@ public class GetDoneApplication extends Application {
 		// 设置定时任务
 		SetTaskAlarmService.startThis(applicationContext);
 		// 设置GetDone时刻
-		SetAlarmForGetDoneTime();
+		AlarmHelper.SetAlarmForGetDoneTime(applicationContext);
 	}
-	
-	private void SetAlarmForGetDoneTime(){
-		
-		// TODO: 这里先固定为每天早上9点。后续开放给用户进行设置
-		Calendar getDoneCal = Calendar.getInstance();
-		getDoneCal.set(Calendar.HOUR_OF_DAY, 9);
-		getDoneCal.set(Calendar.MINUTE, 0);
-		getDoneCal.set(Calendar.SECOND, 0);
-		
-		// 如果今天已经安排过了，或者现在时间已经过了GetDone时刻，则设置明天的
-		Calendar nowCal = Calendar.getInstance();
-		if (SettingUtils.isTodayHasArranged() || nowCal.after(getDoneCal)) {
-			getDoneCal.add(Calendar.DATE, 1);
-		}
-		
-		Intent alarmIntent = ArrangeTaskActivity.getStartIntent(applicationContext);
-		PendingIntent sender = PendingIntent.getActivity(this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-		AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-		am.set(AlarmManager.RTC_WAKEUP, getDoneCal.getTimeInMillis(), sender);
-	}
-	
 	
 	public static Context getContext(){
 		return applicationContext;
