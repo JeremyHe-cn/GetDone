@@ -112,7 +112,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 			break;
 		case R.id.menu_left_clear_btn:
 			TaskService.getInstance().deleteAllFinishedTask();
-			ToastUtils.showShortToast(getActivity(), "清除完成");
+			ToastUtils.showShortToast(getActivity(), "归档完成");
 			showContent();
 			break;
 			
