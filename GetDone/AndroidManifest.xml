@@ -79,7 +79,7 @@
             android:name="com.zxing.activity.QRCaptureActivity"></activity>
         
 		<!-- 番茄时间 -->
-		<activity android:name="cn.getdone.ui.main.TomatoActivity.TomatoActivity"></activity>
+		<activity android:name="cn.getdone.ui.main.TomatoActivity"></activity>
 		
 		<!-- 个人设置 -->
 		<activity android:name="cn.getdone.ui.settings.UserSettingActivity"

@@ -21,6 +21,7 @@ import cn.getdone.ui.history.HistoryTaskActivity;
 import cn.getdone.ui.main.ArrangeTaskActivity;
 import cn.getdone.ui.main.ListFriendActivity;
 import cn.getdone.ui.main.MainActivity;
+import cn.getdone.ui.main.TomatoActivity;
 import cn.getdone.ui.settings.BackupDatabaseTask;
 import cn.getdone.ui.settings.UserSettingActivity;
 import me.jeremyhe.lib.androidutils.ToastUtils;
