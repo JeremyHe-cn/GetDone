@@ -3,6 +3,7 @@ package cn.getdone.ui;
 import java.util.Date;
 
 import me.jeremyhe.lib.common.DateUtils;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,9 +49,9 @@ public class DelayActivity extends BaseActivity implements OnClickListener {
 		return intent;
 	}
 
-	public static void navigateTo(Context c, long taskId) {
-		Intent intent = buildIntent(c, taskId);
-		c.startActivity(intent);
+	public static void navigateToForResult(Activity activity, long taskId, int requestCode) {
+		Intent intent = buildIntent(activity, taskId);
+		activity.startActivityForResult(intent, requestCode);
 	}
 
 	@Override
@@ -139,6 +140,7 @@ public class DelayActivity extends BaseActivity implements OnClickListener {
 		mTask.setExcuteTime(excuteDate);
 		TaskService.getInstance().updateTask(mTask);
 		
+		setResult(RESULT_OK);
 		finish();
 	}
 }

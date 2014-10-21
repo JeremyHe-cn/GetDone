@@ -31,7 +31,7 @@
             android:orientation="horizontal"
             android:paddingBottom="16dp"
             android:paddingTop="16dp" >
-
+            
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -39,11 +39,11 @@
                 android:gravity="center" >
 
                 <Button
-                    android:id="@+id/remind_postpone_btn"
+                    android:id="@+id/remind_tomoto_btn"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:background="@drawable/btn_circle_white"
-                    android:text="延迟"
+                    android:text="番茄时钟"
                     android:textColor="@android:color/white" />
             </RelativeLayout>
 
@@ -69,11 +69,11 @@
                 android:gravity="center" >
 
                 <Button
-                    android:id="@+id/remind_tomoto_btn"
+                    android:id="@+id/remind_postpone_btn"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:background="@drawable/btn_circle_white"
-                    android:text="番茄时钟"
+                    android:text="延迟"
                     android:textColor="@android:color/white" />
             </RelativeLayout>
 

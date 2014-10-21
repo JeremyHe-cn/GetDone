@@ -24,8 +24,12 @@ import cn.getdone.ui.DelayActivity;
 
 public class RemindActivity extends BaseActivity implements OnClickListener {
 
+	
 	public static final String EXTRA_TASK_ID = "taskId";
 
+	private final int REQUEST_CODE_DELAY = 100;
+	private final int REQUEST_CODE_TOMATO = 200;
+	
 	private View mLayout;
 	private TextView mTaskTitleTv;
 	private Button mPostponeBtn;
@@ -129,24 +133,40 @@ public class RemindActivity extends BaseActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.remind_postpone_btn:
-			DelayActivity.navigateTo(mContext, mTaskId);
+			DelayActivity.navigateToForResult(this, mTaskId, REQUEST_CODE_DELAY);
 			break;
 		case R.id.remind_finish_btn:
 			mTask.setStatus(Const.TASK.STATUS_FINISHED);
 			TaskService.getInstance().updateTask(mTask);
+			finish();
 			break;
 
 		case R.id.remind_begin_btn:
+			finish();
 			break;
 			
 		case R.id.remind_tomoto_btn:
-			TomatoActivity.navigateTo(mContext, mTaskId);
+			TomatoActivity.navigateToForResult(this, mTaskId, REQUEST_CODE_TOMATO);
 			break;
 
 		default:
 			break;
 		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (REQUEST_CODE_DELAY == requestCode) {
+			if (resultCode == RESULT_OK) {
+				finish();
+			}
+		}
 		
-		finish();
+		else if (REQUEST_CODE_TOMATO == requestCode) {
+			if (resultCode == RESULT_OK) {
+				finish();
+			}
+		}
 	}
 }

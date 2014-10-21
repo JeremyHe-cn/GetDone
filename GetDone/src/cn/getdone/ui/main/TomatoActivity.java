@@ -1,15 +1,15 @@
 package cn.getdone.ui.main;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+
 import cn.getdone.R;
 import cn.getdone.common.Const;
-import cn.getdone.common.SettingUtils;
 import cn.getdone.common.TaskUtils;
 import cn.getdone.common.ui.BaseActivity;
 import cn.getdone.dao.Task;
@@ -21,10 +21,10 @@ public class TomatoActivity extends BaseActivity implements OnClickListener {
 
 	public static final String EXTRA_TASK_ID = "taskId";
 	
-	public static void navigateTo(Context ctx,long taskId){
-		Intent intent = new Intent(ctx,TomatoActivity.class);
+	public static void navigateToForResult(Activity activity, long taskId, int requestCode){
+		Intent intent = new Intent(activity,TomatoActivity.class);
 		intent.putExtra(EXTRA_TASK_ID, taskId);
-		ctx.startActivity(intent);
+		activity.startActivityForResult(intent, requestCode);
 	}
 	
 	private View mLayout;
@@ -94,6 +94,7 @@ public class TomatoActivity extends BaseActivity implements OnClickListener {
 		case R.id.tomato_finished_btn:
 			mTask.setStatus(Const.TASK.STATUS_FINISHED);
 			TaskService.getInstance().updateTask(mTask);
+			setResult(RESULT_OK);
 			finish();
 			break;
 			
