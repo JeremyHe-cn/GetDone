@@ -88,9 +88,21 @@
 		<!-- 延迟选项 -->
 		<activity android:name="cn.getdone.ui.DelayActivity" 
 		    android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+		
+		<!-- 关于界面 -->
+		<activity android:name="cn.getdone.ui.AboutActivity"></activity>
+		
+		
+		<!-- ############################# service ########################### -->
 
-        <service android:name="cn.getdone.ui.main.SetTaskAlarmService" >
+        <service android:name="cn.getdone.ui.main.SetTaskAlarmService" ></service>
+        
+        <service
+            android:name="cn.getdone.appwidget.TodayWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" >
         </service>
+        
+        <!-- ############################# receiver ########################### -->
 
         <receiver android:name="cn.getdone.receiver.RebootReceiver" >
             <intent-filter>
@@ -111,12 +123,7 @@
                 android:resource="@xml/today_appwidget" />
         </receiver>
 
-        <service
-            android:name="cn.getdone.appwidget.TodayWidgetService"
-            android:permission="android.permission.BIND_REMOTEVIEWS" >
-        </service>
-
-        <!-- 极光推送开始 -->
+        <!-- ############################# 极光推送开始 ########################### -->
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
@@ -187,7 +194,7 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="df9192d420e4ad66d5f8950c" />
-        <!-- 极光推送结束 -->
+        <!-- ############################# 极光推送结束 ########################### -->
 
     </application>
 

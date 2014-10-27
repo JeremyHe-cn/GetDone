@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.getdone.common.Const;
-import cn.getdone.common.SettingUtils;
 import cn.getdone.common.TaskUtils;
 import cn.getdone.dao.Task;
 import cn.getdone.services.TaskService;
@@ -29,10 +28,16 @@ public class TaskListAdapter extends BaseAdapter {
 	
 	protected List<Task> mTaskList;
 	
+	protected int mTitleFinishedColor;
+	protected int mTitleNormalColor;
+	
 	public TaskListAdapter(Context context){
 		mContext = context;
 		mInflater = LayoutInflater.from(mContext);
 		mTaskList = new ArrayList<Task>();
+		
+		mTitleFinishedColor = mContext.getResources().getColor(R.color.text_sub);
+		mTitleNormalColor = mContext.getResources().getColor(R.color.text_main);
 	}
 	
 	@Override
@@ -72,14 +77,14 @@ public class TaskListAdapter extends BaseAdapter {
 		
 		// 完成状态 
 		if (taskStatus == Const.TASK.STATUS_FINISHED) {
-			holder.taskTitleTv.setTextColor(mContext.getResources().getColor(R.color.text_sub));
+			holder.taskTitleTv.setTextColor(mTitleFinishedColor);
 			holder.taskFinishedLine.setVisibility(View.VISIBLE);
 			holder.taskFinishedCb.setChecked(true);
 			
 			// 重要性重置为灰色
 			holder.taskPriorityView.setBackgroundResource(R.color.gray_light);
 		} else {
-			holder.taskTitleTv.setTextColor(mContext.getResources().getColor(R.color.text_main));
+			holder.taskTitleTv.setTextColor(mTitleNormalColor);
 			holder.taskFinishedLine.setVisibility(View.GONE);
 			holder.taskFinishedCb.setChecked(false);
 		}

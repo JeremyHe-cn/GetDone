@@ -88,44 +88,6 @@
                 <LinearLayout 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginBottom="16dp"
-                    android:orientation="horizontal"
-                    >
-                    
-	                <Button
-	                    android:id="@+id/menu_left_todo_view_btn"
-	                    style="@style/flat_blue_btn"
-	                    android:layout_width="64dp"
-	                    android:layout_height="64dp"
-	                    android:layout_marginRight="8dp"
-	                    android:background="@drawable/btn_circle_white"
-	                    android:text="TODO" />
-	
-	                <Button
-	                    android:id="@+id/menu_left_gtd_view_btn"
-	                    style="@style/flat_blue_btn"
-	                    android:layout_width="64dp"
-	                    android:layout_height="64dp"
-	                    android:layout_marginLeft="8dp"
-	                    android:layout_marginRight="8dp"
-	                    android:background="@drawable/btn_circle_white"
-	                    android:text="GTD" />
-	                
-	                <Button
-	                    android:id="@+id/menu_left_history_btn"
-	                    style="@style/flat_blue_btn"
-	                    android:layout_width="64dp"
-	                    android:layout_height="64dp"
-	                    android:layout_marginLeft="8dp"
-	                    android:background="@drawable/btn_circle_white"
-	                    android:text="历史" />
-                    
-                </LinearLayout>
-
-                <LinearLayout 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:layout_marginBottom="16dp"
@@ -139,25 +101,26 @@
 	                    android:layout_marginRight="8dp"
 	                    android:background="@drawable/btn_circle_white"
 	                    android:text="安排" />
-	                
+                    
                     <Button
-	                    android:id="@+id/menu_left_user_settings_btn"
-	                    style="@style/flat_blue_btn"
-	                    android:layout_width="64dp"
+            			android:id="@+id/menu_left_clear_btn"
+			            style="@style/flat_blue_btn"
+			            android:layout_width="64dp"
 	                    android:layout_height="64dp"
 	                    android:layout_marginLeft="8dp"
 	                    android:layout_marginRight="8dp"
-	                    android:background="@drawable/btn_circle_white"
-	                    android:text="个性化" />
-                    
+			            android:background="@drawable/btn_circle_white"
+			            android:text="归档"
+			            />
+	                
                     <Button
-	                    android:id="@+id/menu_left_friend_btn"
+	                    android:id="@+id/menu_left_history_btn"
 	                    style="@style/flat_blue_btn"
 	                    android:layout_width="64dp"
 	                    android:layout_height="64dp"
 	                    android:layout_marginLeft="8dp"
 	                    android:background="@drawable/btn_circle_white"
-	                    android:text="好友" />
+	                    android:text="历史" />
 	                
                 </LinearLayout>
                 
@@ -170,24 +133,23 @@
                     >
                     
 				    <Button
-            			android:id="@+id/menu_left_clear_btn"
-			            style="@style/flat_blue_btn"
-			            android:layout_width="64dp"
+	                    android:id="@+id/menu_left_friend_btn"
+	                    style="@style/flat_blue_btn"
+	                    android:layout_width="64dp"
 	                    android:layout_height="64dp"
 	                    android:layout_marginRight="8dp"
-			            android:background="@drawable/btn_circle_white"
-			            android:text="归档"
-			            />
+	                    android:background="@drawable/btn_circle_white"
+	                    android:text="好友" />
                     
 				    <Button
-	                    android:id="@+id/menu_left_backup_btn"
+	                    android:id="@+id/menu_left_user_settings_btn"
 	                    style="@style/flat_blue_btn"
 	                    android:layout_width="64dp"
 	                    android:layout_height="64dp"
 	                    android:layout_marginLeft="8dp"
 	                    android:layout_marginRight="8dp"
 	                    android:background="@drawable/btn_circle_white"
-	                    android:text="备份" />
+	                    android:text="设置" />
 	                
 	                <Button
 	                    android:id="@+id/menu_left_about_btn"
@@ -198,31 +160,49 @@
 	                    android:background="@drawable/btn_circle_white"
 	                    android:text="关于" />
 	            </LinearLayout>
-
+	            
+				<LinearLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal"
+                    >
+                    
+	                <Button
+	                    android:id="@+id/menu_left_todo_view_btn"
+	                    style="@style/flat_blue_btn"
+	                    android:layout_width="64dp"
+	                    android:layout_height="64dp"
+	                    android:layout_marginRight="8dp"
+	                    android:background="@drawable/btn_circle_white"
+	                    android:text="TODO"
+	                    android:visibility="gone" />
+	
+	                <Button
+	                    android:id="@+id/menu_left_gtd_view_btn"
+	                    style="@style/flat_blue_btn"
+	                    android:layout_width="64dp"
+	                    android:layout_height="64dp"
+	                    android:layout_marginLeft="8dp"
+	                    android:layout_marginRight="8dp"
+	                    android:background="@drawable/btn_circle_white"
+	                    android:text="GTD" 
+	                    android:visibility="gone"/>
+	                
+	                <Button
+	                    android:id="@+id/menu_left_backup_btn"
+	                    style="@style/flat_blue_btn"
+	                    android:layout_width="64dp"
+	                    android:layout_height="64dp"
+	                    android:layout_marginLeft="8dp"
+	                    android:layout_marginRight="8dp"
+	                    android:background="@drawable/btn_circle_white"
+	                    android:text="备份" />
+	                
+                </LinearLayout>
+                
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    
-    <RelativeLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="8dp"
-        android:gravity="center_vertical"
-        >
-            
-        <Button
-            android:id="@+id/menu_left_settings_btn"
-            style="@style/flat_gray_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_settings"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
-        
-    </RelativeLayout>
-    
-
-
 </LinearLayout>

@@ -23,22 +23,32 @@ public class HistoryTaskListAdapter extends BaseAdapter {
 	
 	protected List<HistoryTask> mHistoryTaskList;
 	
+	protected int mTitleFinishedColor;
+	
 	public HistoryTaskListAdapter(Context context){
 		mContext = context;
 		mInflater = LayoutInflater.from(mContext);
 		mHistoryTaskList = new ArrayList<HistoryTask>();
+		
+		mTitleFinishedColor = mContext.getResources().getColor(R.color.text_sub);
 	}
 	
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		ViewHolder holder = null;
 		if (convertView == null) {
+			convertView = mInflater.inflate(R.layout.item_task, null);
+			
 			holder = new ViewHolder();
 			holder.taskPriorityView = (View)convertView.findViewById(R.id.task_priority_view);
 			holder.taskTitleTv = (TextView)convertView.findViewById(R.id.task_title_tv);
 			holder.taskFinishedLine = (View)convertView.findViewById(R.id.task_finished_line);
 			holder.taskExcuteTimeTv = (TextView)convertView.findViewById(R.id.task_excutetime_tv);
 			holder.taskFinishedCb = (CheckBox)convertView.findViewById(R.id.task_finished_cb);
+			
+			holder.taskTitleTv.setTextColor(mTitleFinishedColor);
+			holder.taskExcuteTimeTv.setVisibility(View.GONE);
+			holder.taskFinishedCb.setVisibility(View.GONE);
 			
 			convertView.setTag(holder);
 		} else {

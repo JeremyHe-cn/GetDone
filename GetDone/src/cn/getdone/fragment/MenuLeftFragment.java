@@ -16,6 +16,7 @@ import cn.getdone.common.notify.NotificationCenter;
 import cn.getdone.common.notify.Observer;
 import cn.getdone.services.HistoryTaskService;
 import cn.getdone.services.TaskService;
+import cn.getdone.ui.AboutActivity;
 import cn.getdone.ui.DelayActivity;
 import cn.getdone.ui.history.HistoryTaskActivity;
 import cn.getdone.ui.main.ArrangeTaskActivity;
@@ -39,7 +40,6 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 	private Button mFriendBtn;
 	private Button mBackupBtn;
 	private Button mClearFinishedTaskBtn;
-	private Button mSettingsBtn;
 	private Button mAboutBtn;
 	
 	@Override
@@ -70,7 +70,6 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		mFriendBtn = (Button)v.findViewById(R.id.menu_left_friend_btn);
 		mBackupBtn = (Button)v.findViewById(R.id.menu_left_backup_btn);
 		mClearFinishedTaskBtn = (Button)v.findViewById(R.id.menu_left_clear_btn);
-		mSettingsBtn = (Button)v.findViewById(R.id.menu_left_settings_btn);
 		mAboutBtn = (Button)v.findViewById(R.id.menu_left_about_btn);
 	}
 	
@@ -89,7 +88,6 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		mFriendBtn.setOnClickListener(this);
 		mBackupBtn.setOnClickListener(this);
 		mClearFinishedTaskBtn.setOnClickListener(this);
-		mSettingsBtn.setOnClickListener(this);
 		mAboutBtn.setOnClickListener(this);
 	}
 
@@ -100,16 +98,20 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 			switchContent(MainActivity.KEY_FRAGMENT_MAIN);
 			showContent();
 			break;
+			
 		case R.id.menu_left_gtd_view_btn:
 			switchContent(MainActivity.KEY_FRAGMENT_FOUR_GRID);
 			showContent();
 			break;
+			
 		case R.id.menu_left_history_btn:
 			HistoryTaskActivity.navigateTo(getActivity());
 			break;
+			
 		case R.id.menu_left_user_settings_btn:
 			UserSettingActivity.navigateTo(getActivity());
 			break;
+			
 		case R.id.menu_left_clear_btn:
 			TaskService.getInstance().deleteAllFinishedTask();
 			ToastUtils.showShortToast(getActivity(), "归档完成");
@@ -130,10 +132,8 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 			ToastUtils.showLongToast(getActivity(), "正在备份数据...");
 			break;
 			
-		case R.id.menu_left_settings_btn:
-			// TODO: 设置的页面
-			break;
 		case R.id.menu_left_about_btn:
+			AboutActivity.navigateTo(getActivity());
 			break;
 
 		default:

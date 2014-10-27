@@ -19,11 +19,6 @@ import cn.getdone.ui.history.adapter.HistoryTaskListAdapter;
 
 public class HistoryTaskActivity extends BaseActivity implements OnClickListener {
 
-	public static void navigateTo(Context ctx) {
-		Intent intent = new Intent(ctx, HistoryTaskActivity.class);
-		ctx.startActivity(intent);
-	}
-	
 	private Button mNavLeftBtn;
 	private TextView mNavTitleTv;
 	private Button mNavRightBtn;
@@ -31,6 +26,10 @@ public class HistoryTaskActivity extends BaseActivity implements OnClickListener
 	private ListView mTaskLv;
 	private HistoryTaskListAdapter mHistoryTaskListAdapter;
 	
+	public static void navigateTo(Context ctx) {
+		Intent intent = new Intent(ctx, HistoryTaskActivity.class);
+		ctx.startActivity(intent);
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,7 @@ public class HistoryTaskActivity extends BaseActivity implements OnClickListener
 	}
 	
 	private void initWidget() {
-		mNavTitleTv.setText("任务历史");
+		mNavTitleTv.setText("归档历史");
 		mNavRightBtn.setVisibility(View.INVISIBLE);
 		
 		new LoadHistoryTask().execute();

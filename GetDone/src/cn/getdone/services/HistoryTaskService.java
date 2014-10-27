@@ -8,6 +8,7 @@ import cn.getdone.dao.DBHelper;
 import cn.getdone.dao.DaoSession;
 import cn.getdone.dao.HistoryTask;
 import cn.getdone.dao.HistoryTaskDao;
+import cn.getdone.dao.HistoryTaskDao.Properties;
 
 public class HistoryTaskService {
 
@@ -33,6 +34,6 @@ public class HistoryTaskService {
 	}
 	
 	public List<HistoryTask> listAllHistoryTask() {
-		return historyTaskDao.queryBuilder().list();
+		return historyTaskDao.queryBuilder().orderDesc(Properties.ExcuteTime).list();
 	}
 }
