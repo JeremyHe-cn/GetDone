@@ -13,7 +13,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="Jeremy"
-        android:textSize="32sp" />
+        android:textSize="32sp" 
+        android:textColor="@color/blue_emphsize"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,7 +22,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:text="花点时间"
-        android:textColor="@color/text_sub"
+        android:textColor="@color/blue_main"
         android:textSize="30sp" />
     
     <TextView
@@ -30,7 +31,7 @@
         android:layout_marginLeft="8dp"
         android:text="安排你的事情吧"
         android:textSize="30sp" 
-        android:textColor="@color/text_sub"/>
+        android:textColor="@color/blue_light"/>
     
     <RelativeLayout 
         android:layout_width="match_parent"

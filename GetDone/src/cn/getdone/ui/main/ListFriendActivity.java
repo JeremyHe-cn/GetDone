@@ -54,14 +54,18 @@ public class ListFriendActivity extends NavBaseActivty implements OnItemClickLis
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_friend_list);
+		
+		findWidget();
+		initWidget();
+		setListener();
 		
 		final long taskId = getIntent().getLongExtra(EXTRA_TASK_ID, -1);
 		if (taskId != -1) {
 			mTask = TaskService.getInstance().queryTaskById(taskId);
 		}
 
-		super.onCreate(savedInstanceState);
 	}
 	
 	@Override

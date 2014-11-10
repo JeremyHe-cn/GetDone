@@ -62,7 +62,12 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_settings);
+		
+		findWidget();
+		initWidget();
+		setListener();
 		
 		mShowAnim = new ScaleAnimation(1f, 1f, 0, 1f);
 		mShowAnim.setDuration(500);
@@ -75,7 +80,6 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 		mArrowUp = mContext.getResources().getDrawable(R.drawable.arrow_up_gray);
 		mArrowDown = mContext.getResources().getDrawable(R.drawable.arrow_down_gray);
 		
-		super.onCreate(savedInstanceState);
 	}
 
 	@Override

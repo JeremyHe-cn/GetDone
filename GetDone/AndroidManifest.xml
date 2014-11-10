@@ -195,6 +195,9 @@
             android:name="JPUSH_APPKEY"
             android:value="df9192d420e4ad66d5f8950c" />
         <!-- ############################# 极光推送结束 ########################### -->
+        
+        <meta-data android:value="5460a854fd98c54d2400376a" android:name="UMENG_APPKEY"></meta-data>
+		<meta-data android:value="J-Cn" android:name="UMENG_CHANNEL"/>
 
     </application>
 

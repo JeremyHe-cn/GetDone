@@ -12,9 +12,6 @@ public abstract class NavBaseActivty extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		findWidget();
-		initWidget();
-		setListener();
 	}
 	
 	/**

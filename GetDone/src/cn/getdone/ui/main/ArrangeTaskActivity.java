@@ -8,8 +8,9 @@ import com.dateSlider.ScrollLayout;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -56,7 +57,12 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 	
 	private TaskService mTaskService;
 	
-	private MediaPlayer mPlayer;
+	private SoundPool mSoundPool;
+	private int mVolume;
+	private int mArrangeSoundId;
+	private int mClickSoundId;
+	private int mEndSoundId;
+	
 	
 	public static Intent getStartIntent(Context c){
 		Intent intent = new Intent(c,ArrangeTaskActivity.class);
@@ -72,27 +78,10 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_arrange);
-		mTaskService = TaskService.getInstance();
 		
 		findWidget();
 		setListener();
 		initWidget();
-		
-		
-		mPlayer = MediaPlayer.create(mContext, R.raw.arrange);
-		mPlayer.start();
-		mPlayer.setOnCompletionListener(new OnCompletionListener() {
-			@Override
-			public void onCompletion(MediaPlayer mp) {
-				if (taskList.isEmpty()) {
-					// 启动音乐播放结束后检查到没有任务需要安排，直接结束
-					finishedArrange();
-				} else {
-					mPlayer.release();
-					mPlayer = MediaPlayer.create(mContext, R.raw.ok);
-				}
-			}
-		});
 	}
 	
 	private void findWidget(){
@@ -122,9 +111,6 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 	private void initWidget(){
 		mUserNameTv.setText(SettingUtils.getUserName());
 		
-		taskList = mTaskService.listTodayUnFinishedTasks();
-		mTaskScreenView.setTaskList(taskList);
-		
 		mMinuteSl.setMinuteInterval(mMinuteInterval);
 		final Task task = mTaskScreenView.getFirstTask();
 		if (task != null && task.getStatus() == Const.TASK.STATUS_ARRANGED) {
@@ -132,6 +118,8 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 			mHourSl.setTime(time);
 			mMinuteSl.setTime(time);
 		}
+		
+		new InitTask().execute();
 	}
 
 	@Override
@@ -151,7 +139,7 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 	}
 	
 	private void onClickArrangeBtn(final int btnId){
-		mPlayer.start();
+		mSoundPool.play(mClickSoundId, mVolume, mVolume, 1, 0, 1f);
 		// 移除最前的一个任务
 		Task task = mTaskScreenView.popTask();
 		if (task == null) {
@@ -242,9 +230,7 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 		});
 		
 		// 声音提示
-		mPlayer.release();
-		mPlayer = MediaPlayer.create(mContext, R.raw.end);
-		mPlayer.start();
+		mSoundPool.play(mEndSoundId, mVolume, mVolume, 1, 0, 1f);
 		
 		// 动画
 		mFinishedTv.startAnimation(anim);
@@ -277,8 +263,37 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mPlayer.stop();
-		mPlayer.release();
+		if (mSoundPool != null) {
+			mSoundPool.release();
+		}
 	}
 	
+	private class InitTask extends AsyncTask<Void, Void, Void> {
+		@Override
+		protected Void doInBackground(Void... params) {
+			mTaskService = TaskService.getInstance();
+			taskList = mTaskService.listTodayUnFinishedTasks();
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			if (taskList != null && !taskList.isEmpty()) {
+				mTaskScreenView.setTaskList(taskList);
+				
+				// 加载声音资源
+				mSoundPool = new SoundPool(2, AudioManager.STREAM_RING, 0);
+				mArrangeSoundId = mSoundPool.load(mContext, R.raw.arrange, 1);
+				mClickSoundId = mSoundPool.load(mContext, R.raw.ok, 1);
+				mEndSoundId = mSoundPool.load(mContext, R.raw.end, 1);
+				mVolume = SystemUtils.getCurrentRingVolume(mContext);
+				
+				// 播放启动音乐
+				mSoundPool.play(mArrangeSoundId, mVolume, mVolume, 1, 0, 1f);
+			} else {
+				finish();
+			}
+		}
+	}
 }
