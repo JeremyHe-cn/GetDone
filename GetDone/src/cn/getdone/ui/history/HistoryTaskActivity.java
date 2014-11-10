@@ -8,20 +8,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import cn.getdone.R;
-import cn.getdone.common.ui.BaseActivity;
+import cn.getdone.common.ui.NavBaseActivty;
 import cn.getdone.dao.HistoryTask;
 import cn.getdone.services.HistoryTaskService;
 import cn.getdone.ui.history.adapter.HistoryTaskListAdapter;
 
-public class HistoryTaskActivity extends BaseActivity implements OnClickListener {
-
-	private Button mNavLeftBtn;
-	private TextView mNavTitleTv;
-	private Button mNavRightBtn;
+public class HistoryTaskActivity extends NavBaseActivty implements OnClickListener {
 
 	private ListView mTaskLv;
 	private HistoryTaskListAdapter mHistoryTaskListAdapter;
@@ -41,31 +35,29 @@ public class HistoryTaskActivity extends BaseActivity implements OnClickListener
 		setListener();
 	}
 	
-	
-	private void findWidget() {
-		mNavLeftBtn = (Button)findViewById(R.id.nav_left_btn);
-		mNavTitleTv = (TextView)findViewById(R.id.nav_title_tv);
-		mNavRightBtn = (Button)findViewById(R.id.nav_right_btn);
-		
+	@Override
+	protected void findWidget() {
+		super.findWidget();
 		mTaskLv = (ListView)findViewById(R.id.history_task_lv);
 	}
 	
-	private void initWidget() {
-		mNavTitleTv.setText("归档历史");
+	@Override
+	protected void initWidget() {
+		mNavTitleBtn.setText("归档历史");
 		mNavRightBtn.setVisibility(View.INVISIBLE);
 		
 		new LoadHistoryTask().execute();
 	}
 	
-	private void setListener() {
-		mNavLeftBtn.setOnClickListener(this);
+	protected void setListener() {
+		mNavTitleBtn.setOnClickListener(this);
 	}
 
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.nav_left_btn:
+		case R.id.nav_title_btn:
 			finish();
 			break;
 

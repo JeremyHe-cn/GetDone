@@ -73,7 +73,7 @@ public class ListFriendActivity extends NavBaseActivty implements OnItemClickLis
 	
 	@Override
 	protected void initWidget(){
-		mNavTitleTv.setText("好友列表");
+		mNavTitleBtn.setText("好友列表");
 		mNavRightBtn.setVisibility(View.INVISIBLE);
 		// TODO：放置到task中执行
 		List<Friend> friendList = FriendService.getInstance().listAllFriends();
@@ -83,7 +83,7 @@ public class ListFriendActivity extends NavBaseActivty implements OnItemClickLis
 	
 	@Override
 	protected void setListener(){
-		mNavLeftBtn.setOnClickListener(this);
+		mNavTitleBtn.setOnClickListener(this);
 		
 		mFriendLv.setOnItemClickListener(this);
 		mAddFriendBtn.setOnClickListener(this);
@@ -151,7 +151,7 @@ public class ListFriendActivity extends NavBaseActivty implements OnItemClickLis
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.nav_left_btn:
+		case R.id.nav_title_btn:
 			finish();
 			break;
 		case R.id.friend_add_btn:

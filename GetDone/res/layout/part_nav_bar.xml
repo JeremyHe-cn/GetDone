@@ -1,48 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_nav_bar"
     android:background="@color/getdone_main"
-    android:orientation="horizontal" >
+    android:gravity="center_vertical" >
     
     <Button 
-        android:id="@+id/nav_left_btn"
+        android:id="@+id/nav_title_btn"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:minWidth="48dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:gravity="left|center_vertical"
+        android:layout_alignParentLeft="true"
         android:background="@android:color/transparent"
         android:drawableLeft="@drawable/arrow_left_white"
         android:drawablePadding="4dp"
-        android:text="返回"
-        android:textSize="16sp"
-        android:textColor="@android:color/white"
-        />
-    
-    <TextView 
-        android:id="@+id/nav_title_tv"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
         android:text="标题"
         android:textSize="18sp"
         android:textColor="@android:color/white"
         />
-
+    
     <Button 
         android:id="@+id/nav_right_btn"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
         android:minWidth="48dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:gravity="right|center_vertical"
         android:background="@android:color/transparent"
         android:text="右边"
         android:textSize="16sp"
         android:textColor="@android:color/white"
         />
-</LinearLayout>
+</RelativeLayout>

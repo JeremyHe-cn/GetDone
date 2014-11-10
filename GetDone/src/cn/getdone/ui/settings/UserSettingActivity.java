@@ -93,14 +93,14 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 	
 	@Override
 	protected void initWidget() {
-		mNavTitleTv.setText("个人设置");
+		mNavTitleBtn.setText("个人设置");
 		mNavRightBtn.setVisibility(View.INVISIBLE);
 		mUserNameEt.setText(SettingUtils.getUserName());
 	}
 
 	@Override
 	protected void setListener() {
-		mNavLeftBtn.setOnClickListener(this);
+		mNavTitleBtn.setOnClickListener(this);
 		
 		mQrBtn.setOnClickListener(this);
 		mSaveBtn.setOnClickListener(this);
@@ -109,7 +109,7 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.nav_left_btn:
+		case R.id.nav_title_btn:
 			finish();
 			break;
 		case R.id.user_qr_btn:

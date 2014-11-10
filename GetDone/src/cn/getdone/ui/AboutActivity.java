@@ -6,14 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
 import cn.getdone.R;
 import cn.getdone.common.ui.BaseActivity;
 
 public class AboutActivity extends BaseActivity implements OnClickListener {
 	
-	private Button mNavLeftBtn;
-	private TextView mNavTitleTv;
+	private Button mNavTitleBtn;
 	private Button mNavRightBtn;
 	
 	public static void navigateTo(Context ctx) {
@@ -33,24 +31,23 @@ public class AboutActivity extends BaseActivity implements OnClickListener {
 	
 	
 	private void findWidget() {
-		mNavLeftBtn = (Button)findViewById(R.id.nav_left_btn);
-		mNavTitleTv = (TextView)findViewById(R.id.nav_title_tv);
+		mNavTitleBtn = (Button)findViewById(R.id.nav_title_btn);
 		mNavRightBtn = (Button)findViewById(R.id.nav_right_btn);
 	}
 	
 	private void initWidget() {
-		mNavTitleTv.setText("关于GetDone");
+		mNavTitleBtn.setText("关于GetDone");
 		mNavRightBtn.setVisibility(View.INVISIBLE);
 	}
 	
 	private void setListener() {
-		mNavLeftBtn.setOnClickListener(this);
+		mNavTitleBtn.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.nav_left_btn:
+		case R.id.nav_title_btn:
 			finish();
 			break;
 
