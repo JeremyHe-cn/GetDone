@@ -20,12 +20,11 @@ public class GetDoneApplication extends Application {
 		applicationContext = getApplicationContext();
 		
 		// 极光推送
-		JPushInterface.setDebugMode(true);
+		JPushInterface.setDebugMode(false);
 		JPushInterface.init(this);
 		
 		// 友盟
-		MobclickAgent.setDebugMode(true);
-//		String s = getDeviceInfo(applicationContext);
+		MobclickAgent.setDebugMode(false);
 		
 		// TODO: 这里应该开一个service来完成以下事情 
 		// 设置定时任务

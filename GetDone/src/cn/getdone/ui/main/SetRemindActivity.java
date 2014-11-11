@@ -70,13 +70,11 @@ public class SetRemindActivity extends BaseActivity implements OnDateChangeListe
 	
 	@Override
 	protected void onResume() {
-		JPushInterface.onResume(mContext);
 		super.onResume();
 	}
 	
 	@Override
 	protected void onPause() {
-		JPushInterface.onPause(mContext);
 		super.onPause();
 	}
 

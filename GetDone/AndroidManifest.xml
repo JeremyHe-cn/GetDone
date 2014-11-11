@@ -92,6 +92,13 @@
 		<!-- 关于界面 -->
 		<activity android:name="cn.getdone.ui.AboutActivity"></activity>
 		
+		<!-- 友盟反馈界面 -->
+        <activity
+            android:name="com.umeng.fb.ConversationActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="com.umeng.fb.ContactActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
 		
 		<!-- ############################# service ########################### -->
 

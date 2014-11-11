@@ -4,6 +4,7 @@ package cn.getdone.ui.main;
 import cn.jpush.android.api.JPushInterface;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.umeng.fb.FeedbackAgent;
 
 import cn.getdone.R;
 import cn.getdone.common.Const;
@@ -44,6 +45,10 @@ public class MainActivity extends BaseFragmentActivity implements Observer {
 		
 		// 初始内容
 		switchContent(KEY_FRAGMENT_MAIN);
+		
+		// 友盟反馈
+		FeedbackAgent fb = new FeedbackAgent(mContext);
+		fb.sync();
 		
 		// TODO: 会不会没结束时也会弹出窗口
 		NotificationCenter.register(Const.EVENT.PUSH_JPUSH_RECEIVE, this);

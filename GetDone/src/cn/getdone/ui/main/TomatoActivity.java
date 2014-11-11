@@ -128,15 +128,11 @@ public class TomatoActivity extends BaseActivity implements OnClickListener {
 		if (mTimeCtv != null && mLastStartTime != 0) {
 			mTimeCtv.continueTimer(mLastStartTime);
 		}
-		
-		JPushInterface.onResume(mContext);
 	}
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
 		mLastStartTime = mTimeCtv.getStartTime();
-		
-		JPushInterface.onPause(mContext);
 	}
 }

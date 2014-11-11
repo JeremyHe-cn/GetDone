@@ -133,13 +133,13 @@
                     >
                     
 				    <Button
-	                    android:id="@+id/menu_left_friend_btn"
+	                    android:id="@+id/menu_left_feedback_btn"
 	                    style="@style/flat_blue_btn"
 	                    android:layout_width="64dp"
 	                    android:layout_height="64dp"
 	                    android:layout_marginRight="8dp"
 	                    android:background="@drawable/btn_circle_white"
-	                    android:text="好友" />
+	                    android:text="建议" />
                     
 				    <Button
 	                    android:id="@+id/menu_left_user_settings_btn"
@@ -168,6 +168,16 @@
                     android:layout_marginBottom="16dp"
                     android:orientation="horizontal"
                     >
+	                
+				    <Button
+	                    android:id="@+id/menu_left_friend_btn"
+	                    style="@style/flat_blue_btn"
+	                    android:layout_width="64dp"
+	                    android:layout_height="64dp"
+	                    android:layout_marginRight="8dp"
+	                    android:background="@drawable/btn_circle_white"
+	                    android:text="好友" 
+	                    android:visibility="gone"/>
                     
 	                <Button
 	                    android:id="@+id/menu_left_todo_view_btn"

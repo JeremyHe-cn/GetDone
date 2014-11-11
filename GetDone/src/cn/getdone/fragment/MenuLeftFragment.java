@@ -1,5 +1,7 @@
 package cn.getdone.fragment;
 
+import com.umeng.fb.FeedbackAgent;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,6 +37,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 	private Button mTodoViewBtn;
 	private Button mGtdViewBtn;
 	private Button mHistoryBtn;
+	private Button mFeedbackBtn;
 	private Button mUserSettingsBtn;
 	private Button mArrangeBtn;
 	private Button mFriendBtn;
@@ -65,6 +68,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		mTodoViewBtn = (Button)v.findViewById(R.id.menu_left_todo_view_btn);
 		mGtdViewBtn = (Button)v.findViewById(R.id.menu_left_gtd_view_btn);
 		mHistoryBtn = (Button)v.findViewById(R.id.menu_left_history_btn);
+		mFeedbackBtn = (Button)v.findViewById(R.id.menu_left_feedback_btn);
 		mUserSettingsBtn = (Button)v.findViewById(R.id.menu_left_user_settings_btn);
 		mArrangeBtn = (Button)v.findViewById(R.id.menu_left_arrange_btn);
 		mFriendBtn = (Button)v.findViewById(R.id.menu_left_friend_btn);
@@ -83,6 +87,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		mTodoViewBtn.setOnClickListener(this);
 		mGtdViewBtn.setOnClickListener(this);
 		mHistoryBtn.setOnClickListener(this);
+		mFeedbackBtn.setOnClickListener(this);
 		mUserSettingsBtn.setOnClickListener(this);
 		mArrangeBtn.setOnClickListener(this);
 		mFriendBtn.setOnClickListener(this);
@@ -106,6 +111,11 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 			
 		case R.id.menu_left_history_btn:
 			HistoryTaskActivity.navigateTo(getActivity());
+			break;
+			
+		case R.id.menu_left_feedback_btn:
+			FeedbackAgent fb = new FeedbackAgent(getActivity());
+			fb.startFeedbackActivity();
 			break;
 			
 		case R.id.menu_left_user_settings_btn:
