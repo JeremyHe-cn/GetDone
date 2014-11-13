@@ -10,4 +10,7 @@
     <string name="day_after_tomorrow">后天</string>
     <string name="collection_box">任务收集</string>
 
+    <!-- 关于界面 -->
+    <string name="about_title">简约 | 高效</string>
+    <string name="about_sub_title">一个简单又实用的GTD工具</string>
 </resources>

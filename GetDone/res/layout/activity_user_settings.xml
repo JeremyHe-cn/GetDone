@@ -7,21 +7,35 @@
     
     <include layout="@layout/part_nav_bar"/>
     
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/getdone_main"
         android:layout_marginBottom="16dp"
-        android:gravity="center" >
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
 
         <me.jeremyhe.lib.widget.RoundedImageView
-            android:id="@+id/menu_left_head_riv"
+            android:id="@+id/setting_head_riv"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:layout_marginBottom="32dp"
             android:layout_marginTop="32dp"
             android:src="@drawable/head" />
-    </RelativeLayout>
+
+        <EditText
+            android:id="@+id/user_name_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/widget_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="UserName"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_title"
+            android:textStyle="bold"
+             />
+    </LinearLayout>
     
     <ScrollView
         android:layout_width="match_parent"
@@ -34,20 +48,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@color/gray_light" >
-
-            <View style="@style/horizontal_line" />
-
-            <EditText
-                android:id="@+id/user_name_et"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@android:color/white"
-                android:hint="你的名字~"
-                android:paddingLeft="16dp" />
-
-            <View
-                style="@style/horizontal_line"
-                android:layout_marginBottom="16dp" />
 
             <View style="@style/horizontal_line" />
 
@@ -95,7 +95,8 @@
                 android:gravity="center"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:text="保存" />
+                android:text="保 存" 
+                android:textColor="#ffcc0000"/>
 
         </LinearLayout>
     </ScrollView>

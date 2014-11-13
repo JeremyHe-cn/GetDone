@@ -99,7 +99,9 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 	protected void initWidget() {
 		mNavTitleBtn.setText("个人设置");
 		mNavRightBtn.setVisibility(View.INVISIBLE);
-		mUserNameEt.setText(SettingUtils.getUserName());
+		final String userName = SettingUtils.getUserName(); 
+		mUserNameEt.setText(userName);
+		mUserNameEt.setSelection(userName.length());
 	}
 
 	@Override
