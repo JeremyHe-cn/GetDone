@@ -113,15 +113,15 @@
     
     <!-- 阴影 -->
     <style name="shadow_vertical">
-        <item name="android:background">@color/black_shadow</item>
-        <item name="android:layout_width">2dp</item>
+        <item name="android:background">@drawable/shadow_bg</item>
+        <item name="android:layout_width">4dp</item>
         <item name="android:layout_height">match_parent</item>
     </style>
     
     <style name="shadow_horizontal">
-        <item name="android:background">@color/black_shadow</item>
+        <item name="android:background">@drawable/shadow_bg</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">2dp</item>
+        <item name="android:layout_height">4dp</item>
     </style>
     
     <!-- 按钮 -->

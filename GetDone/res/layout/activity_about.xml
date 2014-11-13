@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
+    android:background="@color/gray_light"
     android:orientation="vertical" >
     
     <include layout="@layout/part_nav_bar"/>
@@ -31,6 +31,8 @@
         android:textSize="@dimen/font_body"
         android:textStyle="bold"
         />
+    
+    <View style="@style/shadow_horizontal"/>
     
     <ScrollView 
         android:layout_width="match_parent"

@@ -5,6 +5,8 @@
     android:orientation="vertical" >
     
     <include layout="@layout/part_nav_bar"/>
+    
+    <View style="@style/shadow_horizontal"/>
    
     <ListView 
         android:id="@+id/history_task_lv"
