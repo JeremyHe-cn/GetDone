@@ -1,10 +1,18 @@
 package cn.getdone;
 
 
+import java.util.Date;
+
+import me.jeremyhe.lib.common.DateUtils;
+
 import com.umeng.analytics.MobclickAgent;
 
 import cn.jpush.android.api.JPushInterface;
+import cn.getdone.common.Const;
+import cn.getdone.common.SettingUtils;
+import cn.getdone.dao.Task;
 import cn.getdone.helper.AlarmHelper;
+import cn.getdone.services.TaskService;
 import cn.getdone.ui.main.SetTaskAlarmService;
 import android.app.Application;
 import android.content.Context;
@@ -32,6 +40,56 @@ public class GetDoneApplication extends Application {
 		// 设置GetDone时刻
 		AlarmHelper.SetAlarmForGetDoneTime(applicationContext);
 		
+		// 添加默认任务
+		addDefaultTask();
+	}
+	
+	/**
+	 * 添加默认任务
+	 */
+	private void addDefaultTask() {
+		if (SettingUtils.isNewUser()) {
+			SettingUtils.setNewUser(false);
+			
+			TaskService taskService = TaskService.getInstance();
+			
+			Task task = new Task();
+			task.setTitle("屏幕下方可添加新任务");
+			task.setPriority(Const.TASK.PRIORITY_IMPORTANT_URGENT);
+			Date excuteTime = DateUtils.addMinute(new Date(), 5);
+			task.setExcuteTime(excuteTime);
+			task.setCreateTime(new Date());
+			task.setStatus(Const.TASK.STATUS_ADD);
+			taskService.addTask(task);
+			
+			task = new Task();
+			task.setTitle("点击任务可进行修改");
+			task.setPriority(Const.TASK.PRIORITY_IMPORTANT);
+			excuteTime = DateUtils.addMinute(excuteTime, 5);
+			task.setExcuteTime(excuteTime);
+			task.setCreateTime(new Date());
+			task.setStatus(Const.TASK.STATUS_ADD);
+			taskService.addTask(task);
+			
+			
+			task = new Task();
+			task.setTitle("点击右侧可设置为完成");
+			task.setPriority(Const.TASK.PRIORITY_URGENT);
+			excuteTime = DateUtils.addMinute(excuteTime, 5);
+			task.setExcuteTime(excuteTime);
+			task.setCreateTime(new Date());
+			task.setStatus(Const.TASK.STATUS_ADD);
+			taskService.addTask(task);
+			
+			task = new Task();
+			task.setTitle("左滑可进行反馈、归档、安排及设置");
+			task.setPriority(Const.TASK.PRIORITY_NOT_IMPORTANT_URGENT);
+			excuteTime = DateUtils.addMinute(excuteTime, 5);
+			task.setExcuteTime(excuteTime);
+			task.setCreateTime(new Date());
+			task.setStatus(Const.TASK.STATUS_ADD);
+			taskService.addTask(task);
+		}
 	}
 	
 	public static Context getContext(){

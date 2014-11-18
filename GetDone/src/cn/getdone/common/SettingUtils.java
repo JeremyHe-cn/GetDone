@@ -12,29 +12,34 @@ public class SettingUtils {
 	
 	private static String SETTING_NAME = "settings";
 	
-	/*
-	 * 百度推送相关
-	 */
+	// 百度推送相关
 	private static final String JPUSH_FLAG = "JPushFlag";
 	public static final boolean JPUSH_BINDED = true;
 	public static final boolean JPUSH_UNBINDED = false;
 	
 	private static final String JPUSH_USER_ID = "JPushUserId";
 	
-	/*
-	 * 个人的一些设置
-	 */
+	// 个人的一些设置
 	private static final String USER_NAME = "userName";
 	
-	/*
-	 * 系统的一些设置
-	 */
+	// 系统的一些设置
 	private static final String LAST_ARRANGE_TIME = "lastArrangeTime";
+	
+	// 是否第一次打开
+	private static final String IS_NEW_USER = "isNewUser";
 	
 	
 	private static SharedPreferences getSettings(){
 		Context c = GetDoneApplication.getContext();
 		return c.getSharedPreferences(SETTING_NAME, Context.MODE_PRIVATE);
+	}
+	
+	public static boolean isNewUser() {
+		return getBoolean(IS_NEW_USER, true);
+	}
+	
+	public static void setNewUser(boolean value) {
+		putBoolean(IS_NEW_USER, value);
 	}
 	
 	public static boolean isTodayHasArranged() {
@@ -70,15 +75,11 @@ public class SettingUtils {
 	
 	
 	public static void setJPushFlag(boolean binded){
-		SharedPreferences settings = getSettings();
-		settings.edit()
-		.putBoolean(JPUSH_FLAG, binded)
-		.commit();
+		putBoolean(JPUSH_FLAG, binded);
 	}
 	
 	public static boolean getJPushFlag(){
-		SharedPreferences settings = getSettings();
-		return settings.getBoolean(JPUSH_FLAG, JPUSH_UNBINDED);
+		return getBoolean(JPUSH_FLAG, JPUSH_UNBINDED);
 	}
 	
 	public static void setJPushUserId(String userId){
@@ -91,6 +92,22 @@ public class SettingUtils {
 	public static String getJPushUserId(){
 		SharedPreferences settings = getSettings();
 		return settings.getString(JPUSH_USER_ID, "");
+	}
+	
+	public static void putBoolean(String key, boolean value) {
+		SharedPreferences settings = getSettings();
+		settings.edit()
+		.putBoolean(key, value)
+		.commit();
+	}
+	
+	public static boolean getBoolean(String key) {
+		return getBoolean(key, false);
+	}
+	
+	public static boolean getBoolean(String key, boolean defValue) {
+		SharedPreferences settings = getSettings();
+		return settings.getBoolean(key, defValue);
 	}
 	
 }
