@@ -138,7 +138,7 @@
 	                    android:layout_height="64dp"
 	                    android:layout_marginRight="8dp"
 	                    android:background="@drawable/btn_circle_white"
-	                    android:text="建议" />
+	                    android:text="吐槽" />
                     
 				    <Button
 	                    android:id="@+id/menu_left_user_settings_btn"

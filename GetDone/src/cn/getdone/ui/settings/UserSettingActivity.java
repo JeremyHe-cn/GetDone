@@ -4,6 +4,7 @@ import me.jeremyhe.lib.androidutils.SystemUtils;
 import me.jeremyhe.lib.androidutils.ToastUtils;
 import me.jeremyhe.lib.common.StringUtils;
 
+import com.dateSlider.ScrollLayout;
 import com.google.zxing.WriterException;
 import com.zxing.encoding.EncodingHandler;
 
@@ -23,6 +24,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import cn.getdone.R;
 import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
@@ -30,10 +33,16 @@ import cn.getdone.common.notify.NotificationCenter;
 import cn.getdone.common.ui.NavBaseActivty;
 import cn.getdone.dao.Friend;
 import cn.getdone.services.FriendService;
+import cn.getdone.widget.TimePickerDialog;
+import cn.getdone.widget.TimePickerDialog.OnTimeSetListener;
 
 public class UserSettingActivity extends NavBaseActivty implements OnClickListener {
 	
 	private EditText mUserNameEt;
+	
+	// GetDone时刻
+	private LinearLayout mGetDoneLy;
+	private TextView mGetDoneValueTv;
 	
 	/*
 	 * 二维码
@@ -88,6 +97,9 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 		
 		mUserNameEt = (EditText) findViewById(R.id.user_name_et);
 		
+		mGetDoneLy = (LinearLayout)findViewById(R.id.setting_getdone_btn);
+		mGetDoneValueTv = (TextView)findViewById(R.id.setting_getdone_value_tv);
+		
 		mQrBtn = (Button) findViewById(R.id.user_qr_btn);
 		mQrLy = (LinearLayout) findViewById(R.id.user_qr_ly);
 		mQrIv = (ImageView) findViewById(R.id.user_qr_iv);
@@ -102,11 +114,16 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 		final String userName = SettingUtils.getUserName(); 
 		mUserNameEt.setText(userName);
 		mUserNameEt.setSelection(userName.length());
+		
+		String getDoneTime = SettingUtils.getGetDoneTime();
+		mGetDoneValueTv.setText(getDoneTime);
 	}
 
 	@Override
 	protected void setListener() {
 		mNavTitleBtn.setOnClickListener(this);
+		
+		mGetDoneLy.setOnClickListener(this);
 		
 		mQrBtn.setOnClickListener(this);
 		mSaveBtn.setOnClickListener(this);
@@ -117,6 +134,21 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 		switch (v.getId()) {
 		case R.id.nav_title_btn:
 			finish();
+			break;
+			
+		case R.id.setting_getdone_btn:
+			String[] getDoneTime = mGetDoneValueTv.getText().toString().split(":");
+			int remindHour = Integer.parseInt(getDoneTime[0]);
+			int remindMinute = Integer.parseInt(getDoneTime[1]);
+			
+			TimePickerDialog dialog = new TimePickerDialog(mContext, new OnTimeSetListener() {
+
+				@Override
+				public void onTimeSet(ScrollLayout hourSl, ScrollLayout minuteSl, int hourOfDay, int minute) {
+					mGetDoneValueTv.setText(String.format("%02d:%02d", hourOfDay, minute));
+				}
+			}, remindHour, remindMinute, true);
+			dialog.show();
 			break;
 		case R.id.user_qr_btn:
 			// 显示和隐藏可以加入Scale动画
@@ -202,6 +234,9 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 			ToastUtils.showShortToast(mContext, "保存成功");
 			NotificationCenter.notifyObservers(Const.EVENT.USER_SETTINGS_NAME_CHANGE);
 		}
+		
+		final String getDoneTime = mGetDoneValueTv.getText().toString();
+		SettingUtils.setGetDoneTime(getDoneTime);
 	}
 	
 }

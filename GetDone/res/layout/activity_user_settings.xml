@@ -32,7 +32,6 @@
             android:text="UserName"
             android:textColor="@android:color/white"
             android:textSize="@dimen/font_title"
-            android:textStyle="bold"
              />
     </LinearLayout>
     
@@ -53,7 +52,48 @@
             android:background="@color/gray_light" >
 
             <View style="@style/horizontal_line" />
+            
+            <LinearLayout 
+                android:id="@+id/setting_getdone_btn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/btn_selecter"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/activity_vertical_margin"
+                android:paddingRight="@dimen/activity_vertical_margin"
+                android:gravity="center_vertical"
+                >
+                
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="GetDone时刻" 
+                    android:textSize="@dimen/font_body"
+                    android:textColor="@color/text_main"/>
+                
+                <TextView
+                    android:id="@+id/setting_getdone_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="9:00" 
+                    android:textColor="@color/text_sub"/>
+                
+                <ImageView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/widget_margin"
+                    android:src="@drawable/arrow_right_gray"
+                    />
+                
+            </LinearLayout>
+            
+            <View style="@style/horizontal_line" 
+                android:layout_marginBottom="16dp"/>
 
+            <View style="@style/horizontal_line" />
             <Button
                 android:id="@+id/user_qr_btn"
                 android:layout_width="match_parent"
@@ -64,7 +104,7 @@
                 android:drawableRight="@drawable/arrow_down_gray"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="8dp"
-                android:paddingRight="8dp"
+                android:paddingRight="@dimen/activity_vertical_margin"
                 android:text="个人专属二维码" />
             
             <LinearLayout 
@@ -87,8 +127,10 @@
             <View style="@style/horizontal_line" 
                 android:layout_marginBottom="16dp"/>
             
+            
             <View style="@style/horizontal_line"
                 android:layout_gravity="bottom" />
+
             <Button
                 android:id="@+id/user_save_btn"
                 android:layout_width="match_parent"

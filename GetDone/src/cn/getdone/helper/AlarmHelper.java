@@ -13,10 +13,13 @@ public class AlarmHelper {
 	
 	public static void SetAlarmForGetDoneTime(Context ctx){
 		
-		// TODO: 这里先固定为每天早上9点。后续开放给用户进行设置
+		String[] getDoneTime = SettingUtils.getGetDoneTime().split(":");
+		int remindHour = Integer.parseInt(getDoneTime[0]);
+		int remindMinute = Integer.parseInt(getDoneTime[1]);
+		
 		Calendar getDoneCal = Calendar.getInstance();
-		getDoneCal.set(Calendar.HOUR_OF_DAY, 9);
-		getDoneCal.set(Calendar.MINUTE, 0);
+		getDoneCal.set(Calendar.HOUR_OF_DAY, remindHour);
+		getDoneCal.set(Calendar.MINUTE, remindMinute);
 		getDoneCal.set(Calendar.SECOND, 0);
 		
 		// 如果今天已经安排过了，或者现在时间已经过了GetDone时刻，则设置明天的
