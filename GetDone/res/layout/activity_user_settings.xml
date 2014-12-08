@@ -36,7 +36,7 @@
     </LinearLayout>
     
     <View 
-        style="@style/shadow_horizontal"
+        style="@style/shadow_horizontal_down"
         android:layout_marginBottom="16dp"/>
     
     <ScrollView

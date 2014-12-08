@@ -32,7 +32,7 @@
         android:textStyle="bold"
         />
     
-    <View style="@style/shadow_horizontal"/>
+    <View style="@style/shadow_horizontal_down"/>
     
     <ScrollView 
         android:layout_width="match_parent"

@@ -35,6 +35,7 @@ public class TimePickerDialog extends Dialog implements View.OnClickListener {
 
     private ScrollLayout mHourSl,mMinuteSl;
     private Button mOkBtn;
+    private Button mCancelBtn;
     private final int mMinuteInterval = 5;
     private final OnTimeSetListener mCallback;
 
@@ -75,12 +76,14 @@ public class TimePickerDialog extends Dialog implements View.OnClickListener {
         mHourSl = (ScrollLayout)findViewById(R.id.widget_hour_sl);
 		mMinuteSl = (ScrollLayout)findViewById(R.id.widget_minute_sl);
 		mOkBtn = (Button)findViewById(R.id.ok_btn);
+		mCancelBtn = (Button)findViewById(R.id.cancel_btn);
 
         // initialize state
 		updateTime(hourOfDay, minute);
         mMinuteSl.setMinuteInterval(mMinuteInterval);
         
         mOkBtn.setOnClickListener(this);
+        mCancelBtn.setOnClickListener(this);
     }
 
     public void updateTime(int hourOfDay, int minute) {
@@ -141,7 +144,15 @@ public class TimePickerDialog extends Dialog implements View.OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		tryNotifyTimeSet();
-		dismiss();
+		switch (v.getId()) {
+		case R.id.ok_btn:
+			tryNotifyTimeSet();
+			dismiss();
+			break;
+
+		default:
+			dismiss();
+			break;
+		}
 	}
 }

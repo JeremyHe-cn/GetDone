@@ -3,9 +3,9 @@
 
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:bottomRightRadius="8dip" />
+            <corners android:bottomLeftRadius="8dip" />
 
-            <solid android:color="@color/getdone_main" />
+            <solid android:color="@color/gray_light" />
 
             <stroke android:width="2dp" android:color="#0000" />
         </shape>
@@ -15,7 +15,7 @@
         <shape android:shape="rectangle">
             <corners android:bottomLeftRadius="8dip" android:bottomRightRadius="8dip" />
 
-            <solid android:color="@color/getdone_main" />
+            <solid android:color="@color/gray_light" />
 
             <stroke android:width="2dp" android:color="#0000" />
         </shape>

@@ -4,12 +4,17 @@ import cn.getdone.R;
 import cn.getdone.common.notify.Observer;
 import cn.getdone.dao.Task;
 import cn.getdone.services.TaskService;
+import cn.getdone.ui.main.ModifyTaskActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class TaskListFragment extends ListFragment implements Observer{
 	protected Context mContext;

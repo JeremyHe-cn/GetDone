@@ -34,14 +34,32 @@
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"/>
     
-    <Button 
-        android:id="@+id/ok_btn"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_title"
-        android:background="@drawable/btn_alert_dialog_ok"
-        android:text="确定"
-        android:textSize="@dimen/font_title"
-        android:textColor="#ffcc0000"
-        />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_title"
+            android:layout_weight="1"
+            android:background="@drawable/btn_alert_dialog_cancel"
+            android:text="取消"
+            android:textColor="@color/gray_79"
+            android:textSize="@dimen/font_title" />
+        
+        <View style="@style/vertical_line"/>
+
+        <Button
+            android:id="@+id/ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_title"
+            android:layout_weight="1"
+            android:background="@drawable/btn_alert_dialog_ok"
+            android:text="确定"
+            android:textColor="#ffcc0000"
+            android:textSize="@dimen/font_title" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -14,6 +14,7 @@ import me.jeremyhe.lib.common.DateUtils;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
@@ -55,7 +56,7 @@ public class TaskListAdapter extends BaseAdapter {
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder)convertView.getTag();
-			convertView.setOnLongClickListener(null);
+			convertView.setOnClickListener(null);
 			holder.taskFinishedCb.setOnCheckedChangeListener(null);
 		}
 		
@@ -90,11 +91,10 @@ public class TaskListAdapter extends BaseAdapter {
 		}
 		
 		// 设置监听器必须每次都重新设置，因为其位置会改变
-		convertView.setOnLongClickListener(new View.OnLongClickListener() {
+		convertView.setOnClickListener(new OnClickListener() {
 			@Override
-			public boolean onLongClick(View v) {
+			public void onClick(View v) {
 				ModifyTaskActivity.navigateTo(mContext, task.getId());
-				return true;
 			}
 		});
 		

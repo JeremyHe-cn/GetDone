@@ -27,9 +27,11 @@ public class ModifyTaskActivity extends BaseActivity implements OnClickListener 
 	public static final String EXTRA_TASK_ID = "taskId";
 	
 	private final int REQUEST_CODE_ARRANGE_TIME = 0;
+	
+	private Button mNavTitleBtn;
+	private Button mNavRightBtn;
 
 	private EditText mTaskTitleEt;
-	private Button mPushBtn;
 	
 	// 时间选择
 	private ScrollLayout mHourSl;
@@ -78,8 +80,10 @@ public class ModifyTaskActivity extends BaseActivity implements OnClickListener 
 	}
 	
 	private void findWidget(){
+		mNavTitleBtn = (Button)findViewById(R.id.nav_title_btn);
+		mNavRightBtn = (Button)findViewById(R.id.nav_right_btn);
+		
 		mTaskTitleEt = (EditText) findViewById(R.id.modify_task_title_et);
-		mPushBtn = (Button)findViewById(R.id.modify_push_btn);
 		
 		// 时间选择
 		mHourSl = (ScrollLayout)findViewById(R.id.widget_hour_sl);
@@ -96,6 +100,9 @@ public class ModifyTaskActivity extends BaseActivity implements OnClickListener 
 	}
 	
 	private void initWidget(){
+		mNavTitleBtn.setText("");
+		mNavRightBtn.setVisibility(View.INVISIBLE);
+		
 		mTaskTitleEt.setText(mTask.getTitle());
 		mTaskTitleEt.setSelection(mTask.getTitle().length());
 		
@@ -121,7 +128,9 @@ public class ModifyTaskActivity extends BaseActivity implements OnClickListener 
 	}
 	
 	private void setListener(){
-		mPushBtn.setOnClickListener(this);
+		mNavTitleBtn.setOnClickListener(this);
+		mNavRightBtn.setOnClickListener(this);
+		
 		mCancelBtn.setOnClickListener(this);
 		mOkBtn.setOnClickListener(this);
 		
@@ -131,6 +140,15 @@ public class ModifyTaskActivity extends BaseActivity implements OnClickListener 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.nav_title_btn:
+			finish();
+			break;
+			
+		case R.id.nav_right_btn:
+			ListFriendActivity.navigateTo(mContext,mTaskId);
+			finish();
+			break;
+			
 		case R.id.modify_cancel_btn:
 			finish();
 			break;
@@ -147,11 +165,6 @@ public class ModifyTaskActivity extends BaseActivity implements OnClickListener 
 			}
 			break;
 			
-		case R.id.modify_push_btn:
-			ListFriendActivity.navigateTo(mContext,mTaskId);
-			finish();
-			break;
-
 		case R.id.modify_other_rb:
 			Date excuteTime = mTask.getExcuteTime();
 			if (DateUtils.isTheSameDay(excuteTime, DateUtils.getEndOfDate())) {

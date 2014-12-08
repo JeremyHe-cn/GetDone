@@ -10,7 +10,6 @@ import com.dateSlider.ScrollLayout;
 
 import cn.getdone.R;
 import cn.getdone.common.ui.BaseActivity;
-import cn.jpush.android.api.JPushInterface;
 import me.jeremyhe.lib.common.DateUtils;
 import android.app.Activity;
 import android.content.Intent;

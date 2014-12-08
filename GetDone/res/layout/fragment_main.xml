@@ -23,7 +23,7 @@
         app:topPadding="13dp"
         />
     
-    <View style="@style/shadow_horizontal"/>
+    <View style="@style/shadow_horizontal_down"/>
 
      <android.support.v4.view.ViewPager
          android:id="@+id/viewPager"

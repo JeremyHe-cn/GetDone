@@ -25,7 +25,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import cn.getdone.R;
 import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
@@ -187,6 +186,7 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 			
 		case R.id.user_save_btn:
 			saveUserSettings();
+			
 			break;
 
 		default:
@@ -233,6 +233,8 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 			SettingUtils.setUserName(name);
 			ToastUtils.showShortToast(mContext, "保存成功");
 			NotificationCenter.notifyObservers(Const.EVENT.USER_SETTINGS_NAME_CHANGE);
+			
+			finish();
 		}
 		
 		final String getDoneTime = mGetDoneValueTv.getText().toString();
