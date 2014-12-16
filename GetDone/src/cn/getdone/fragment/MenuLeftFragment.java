@@ -19,12 +19,9 @@ import cn.getdone.common.notify.Observer;
 import cn.getdone.services.HistoryTaskService;
 import cn.getdone.services.TaskService;
 import cn.getdone.ui.AboutActivity;
-import cn.getdone.ui.DelayActivity;
 import cn.getdone.ui.history.HistoryTaskActivity;
 import cn.getdone.ui.main.ArrangeTaskActivity;
-import cn.getdone.ui.main.ListFriendActivity;
 import cn.getdone.ui.main.MainActivity;
-import cn.getdone.ui.main.TomatoActivity;
 import cn.getdone.ui.settings.BackupDatabaseTask;
 import cn.getdone.ui.settings.UserSettingActivity;
 import me.jeremyhe.lib.androidutils.ToastUtils;
@@ -131,10 +128,6 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		case R.id.menu_left_arrange_btn:
 			ArrangeTaskActivity.navigateTo(getActivity());
 			showContent();
-			break;
-			
-		case R.id.menu_left_friend_btn:
-			ListFriendActivity.navigateTo(getActivity());
 			break;
 			
 		case R.id.menu_left_backup_btn:

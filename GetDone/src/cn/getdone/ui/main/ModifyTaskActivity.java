@@ -144,11 +144,6 @@ public class ModifyTaskActivity extends BaseActivity implements OnClickListener 
 			finish();
 			break;
 			
-		case R.id.nav_right_btn:
-			ListFriendActivity.navigateTo(mContext,mTaskId);
-			finish();
-			break;
-			
 		case R.id.modify_cancel_btn:
 			finish();
 			break;

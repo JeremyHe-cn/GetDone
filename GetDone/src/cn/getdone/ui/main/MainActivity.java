@@ -1,15 +1,10 @@
 package cn.getdone.ui.main;
 
 
-import cn.jpush.android.api.JPushInterface;
-
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.umeng.fb.FeedbackAgent;
 
 import cn.getdone.R;
-import cn.getdone.common.Const;
-import cn.getdone.common.notify.NotificationCenter;
-import cn.getdone.common.notify.Observer;
 import cn.getdone.common.ui.BaseFragmentActivity;
 import cn.getdone.fragment.FourGridFragment;
 import cn.getdone.fragment.MainFragment;
@@ -22,7 +17,7 @@ import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
 
-public class MainActivity extends BaseFragmentActivity implements Observer {
+public class MainActivity extends BaseFragmentActivity {
 	
 	public static final int KEY_FRAGMENT_MAIN = 0;
 	public static final int KEY_FRAGMENT_FOUR_GRID = 1;
@@ -37,9 +32,6 @@ public class MainActivity extends BaseFragmentActivity implements Observer {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		// 检查 是否有推送过来的任务 有则提醒 
-		CheckShareTaskActivity.navigateTo(mContext);
-		
 		// 侧滑菜单 
 		setSlidingMenu();
 		
@@ -50,20 +42,6 @@ public class MainActivity extends BaseFragmentActivity implements Observer {
 		FeedbackAgent fb = new FeedbackAgent(mContext);
 		fb.sync();
 		
-		// TODO: 会不会没结束时也会弹出窗口
-		NotificationCenter.register(Const.EVENT.PUSH_JPUSH_RECEIVE, this);
-	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		JPushInterface.onResume(mContext);
-	}
-	
-	@Override
-	protected void onPause() {
-		super.onPause();
-		JPushInterface.onPause(mContext);
 	}
 	
 	private Fragment getFragment(int key){
@@ -154,16 +132,5 @@ public class MainActivity extends BaseFragmentActivity implements Observer {
 		} else {
 			super.onBackPressed();
 		}
-	}
-	
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		NotificationCenter.unregister(Const.EVENT.PUSH_JPUSH_RECEIVE, this);
-	}
-
-	@Override
-	public void onNotify(int event) {
-		CheckShareTaskActivity.navigateTo(mContext);
 	}
 }

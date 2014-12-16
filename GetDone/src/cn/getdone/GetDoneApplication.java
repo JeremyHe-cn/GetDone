@@ -7,7 +7,6 @@ import me.jeremyhe.lib.common.DateUtils;
 
 import com.umeng.analytics.MobclickAgent;
 
-import cn.jpush.android.api.JPushInterface;
 import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
 import cn.getdone.dao.Task;
@@ -26,10 +25,6 @@ public class GetDoneApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		applicationContext = getApplicationContext();
-		
-		// 极光推送
-		JPushInterface.setDebugMode(false);
-		JPushInterface.init(this);
 		
 		// 友盟
 		MobclickAgent.setDebugMode(false);

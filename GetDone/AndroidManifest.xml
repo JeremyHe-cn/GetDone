@@ -8,10 +8,6 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="17" />
 
-    <permission
-        android:name="cn.getdone.permission.JPUSH_MESSAGE"
-        android:protectionLevel="signature" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,7 +19,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="cn.getdone.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
@@ -56,14 +51,7 @@
         </activity>
         <activity android:name="cn.getdone.ui.main.ArrangeTaskActivity" >
         </activity>
-        <activity
-            android:name="cn.getdone.ui.main.CheckShareTaskActivity"
-            android:theme="@style/NoTitileDialog" >
-        </activity>
         <activity android:name="cn.getdone.ui.main.ArrangeShareTaskActivity" >
-        </activity>
-        <activity
-            android:name="cn.getdone.ui.main.ListFriendActivity" >
         </activity>
         
         <!-- 历史任务 -->
@@ -128,79 +116,6 @@
                 android:resource="@xml/today_appwidget" />
         </receiver>
 
-        <!-- ############################# 极光推送开始 ########################### -->
-        <service
-            android:name="cn.jpush.android.service.PushService"
-            android:enabled="true"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTER" />
-                <action android:name="cn.jpush.android.intent.REPORT" />
-                <action android:name="cn.jpush.android.intent.PushService" />
-                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
-            </intent-filter>
-        </service>
-
-        <!-- 极光推送Receiver -->
-        <receiver
-            android:name="cn.jpush.android.service.PushReceiver"
-            android:enabled="true" >
-            <intent-filter android:priority="1000" >
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
-                <category android:name="cn.getdone" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-        <!-- Required SDK核心功能 -->
-        <activity
-            android:name="cn.jpush.android.ui.PushActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="cn.jpush.android.ui.PushActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="cn.getdone" />
-            </intent-filter>
-        </activity>
-        <!-- Required SDK核心功能 -->
-        <service
-            android:name="cn.jpush.android.service.DownloadService"
-            android:enabled="true"
-            android:exported="false" >
-        </service>
-        <!-- Required SDK核心功能 -->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
-        <!-- 接收消息的Receiver -->
-        <receiver
-            android:name="cn.getdone.receiver.JPushReceiver"
-            android:enabled="true" >
-            <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTRATION" />
-                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
-                <category android:name="cn.getdone" />
-            </intent-filter>
-        </receiver>
-
-        <!-- Required. For publish channel feature -->
-        <meta-data
-            android:name="JPUSH_CHANNEL"
-            android:value="developer-default" />
-        <!-- Required. AppKey copied from Portal -->
-        <meta-data
-            android:name="JPUSH_APPKEY"
-            android:value="df9192d420e4ad66d5f8950c" />
-        <!-- ############################# 极光推送结束 ########################### -->
-        
         <meta-data android:value="5460a854fd98c54d2400376a" android:name="UMENG_APPKEY"></meta-data>
 		<meta-data android:value="J-Cn" android:name="UMENG_CHANNEL"/>
 

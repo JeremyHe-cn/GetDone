@@ -14,7 +14,6 @@ import cn.getdone.common.TaskUtils;
 import cn.getdone.common.ui.BaseActivity;
 import cn.getdone.dao.Task;
 import cn.getdone.services.TaskService;
-import cn.jpush.android.api.JPushInterface;
 import me.jeremyhe.lib.widget.CircleTimerView;
 
 public class TomatoActivity extends BaseActivity implements OnClickListener {

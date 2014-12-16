@@ -17,8 +17,6 @@ public class Const {
 		public static final int TASK_STATUS_CHANGE = 100;
 		
 		public static final int USER_SETTINGS_NAME_CHANGE = 200;
-		
-		public static final int PUSH_JPUSH_RECEIVE = 300;
 	}
 	
 }
