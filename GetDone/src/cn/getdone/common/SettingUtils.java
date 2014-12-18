@@ -12,13 +12,6 @@ public class SettingUtils {
 	
 	private static String SETTING_NAME = "settings";
 	
-	// 百度推送相关
-	private static final String JPUSH_FLAG = "JPushFlag";
-	public static final boolean JPUSH_BINDED = true;
-	public static final boolean JPUSH_UNBINDED = false;
-	
-	private static final String JPUSH_USER_ID = "JPushUserId";
-	
 	// 个人的一些设置
 	private static final String USER_NAME = "userName";
 	
@@ -76,27 +69,6 @@ public class SettingUtils {
 	public static String getUserName(){
 		SharedPreferences settings = getSettings();
 		return settings.getString(USER_NAME, Build.MODEL);
-	}
-	
-	
-	public static void setJPushFlag(boolean binded){
-		putBoolean(JPUSH_FLAG, binded);
-	}
-	
-	public static boolean getJPushFlag(){
-		return getBoolean(JPUSH_FLAG, JPUSH_UNBINDED);
-	}
-	
-	public static void setJPushUserId(String userId){
-		SharedPreferences settings = getSettings();
-		settings.edit()
-		.putString(JPUSH_USER_ID, userId)
-		.commit();
-	}
-	
-	public static String getJPushUserId(){
-		SharedPreferences settings = getSettings();
-		return settings.getString(JPUSH_USER_ID, "");
 	}
 	
 	/**

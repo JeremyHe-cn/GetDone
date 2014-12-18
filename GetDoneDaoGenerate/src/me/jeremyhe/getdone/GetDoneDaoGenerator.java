@@ -11,8 +11,6 @@ public class GetDoneDaoGenerator {
 
 		addTask(schema);
 		addHistoryTask(schema);
-		addShareTask(schema);
-		addFriend(schema);
 
 		new DaoGenerator().generateAll(schema, "../GetDone/src");
 	}

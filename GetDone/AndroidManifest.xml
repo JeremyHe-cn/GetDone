@@ -48,8 +48,6 @@
         </activity>
         <activity android:name="cn.getdone.ui.main.ArrangeTaskActivity" >
         </activity>
-        <activity android:name="cn.getdone.ui.main.ArrangeShareTaskActivity" >
-        </activity>
         
         <!-- 历史任务 -->
         <activity android:name="cn.getdone.ui.history.HistoryTaskActivity"></activity>

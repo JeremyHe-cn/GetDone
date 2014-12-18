@@ -69,37 +69,4 @@ public class TaskUtils {
 		
 		return -1;
 	}
-	
-	public static String generatePushMsg(Task task){
-		/* {"userName":"JeremyHe",
-		 * "userId":"123123123",
-		 * "shareTask":
-		 * 		{"title":"这是推送过来的任务",
-		 * 		"priority":1,
-		 * 		"status":1,
-		 * 		"excuteTime":"2014-4-10 10:10"
-		 * 		}
-		 * }
-		 */
-		String pushMsg = "";
-		JSONObject packetJsonObj = new JSONObject();
-		try {
-			packetJsonObj.put("userName", SettingUtils.getUserName());
-			packetJsonObj.put("userId", SettingUtils.getJPushUserId());
-			packetJsonObj.put("device", Build.MODEL);
-			
-			JSONObject shareTask = new JSONObject();
-			shareTask.put("title", task.getTitle());
-			shareTask.put("priority", task.getPriority());
-			final String excuteTimeStr = DateUtils.format(task.getExcuteTime(), DateUtils.format_yyyy_MM_dd__HH_mm);
-			shareTask.put("excuteTime", excuteTimeStr);
-			
-			packetJsonObj.put("shareTask", shareTask);
-			pushMsg = packetJsonObj.toString();
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		
-		return pushMsg;
-	}
 }
