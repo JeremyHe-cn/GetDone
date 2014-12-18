@@ -1,6 +1,5 @@
 package cn.getdone.dao;
 
-import cn.getdone.dao.upgrade.Upgrade2;
 import android.database.sqlite.SQLiteDatabase;
 
 public class DaoUpgrade {
@@ -8,7 +7,6 @@ public class DaoUpgrade {
 		while(oldVersion < newVersion) {
 			switch (oldVersion) {
 			case 1:
-				Upgrade2.upgrade(db, oldVersion, newVersion);
 				break;
 
 			default:
