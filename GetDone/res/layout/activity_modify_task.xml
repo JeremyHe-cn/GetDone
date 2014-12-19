@@ -8,6 +8,7 @@
     <include layout="@layout/part_nav_bar" />
 
     <LinearLayout
+        android:id="@+id/modify_task_header_ly"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/getdone_main"
@@ -32,7 +33,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="48dp"
             android:layout_marginTop="2dp"
             android:background="@color/white_sub" />
     </LinearLayout>
@@ -74,17 +75,6 @@
                     android:orientation="horizontal" >
 
                     <RadioButton
-                        android:id="@+id/modify_todo_rb"
-                        style="@style/radiobutton_priority_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/check_blue"
-                        android:text="待办" />
-
-                    <View style="@style/vertical_line" />
-
-                    <RadioButton
                         android:id="@+id/modify_today_rb"
                         style="@style/radiobutton_priority_text"
                         android:layout_width="match_parent"
@@ -103,9 +93,18 @@
                         android:layout_weight="1"
                         android:background="@drawable/check_blue"
                         android:text="明天" />
-
+                    
                     <View style="@style/vertical_line" />
 
+                    <RadioButton
+                        android:id="@+id/modify_after_tmr_rb"
+                        style="@style/radiobutton_priority_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/check_blue"
+                        android:text="后天" />
+                    
                     <RadioButton
                         android:id="@+id/modify_other_rb"
                         style="@style/radiobutton_priority_text"
@@ -113,7 +112,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/check_blue"
-                        android:text="更多" />
+                        android:text="其他隐藏" 
+                        android:visibility="gone"/>
+
                 </RadioGroup>
 
                 <View style="@style/horizontal_line" />

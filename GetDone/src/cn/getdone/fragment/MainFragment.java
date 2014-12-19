@@ -202,7 +202,6 @@ public class MainFragment extends Fragment implements OnClickListener {
 
 		@Override
 		public void onPageSelected(int arg0) {
-//			mTaskListFragments[arg0].scheduleLayoutAnimation(mCurrentPageIndex, arg0);
 			
 			mCurrentPageIndex = arg0;
 			if (mCurrentPageIndex == PAGE_INDEX_TODAY) {
