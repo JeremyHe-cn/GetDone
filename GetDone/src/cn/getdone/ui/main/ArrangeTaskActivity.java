@@ -24,9 +24,9 @@ import cn.getdone.R;
 import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
 import cn.getdone.common.ui.BaseActivity;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
 import cn.getdone.helper.AlarmHelper;
-import cn.getdone.services.TaskService;
 import cn.getdone.widget.TaskScreenView;
 import me.jeremyhe.lib.androidutils.SystemUtils;
 import me.jeremyhe.lib.common.DateUtils;
@@ -55,7 +55,7 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 	
 	private List<Task> taskList;
 	
-	private TaskService mTaskService;
+	private TaskDal mTaskService;
 	
 	private SoundPool mSoundPool;
 	private int mVolume;
@@ -271,7 +271,7 @@ public class ArrangeTaskActivity extends BaseActivity implements OnClickListener
 	private class InitTask extends AsyncTask<Void, Void, Void> {
 		@Override
 		protected Void doInBackground(Void... params) {
-			mTaskService = TaskService.getInstance();
+			mTaskService = TaskDal.getInstance();
 			taskList = mTaskService.listTodayUnFinishedTasks();
 			return null;
 		}

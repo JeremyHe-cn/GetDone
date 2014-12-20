@@ -1,4 +1,4 @@
-package cn.getdone.services;
+package cn.getdone.dal;
 
 import java.util.Date;
 import java.util.List;
@@ -20,9 +20,9 @@ import cn.getdone.dao.TaskDao.Properties;
 import cn.getdone.ui.main.SetTaskAlarmService;
 import me.jeremyhe.lib.common.DateUtils;
 
-public class TaskService {
+public class TaskDal {
 	
-	private static TaskService INSTANCE = null;
+	private static TaskDal INSTANCE = null;
 	
 	public static String ACTION_UPDATE_TASK = "cn.getdone.UPDATE_TASK";
 	public static String ACTION_CLEAR_TASK = "cn.getdone.CLEAR_TASK";
@@ -32,15 +32,15 @@ public class TaskService {
 	private TaskDao taskDao;
 	private HistoryTaskDao historyTaskDao;
 	
-	public static TaskService getInstance(){
+	public static TaskDal getInstance(){
 		if (INSTANCE == null) {
-			INSTANCE = new TaskService();
+			INSTANCE = new TaskDal();
 		}
 		
 		return INSTANCE;
 	}
 
-	private TaskService(){
+	private TaskDal(){
 		mContext = GetDoneApplication.getContext();
 		session = DBHelper.getDaoSession(mContext);
 		taskDao = session.getTaskDao();
@@ -65,6 +65,17 @@ public class TaskService {
 			NotificationCenter.notifyObservers(Const.EVENT.TASK_STATUS_CHANGE);
 		}
 		return id;
+	}
+	
+	public long addTask(String title){
+		Task task = new Task();
+		task.setCreateTime(new Date());
+		task.setExcuteTime(new Date());
+		task.setPriority(Const.TASK.PRIORITY_NOT_IMPORTANT_URGENT);
+		task.setStatus(Const.TASK.STATUS_ADD);
+		task.setTitle(title);
+		
+		return addTask(task);
 	}
 	
 	public long addTask(String title,int priority,int status,Date excuteTime){

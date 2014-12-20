@@ -7,8 +7,8 @@ import java.util.List;
 
 import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import cn.getdone.services.TaskService;
 import cn.getdone.ui.main.ModifyTaskActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -83,7 +83,7 @@ public class GTDTaskListAdapter extends BaseAdapter {
 				} else {
 					task.setStatus(Const.TASK.STATUS_ARRANGED);
 				}
-				TaskService.getInstance().updateTask(task);
+				TaskDal.getInstance().updateTask(task);
 			}
 		});
 		

@@ -14,8 +14,8 @@ import android.widget.TextView;
 import cn.getdone.R;
 import cn.getdone.common.TaskUtils;
 import cn.getdone.common.ui.BaseActivity;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import cn.getdone.services.TaskService;
 
 /**
  * 对任务进行延迟 TODO: 对点击的延迟按钮进行统计，找出最常用的选项
@@ -62,7 +62,7 @@ public class DelayActivity extends BaseActivity implements OnClickListener {
 		setContentView(R.layout.activity_delay);
 
 		mTaskId = getIntent().getLongExtra(EXTRA_TASK_ID, 0);
-		mTask = TaskService.getInstance().queryTaskById(mTaskId);
+		mTask = TaskDal.getInstance().queryTaskById(mTaskId);
 		if (mTask == null) {
 			finish();
 			return;
@@ -138,7 +138,7 @@ public class DelayActivity extends BaseActivity implements OnClickListener {
 		}
 		
 		mTask.setExcuteTime(excuteDate);
-		TaskService.getInstance().updateTask(mTask);
+		TaskDal.getInstance().updateTask(mTask);
 		
 		setResult(RESULT_OK);
 		finish();

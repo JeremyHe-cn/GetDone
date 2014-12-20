@@ -12,8 +12,8 @@ import cn.getdone.R;
 import cn.getdone.common.Const;
 import cn.getdone.common.TaskUtils;
 import cn.getdone.common.ui.BaseActivity;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import cn.getdone.services.TaskService;
 import me.jeremyhe.lib.widget.CircleTimerView;
 
 public class TomatoActivity extends BaseActivity implements OnClickListener {
@@ -49,7 +49,7 @@ public class TomatoActivity extends BaseActivity implements OnClickListener {
 		
 		final long taskId = getIntent().getLongExtra(EXTRA_TASK_ID, -1);
 		if (taskId != -1) {
-			mTask = TaskService.getInstance().queryTaskById(taskId);
+			mTask = TaskDal.getInstance().queryTaskById(taskId);
 		}
 		
 		if (mTask == null) {
@@ -92,7 +92,7 @@ public class TomatoActivity extends BaseActivity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.tomato_finished_btn:
 			mTask.setStatus(Const.TASK.STATUS_FINISHED);
-			TaskService.getInstance().updateTask(mTask);
+			TaskDal.getInstance().updateTask(mTask);
 			setResult(RESULT_OK);
 			finish();
 			break;

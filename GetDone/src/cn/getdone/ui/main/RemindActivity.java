@@ -18,8 +18,8 @@ import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
 import cn.getdone.common.TaskUtils;
 import cn.getdone.common.ui.BaseActivity;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import cn.getdone.services.TaskService;
 import cn.getdone.ui.DelayActivity;
 
 public class RemindActivity extends BaseActivity implements OnClickListener {
@@ -60,7 +60,7 @@ public class RemindActivity extends BaseActivity implements OnClickListener {
 		setContentView(R.layout.activity_remind);
 
 		mTaskId = getIntent().getLongExtra(EXTRA_TASK_ID, 0);
-		mTask = TaskService.getInstance().queryTaskById(mTaskId);
+		mTask = TaskDal.getInstance().queryTaskById(mTaskId);
 		if (mTask == null) {
 			finish();
 			return;
@@ -137,7 +137,7 @@ public class RemindActivity extends BaseActivity implements OnClickListener {
 			break;
 		case R.id.remind_finish_btn:
 			mTask.setStatus(Const.TASK.STATUS_FINISHED);
-			TaskService.getInstance().updateTask(mTask);
+			TaskDal.getInstance().updateTask(mTask);
 			finish();
 			break;
 

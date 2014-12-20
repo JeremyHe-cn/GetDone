@@ -1,4 +1,4 @@
-package cn.getdone.services;
+package cn.getdone.dal;
 
 import java.util.List;
 
@@ -10,13 +10,13 @@ import cn.getdone.dao.HistoryTask;
 import cn.getdone.dao.HistoryTaskDao;
 import cn.getdone.dao.HistoryTaskDao.Properties;
 
-public class HistoryTaskService {
+public class HistoryDal {
 
-	private static HistoryTaskService INSTANCE = null;
+	private static HistoryDal INSTANCE = null;
 	
-	public static HistoryTaskService getInstance() {
+	public static HistoryDal getInstance() {
 		if (INSTANCE == null) {
-			INSTANCE = new HistoryTaskService();
+			INSTANCE = new HistoryDal();
 		}
 		
 		return INSTANCE;
@@ -27,7 +27,7 @@ public class HistoryTaskService {
 	private DaoSession session;
 	private HistoryTaskDao historyTaskDao;
 	
-	private HistoryTaskService() {
+	private HistoryDal() {
 		mContext = GetDoneApplication.getContext();
 		session = DBHelper.getDaoSession(mContext);
 		historyTaskDao = session.getHistoryTaskDao();

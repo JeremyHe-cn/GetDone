@@ -9,9 +9,9 @@ import com.umeng.analytics.MobclickAgent;
 
 import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
 import cn.getdone.helper.AlarmHelper;
-import cn.getdone.services.TaskService;
 import cn.getdone.ui.main.SetTaskAlarmService;
 import android.app.Application;
 import android.content.Context;
@@ -46,7 +46,7 @@ public class GetDoneApplication extends Application {
 		if (SettingUtils.isNewUser()) {
 			SettingUtils.setNewUser(false);
 			
-			TaskService taskService = TaskService.getInstance();
+			TaskDal taskService = TaskDal.getInstance();
 			
 			Task task = new Task();
 			task.setTitle("屏幕下方可添加新任务");

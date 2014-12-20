@@ -3,8 +3,8 @@ package cn.getdone.fragment;
 import java.util.List;
 
 import cn.getdone.R;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import cn.getdone.services.TaskService;
 import cn.getdone.ui.main.adapter.GTDTaskListAdapter;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -67,7 +67,7 @@ public class FourGridFragment extends Fragment {
 		
 		@Override
 		protected Void doInBackground(Void... params) {
-			TaskService taskService = TaskService.getInstance();
+			TaskDal taskService = TaskDal.getInstance();
 			Context ctx = getActivity();
 			
 			List<Task> iUTaskList = taskService.listImportantUrgentTasks();

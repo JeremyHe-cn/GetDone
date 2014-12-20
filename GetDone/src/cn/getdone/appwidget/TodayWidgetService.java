@@ -5,8 +5,8 @@ import java.util.List;
 import cn.getdone.R;
 import cn.getdone.common.Const;
 import cn.getdone.common.TaskUtils;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import cn.getdone.services.TaskService;
 import me.jeremyhe.lib.common.DateUtils;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -101,7 +101,7 @@ class TodayRemoteViewsFactory implements RemoteViewsFactory {
 	}
 	
 	private void initTaskList(){
-		TaskService taskService = TaskService.getInstance();
+		TaskDal taskService = TaskDal.getInstance();
 		mTaskList = taskService.listTodayTasks();
 		if (mTaskList.isEmpty()) {
 			mTaskList = taskService.listTodoTasks();

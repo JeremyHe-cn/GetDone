@@ -25,8 +25,8 @@ import cn.getdone.R;
 import cn.getdone.common.Const;
 import cn.getdone.common.TaskUtils;
 import cn.getdone.common.ui.BaseActivity;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import cn.getdone.services.TaskService;
 import me.jeremyhe.lib.androidutils.ToastUtils;
 import me.jeremyhe.lib.common.DateUtils;
 import me.jeremyhe.lib.common.StringUtils;
@@ -82,7 +82,7 @@ public class ModifyTaskActivity extends BaseActivity implements OnClickListener,
 			finish();
 		}
 		
-		mTask = TaskService.getInstance().queryTaskById(mTaskId);
+		mTask = TaskDal.getInstance().queryTaskById(mTaskId);
 		if (mTask == null) {
 			finish();
 		}
@@ -182,7 +182,7 @@ public class ModifyTaskActivity extends BaseActivity implements OnClickListener,
 			} else {
 				mTask.setTitle(title);
 				mTask.setExcuteTime(getExcuteTime());
-				TaskService.getInstance().updateTask(mTask);
+				TaskDal.getInstance().updateTask(mTask);
 				finish();
 			}
 			break;

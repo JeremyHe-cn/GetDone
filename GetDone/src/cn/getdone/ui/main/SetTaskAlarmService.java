@@ -3,8 +3,8 @@ package cn.getdone.ui.main;
 import java.util.Date;
 import java.util.List;
 
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import cn.getdone.services.TaskService;
 import android.app.AlarmManager;
 import android.app.IntentService;
 import android.app.PendingIntent;
@@ -31,7 +31,7 @@ public class SetTaskAlarmService extends IntentService {
 	
 	@Override
 	protected void onHandleIntent(Intent intent) {
-		final List<Task> arrangedTaskList = TaskService.getInstance().listArrangedTasks();
+		final List<Task> arrangedTaskList = TaskDal.getInstance().listArrangedTasks();
 		
 		// 找出没完成并且在当前时间之后的任务
 		final Date now = new Date();

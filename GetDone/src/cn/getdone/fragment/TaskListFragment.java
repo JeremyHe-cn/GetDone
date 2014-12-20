@@ -2,8 +2,8 @@ package cn.getdone.fragment;
 
 import cn.getdone.R;
 import cn.getdone.common.notify.Observer;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import cn.getdone.services.TaskService;
 import cn.getdone.ui.main.ModifyTaskActivity;
 import android.content.Context;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class TaskListFragment extends ListFragment implements Observer{
 	protected Context mContext;
-	protected TaskService mTaskService;
+	protected TaskDal mTaskService;
 	
 	private Animation mAnimSlideRightIn;
 	private Animation mAnimSlideLeftIn;
@@ -27,7 +27,7 @@ public class TaskListFragment extends ListFragment implements Observer{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mContext = getActivity();
-		mTaskService = TaskService.getInstance();
+		mTaskService = TaskDal.getInstance();
 		register();
 	}
 	

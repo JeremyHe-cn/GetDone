@@ -3,8 +3,8 @@ package cn.getdone.appwidget;
 import cn.getdone.R;
 import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import cn.getdone.services.TaskService;
 import cn.getdone.ui.main.MainActivity;
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
@@ -37,7 +37,7 @@ public class TodayWidget extends AppWidgetProvider {
 			views.setOnClickPendingIntent(R.id.today_add_task_btn, onClickBtnPendingIntent);
 			// 为清空已完成任务按钮添加单击事件
 			onClickBtnIntent = new Intent(context,TodayWidget.class);
-			onClickBtnIntent.setAction(TaskService.ACTION_CLEAR_TASK);
+			onClickBtnIntent.setAction(TaskDal.ACTION_CLEAR_TASK);
 			onClickBtnPendingIntent = PendingIntent.getBroadcast(context, 0, onClickBtnIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 			views.setOnClickPendingIntent(R.id.today_clear_task_btn, onClickBtnPendingIntent);
 			
@@ -62,7 +62,7 @@ public class TodayWidget extends AppWidgetProvider {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		final String action = intent.getAction();
-		if (TaskService.ACTION_UPDATE_TASK.equals(action)) {
+		if (TaskDal.ACTION_UPDATE_TASK.equals(action)) {
 			AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 			final int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(context,TodayWidget.class));
 			appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.today_task_lv);
@@ -70,11 +70,11 @@ public class TodayWidget extends AppWidgetProvider {
 			// 更新task
 			final long taskId = intent.getLongExtra(TodayWidgetService.EXTRA_TASK_ID, 0);
 			final int taskStatus = intent.getIntExtra(TodayWidgetService.EXTRA_TASK_STATUS, 0);
-			final Task task = TaskService.getInstance().queryTaskById(taskId);
+			final Task task = TaskDal.getInstance().queryTaskById(taskId);
 			task.setStatus(taskStatus);
-			TaskService.getInstance().updateTask(task);
-		} else if (TaskService.ACTION_CLEAR_TASK.equals(action)) {
-			TaskService.getInstance().deleteAllFinishedTask();
+			TaskDal.getInstance().updateTask(task);
+		} else if (TaskDal.ACTION_CLEAR_TASK.equals(action)) {
+			TaskDal.getInstance().deleteAllFinishedTask();
 		}
 		
 		super.onReceive(context, intent);

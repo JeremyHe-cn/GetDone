@@ -10,12 +10,12 @@ import com.viewpagerindicator.TitlePageIndicator;
 
 import cn.getdone.R;
 import cn.getdone.common.Const;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.fragment.AfterTmrTaskListFragment;
 import cn.getdone.fragment.TaskListFragment;
 import cn.getdone.fragment.TmrTaskListFragment;
 import cn.getdone.fragment.TodayTaskListFragment;
 import cn.getdone.fragment.TodoTaskListFragment;
-import cn.getdone.services.TaskService;
 import cn.getdone.ui.main.MainActivity;
 import cn.getdone.ui.main.SetRemindActivity;
 import cn.getdone.ui.main.adapter.MainViewPagerFragmentAdapter;
@@ -288,7 +288,7 @@ public class MainFragment extends Fragment implements OnClickListener {
 		final int priority = getPriority();
 		
 		// 添加任务
-		TaskService taskService = TaskService.getInstance();
+		TaskDal taskService = TaskDal.getInstance();
 		boolean isSuccess = taskService.addTask(title, priority, status, excuteTime) != -1;
 		if (isSuccess) {
 			ToastUtils.showShortToast(getActivity(), "任务添加成功");

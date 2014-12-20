@@ -7,8 +7,8 @@ import java.util.List;
 
 import cn.getdone.common.Const;
 import cn.getdone.common.TaskUtils;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import cn.getdone.services.TaskService;
 import cn.getdone.ui.main.ModifyTaskActivity;
 import me.jeremyhe.lib.common.DateUtils;
 import android.content.Context;
@@ -107,7 +107,7 @@ public class TaskListAdapter extends BaseAdapter {
 				} else {
 					task.setStatus(Const.TASK.STATUS_ARRANGED);
 				}
-				TaskService.getInstance().updateTask(task);
+				TaskDal.getInstance().updateTask(task);
 			}
 		});
 		

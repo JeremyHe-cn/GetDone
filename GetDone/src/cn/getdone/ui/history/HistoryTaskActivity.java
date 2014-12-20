@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.ListView;
 import cn.getdone.R;
 import cn.getdone.common.ui.NavBaseActivty;
+import cn.getdone.dal.HistoryDal;
 import cn.getdone.dao.HistoryTask;
-import cn.getdone.services.HistoryTaskService;
 import cn.getdone.ui.history.adapter.HistoryTaskListAdapter;
 
 public class HistoryTaskActivity extends NavBaseActivty implements OnClickListener {
@@ -70,7 +70,7 @@ public class HistoryTaskActivity extends NavBaseActivty implements OnClickListen
 		
 		@Override
 		protected List<HistoryTask> doInBackground(Void... params) {
-			return HistoryTaskService.getInstance().listAllHistoryTask();
+			return HistoryDal.getInstance().listAllHistoryTask();
 		}
 		
 		@Override

@@ -16,8 +16,8 @@ import cn.getdone.common.Const;
 import cn.getdone.common.SettingUtils;
 import cn.getdone.common.notify.NotificationCenter;
 import cn.getdone.common.notify.Observer;
-import cn.getdone.services.HistoryTaskService;
-import cn.getdone.services.TaskService;
+import cn.getdone.dal.HistoryDal;
+import cn.getdone.dal.TaskDal;
 import cn.getdone.ui.AboutActivity;
 import cn.getdone.ui.history.HistoryTaskActivity;
 import cn.getdone.ui.main.ArrangeTaskActivity;
@@ -120,7 +120,7 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 			break;
 			
 		case R.id.menu_left_clear_btn:
-			TaskService.getInstance().deleteAllFinishedTask();
+			TaskDal.getInstance().deleteAllFinishedTask();
 			ToastUtils.showShortToast(getActivity(), "归档完成");
 			showContent();
 			break;
@@ -194,8 +194,8 @@ public class MenuLeftFragment extends Fragment implements OnClickListener, Obser
 		
 		@Override
 		protected Void doInBackground(Void... params) {
-			sumOfFinishedTask = TaskService.getInstance().listFinishedTasks().size();
-			sumOfFinishedTask += HistoryTaskService.getInstance().listAllHistoryTask().size();
+			sumOfFinishedTask = TaskDal.getInstance().listFinishedTasks().size();
+			sumOfFinishedTask += HistoryDal.getInstance().listAllHistoryTask().size();
 			return null;
 		}
 		
