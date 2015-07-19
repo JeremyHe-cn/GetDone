@@ -1,13 +1,13 @@
-package me.zlv.leader.daogenerate;
+package me.zlv.lead.daogenerate;
 
 import de.greenrobot.daogenerator.DaoGenerator;
 import de.greenrobot.daogenerator.Entity;
 import de.greenrobot.daogenerator.Schema;
 
-public class LeaderDaoGenerator {
+public class LeadDaoGenerator {
 
 	public static void main(String[] args) throws Exception {
-		Schema schema = new Schema(1, "me.zlv.leader.dao");
+		Schema schema = new Schema(1, "me.zlv.lead.dao");
 
 		addTask(schema);
 

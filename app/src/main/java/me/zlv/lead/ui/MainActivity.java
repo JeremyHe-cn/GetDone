@@ -1,4 +1,4 @@
-package me.zlv.leader.ui;
+package me.zlv.lead.ui;
 
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
@@ -8,7 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import me.zlv.leader.R;
+import me.zlv.lead.R;
 
 
 public class MainActivity extends ActionBarActivity {
