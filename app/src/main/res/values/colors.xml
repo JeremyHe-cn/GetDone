@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="window_background">#FFF5F5F5</color>
-    <color name="text_primary">#212121</color>
-    <color name="text_secondary">#727272</color>
-    <color name="divider">#B6B6B6</color>
+    <!--Base Color-->
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#00796B</color>
+    <color name="colorPrimaryLight">#B2DFDB</color>
+    <color name="colorAccent">#607D8B</color>
+    <color name="windowBackground">#FFF5F5F5</color>
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#727272</color>
+    <color name="dividerColor">#B6B6B6</color>
+
 </resources>

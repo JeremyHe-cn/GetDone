@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "me.zlv.getdone"
+        applicationId "me.zlv.lead"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
@@ -21,7 +21,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:design:22.2.1'
     compile 'de.greenrobot:greendao:1.3.7'
+    compile 'me.zlv.lib:androidUtils:1.0@aar'
 }

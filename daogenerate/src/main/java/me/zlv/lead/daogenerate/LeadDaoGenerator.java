@@ -8,6 +8,7 @@ public class LeadDaoGenerator {
 
 	public static void main(String[] args) throws Exception {
 		Schema schema = new Schema(1, "me.zlv.lead.dao");
+		schema.enableKeepSectionsByDefault();
 
 		addTask(schema);
 
