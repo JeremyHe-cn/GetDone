@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center" >
 
-                <me.jeremyhe.lib.widget.RoundedImageView
+                <me.zlv.lib.widget.RoundedImageView
                     android:id="@+id/menu_left_head_riv"
                     android:layout_width="130dp"
                     android:layout_height="130dp"

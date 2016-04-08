@@ -24,7 +24,7 @@ import cn.getdone.ui.main.ArrangeTaskActivity;
 import cn.getdone.ui.main.MainActivity;
 import cn.getdone.ui.settings.BackupDatabaseTask;
 import cn.getdone.ui.settings.UserSettingActivity;
-import me.jeremyhe.lib.androidutils.ToastUtils;
+import me.zlv.lib.androidutils.ToastUtils;
 
 public class MenuLeftFragment extends Fragment implements OnClickListener, Observer {
 	

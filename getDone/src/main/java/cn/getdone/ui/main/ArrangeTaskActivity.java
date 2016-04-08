@@ -28,8 +28,8 @@ import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
 import cn.getdone.helper.AlarmHelper;
 import cn.getdone.widget.TaskScreenView;
-import me.jeremyhe.lib.androidutils.SystemUtils;
-import me.jeremyhe.lib.common.DateUtils;
+import me.zlv.lib.androidutils.SystemUtils;
+import me.zlv.lib.common.DateUtils;
 
 public class ArrangeTaskActivity extends BaseActivity implements OnClickListener{
 	

@@ -11,7 +11,7 @@
         android:layout_marginTop="16dp"
         >
 
-        <me.jeremyhe.lib.widget.CircleTimerView
+        <me.zlv.lib.widget.CircleTimerView
             android:id="@+id/tomato_time_ctv"
             android:layout_width="300dp"
             android:layout_height="300dp"

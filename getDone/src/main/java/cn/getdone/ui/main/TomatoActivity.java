@@ -14,7 +14,7 @@ import cn.getdone.common.TaskUtils;
 import cn.getdone.common.ui.BaseActivity;
 import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import me.jeremyhe.lib.widget.CircleTimerView;
+import me.zlv.lib.widget.CircleTimerView;
 
 public class TomatoActivity extends BaseActivity implements OnClickListener {
 

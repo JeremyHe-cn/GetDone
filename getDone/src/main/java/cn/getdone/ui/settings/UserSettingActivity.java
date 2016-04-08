@@ -1,7 +1,7 @@
 package cn.getdone.ui.settings;
 
-import me.jeremyhe.lib.androidutils.ToastUtils;
-import me.jeremyhe.lib.common.StringUtils;
+import me.zlv.lib.androidutils.ToastUtils;
+import me.zlv.lib.common.StringUtils;
 
 import com.dateSlider.ScrollLayout;
 
@@ -35,7 +35,6 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 	/*
 	 * 二维码
 	 */
-	private Button mQrBtn;
 	private ScaleAnimation mShowAnim;
 	private ScaleAnimation mHideAnim;
 	
@@ -99,7 +98,6 @@ public class UserSettingActivity extends NavBaseActivty implements OnClickListen
 		
 		mGetDoneLy.setOnClickListener(this);
 		
-		mQrBtn.setOnClickListener(this);
 		mSaveBtn.setOnClickListener(this);
 	}
 	

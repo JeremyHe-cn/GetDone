@@ -27,9 +27,9 @@ import cn.getdone.common.TaskUtils;
 import cn.getdone.common.ui.BaseActivity;
 import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
-import me.jeremyhe.lib.androidutils.ToastUtils;
-import me.jeremyhe.lib.common.DateUtils;
-import me.jeremyhe.lib.common.StringUtils;
+import me.zlv.lib.androidutils.ToastUtils;
+import me.zlv.lib.common.DateUtils;
+import me.zlv.lib.common.StringUtils;
 
 public class ModifyTaskActivity extends BaseActivity implements OnClickListener, OnDateChangeListener, OnCheckedChangeListener {
 	

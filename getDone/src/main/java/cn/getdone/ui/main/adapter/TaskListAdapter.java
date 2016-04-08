@@ -10,7 +10,7 @@ import cn.getdone.common.TaskUtils;
 import cn.getdone.dal.TaskDal;
 import cn.getdone.dao.Task;
 import cn.getdone.ui.main.ModifyTaskActivity;
-import me.jeremyhe.lib.common.DateUtils;
+import me.zlv.lib.common.DateUtils;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
